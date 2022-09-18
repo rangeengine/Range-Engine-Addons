@@ -67,9 +67,9 @@ class ImportBVH(bpy.types.Operator, ImportHelper, ImportBVHOrientationHelper):
     bl_options = {'REGISTER', 'UNDO'}
 
     filename_ext = ".bvh"
-    filter_glob = StringProperty(default="*.bvh", options={'HIDDEN'})
+    filter_glob: StringProperty(default="*.bvh", options={'HIDDEN'})
 
-    target = EnumProperty(
+    target: EnumProperty(
         items=(
             ('ARMATURE', "Armature", ""),
             ('OBJECT', "Object", ""),
@@ -79,19 +79,19 @@ class ImportBVH(bpy.types.Operator, ImportHelper, ImportBVHOrientationHelper):
         default='ARMATURE',
     )
 
-    global_scale = FloatProperty(
+    global_scale: FloatProperty(
         name="Scale",
         description="Scale the BVH by this value",
         min=0.0001, max=1000000.0,
         soft_min=0.001, soft_max=100.0,
         default=1.0,
     )
-    frame_start = IntProperty(
+    frame_start: IntProperty(
         name="Start Frame",
         description="Starting frame for the animation",
         default=1,
     )
-    use_fps_scale = BoolProperty(
+    use_fps_scale: BoolProperty(
         name="Scale FPS",
         description=(
             "Scale the framerate from the BVH to the current scenes, "
@@ -99,7 +99,7 @@ class ImportBVH(bpy.types.Operator, ImportHelper, ImportBVHOrientationHelper):
         ),
         default=False,
     )
-    update_scene_fps = BoolProperty(
+    update_scene_fps: BoolProperty(
         name="Update Scene FPS",
         description=(
             "Set the scene framerate to that of the BVH file (note that this "
@@ -107,17 +107,17 @@ class ImportBVH(bpy.types.Operator, ImportHelper, ImportBVHOrientationHelper):
         ),
         default=False
     )
-    update_scene_duration = BoolProperty(
+    update_scene_duration: BoolProperty(
         name="Update Scene Duration",
         description="Extend the scene's duration to the BVH duration (never shortens the scene)",
         default=False,
     )
-    use_cyclic = BoolProperty(
+    use_cyclic: BoolProperty(
         name="Loop",
         description="Loop the animation playback",
         default=False,
     )
-    rotate_mode = EnumProperty(
+    rotate_mode: EnumProperty(
         name="Rotation",
         description="Rotation conversion",
         items=(
@@ -161,29 +161,29 @@ class ExportBVH(bpy.types.Operator, ExportHelper):
     bl_label = "Export BVH"
 
     filename_ext = ".bvh"
-    filter_glob = StringProperty(
+    filter_glob: StringProperty(
         default="*.bvh",
         options={'HIDDEN'},
     )
 
-    global_scale = FloatProperty(
+    global_scale: FloatProperty(
         name="Scale",
         description="Scale the BVH by this value",
         min=0.0001, max=1000000.0,
         soft_min=0.001, soft_max=100.0,
         default=1.0,
     )
-    frame_start = IntProperty(
+    frame_start: IntProperty(
         name="Start Frame",
         description="Starting frame to export",
         default=0,
     )
-    frame_end = IntProperty(
+    frame_end: IntProperty(
         name="End Frame",
         description="End frame to export",
         default=0,
     )
-    rotate_mode = EnumProperty(
+    rotate_mode: EnumProperty(
         name="Rotation",
         description="Rotation conversion",
         items=(
@@ -198,7 +198,7 @@ class ExportBVH(bpy.types.Operator, ExportHelper):
         ),
         default='NATIVE',
     )
-    root_transform_only = BoolProperty(
+    root_transform_only: BoolProperty(
         name="Root Translation Only",
         description="Only write out translation channels for the root bone",
         default=False,
@@ -233,16 +233,22 @@ def menu_func_import(self, context):
 def menu_func_export(self, context):
     self.layout.operator(ExportBVH.bl_idname, text="Motion Capture (.bvh)")
 
+classes = [
+    ImportBVH,
+    ExportBVH
+]
 
 def register():
-    bpy.utils.register_module(__name__)
+    for cls in classes:
+        bpy.utils.register_class(cls)
 
     bpy.types.INFO_MT_file_import.append(menu_func_import)
     bpy.types.INFO_MT_file_export.append(menu_func_export)
 
 
 def unregister():
-    bpy.utils.unregister_module(__name__)
+    for cls in classes:
+        bpy.utils.unregister_class(cls)
 
     bpy.types.INFO_MT_file_import.remove(menu_func_import)
     bpy.types.INFO_MT_file_export.remove(menu_func_export)

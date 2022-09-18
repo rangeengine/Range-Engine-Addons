@@ -87,32 +87,32 @@ class ImportSTL(Operator, ImportHelper, IOSTLOrientationHelper):
 
     filename_ext = ".stl"
 
-    filter_glob = StringProperty(
+    filter_glob: StringProperty(
             default="*.stl",
             options={'HIDDEN'},
             )
-    files = CollectionProperty(
+    files: CollectionProperty(
             name="File Path",
             type=OperatorFileListElement,
             )
-    directory = StringProperty(
+    directory: StringProperty(
             subtype='DIR_PATH',
             )
 
-    global_scale = FloatProperty(
+    global_scale: FloatProperty(
             name="Scale",
             soft_min=0.001, soft_max=1000.0,
             min=1e-6, max=1e6,
             default=1.0,
             )
 
-    use_scene_unit = BoolProperty(
+    use_scene_unit: BoolProperty(
             name="Scene Unit",
             description="Apply current scene's unit (as defined by unit scale) to imported data",
             default=False,
             )
 
-    use_facet_normal = BoolProperty(
+    use_facet_normal: BoolProperty(
             name="Facet Normals",
             description="Use (import) facet normals (note that this will still give flat shading)",
             default=False,
@@ -255,16 +255,22 @@ def menu_export(self, context):
     default_path = os.path.splitext(bpy.data.filepath)[0] + ".stl"
     self.layout.operator(ExportSTL.bl_idname, text="Stl (.stl)")
 
+classes = [
+    ImportSTL,
+    ExportSTL
+]
 
 def register():
-    bpy.utils.register_module(__name__)
+    for cls in classes:
+        bpy.utils.register_class(cls)
 
     bpy.types.INFO_MT_file_import.append(menu_import)
     bpy.types.INFO_MT_file_export.append(menu_export)
 
 
 def unregister():
-    bpy.utils.unregister_module(__name__)
+    for cls in classes:
+        bpy.utils.unregister_class(cls)
 
     bpy.types.INFO_MT_file_import.remove(menu_import)
     bpy.types.INFO_MT_file_export.remove(menu_export)
