@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_fresnel.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_fresnel.oso
 shader node_fresnel
 param	float	IOR	1.45		%read{1,1} %write{2147483647,-1}
 param	normal	Normal	0 0 0		%read{6,6} %write{0,0} %initexpr
@@ -38,47 +38,47 @@ temp	float	$tmp15	%read{30,30} %write{27,27}
 temp	float	$tmp16	%read{29,29} %write{28,28}
 temp	float	$tmp17	%read{30,30} %write{29,29}
 code Normal
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_fresnel.osl:22
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_fresnel.osl:22
 # 	normal Normal = N,
-	assign		Normal N 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_fresnel.osl"} %line{22} %argrw{"wr"}
+	assign		Normal N 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_fresnel.osl"} %line{22} %argrw{"wr"}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_fresnel.osl:25
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_fresnel.osl:25
 # 	float f = max(IOR, 1e-5);
-	max		f IOR $const1 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_fresnel.osl"} %line{25} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_fresnel.osl:26
+	max		f IOR $const1 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_fresnel.osl"} %line{25} %argrw{"wrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_fresnel.osl:26
 # 	float eta = backfacing() ? 1.0 / f : f;
 	backfacing	$tmp1 	%line{26} %argrw{"w"}
 	if		$tmp1 5 6 	%argrw{"r"}
 	div		eta $const2 f 	%argrw{"wrr"}
 	assign		eta f 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_fresnel.osl:27
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_fresnel.osl:27
 # 	float cosi = dot(I, Normal);
 	dot		cosi I Normal 	%line{27} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_fresnel.osl:28
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_fresnel.osl:28
 # 	Fac = fresnel_dielectric_cos(cosi, eta);
 	functioncall	$const3 33 	%line{28} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:37
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:37
 # 	float c = fabs(cosi);
-	fabs		___669_c cosi 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h"} %line{37} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:38
+	fabs		___669_c cosi 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h"} %line{37} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:38
 # 	float g = eta * eta - 1 + c * c;
 	mul		$tmp2 eta eta 	%line{38} %argrw{"wrr"}
 	sub		$tmp3 $tmp2 $const2 	%argrw{"wrr"}
 	mul		$tmp4 ___669_c ___669_c 	%argrw{"wrr"}
 	add		___669_g $tmp3 $tmp4 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:41
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:41
 # 	if (g > 0) {
 	gt		$tmp5 ___669_g $const5 	%line{41} %argrw{"wrr"}
 	if		$tmp5 31 32 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:42
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:42
 # 		g = sqrt(g);
 	sqrt		___669_g ___669_g 	%line{42} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:43
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:43
 # 		float A = (g - c) / (g + c);
 	sub		$tmp6 ___669_g ___669_c 	%line{43} %argrw{"wrr"}
 	add		$tmp7 ___669_g ___669_c 	%argrw{"wrr"}
 	div		___670_A $tmp6 $tmp7 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:44
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:44
 # 		float B = (c * (g + c) - 1) / (c * (g - c) + 1);
 	add		$tmp8 ___669_g ___669_c 	%line{44} %argrw{"wrr"}
 	mul		$tmp9 ___669_c $tmp8 	%argrw{"wrr"}
@@ -87,17 +87,17 @@ code ___main___
 	mul		$tmp12 ___669_c $tmp11 	%argrw{"wrr"}
 	add		$tmp13 $tmp12 $const2 	%argrw{"wrr"}
 	div		___670_B $tmp10 $tmp13 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:45
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:45
 # 		result = 0.5 * A * A * (1 + B * B);
 	mul		$tmp14 $const6 ___670_A 	%line{45} %argrw{"wrr"}
 	mul		$tmp15 $tmp14 ___670_A 	%argrw{"wrr"}
 	mul		$tmp16 ___670_B ___670_B 	%argrw{"wrr"}
 	add		$tmp17 $const2 $tmp16 	%argrw{"wrr"}
 	mul		___669_result $tmp15 $tmp17 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:48
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:48
 # 		result = 1.0;  /* TIR (no refracted component) */
 	assign		___669_result $const2 	%line{48} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:50
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:50
 # 	return result;
 	assign		Fac ___669_result 	%line{50} %argrw{"wr"}
 	end

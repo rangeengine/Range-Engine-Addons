@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_mapping.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_mapping.oso
 shader node_mapping
 param	matrix	Matrix	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0		%read{0,0} %write{2147483647,-1}
 param	point	mapping_min	0 0 0		%read{2,2} %write{2147483647,-1}
@@ -11,17 +11,17 @@ oparam	point	VectorOut	0 0 0		%read{2147483647,-1} %write{4,4}
 local	point	p	%read{2,4} %write{0,3}
 temp	point	$tmp1	%read{3,3} %write{2,2}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_mapping.osl:27
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_mapping.osl:27
 # 	point p = transform(Matrix, VectorIn);
-	transform	p Matrix VectorIn 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_mapping.osl"} %line{27} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_mapping.osl:29
+	transform	p Matrix VectorIn 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_mapping.osl"} %line{27} %argrw{"wrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_mapping.osl:29
 # 	if (use_minmax)
 	if		use_minmax 4 4 	%line{29} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_mapping.osl:30
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_mapping.osl:30
 # 		p = min(max(mapping_min, p), mapping_max);
 	max		$tmp1 mapping_min p 	%line{30} %argrw{"wrr"}
 	min		p $tmp1 mapping_max 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_mapping.osl:32
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_mapping.osl:32
 # 	VectorOut = p;
 	assign		VectorOut p 	%line{32} %argrw{"wr"}
 	end

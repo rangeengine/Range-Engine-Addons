@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_rgb_to_bw.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_rgb_to_bw.oso
 shader node_rgb_to_bw
 param	color	Color	0 0 0		%read{0,5} %write{2147483647,-1}
 oparam	float	Val	0		%read{2147483647,-1} %write{7,7}
@@ -18,9 +18,9 @@ temp	float	$tmp6	%read{6,6} %write{5,5}
 const	float	$const6	0.0722		%read{6,6} %write{2147483647,-1}
 temp	float	$tmp7	%read{7,7} %write{6,6}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_rgb_to_bw.osl:23
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_rgb_to_bw.osl:23
 # 	Val = Color[0] * 0.2126 + Color[1] * 0.7152 + Color[2] * 0.0722;
-	compref		$tmp1 Color $const1 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_rgb_to_bw.osl"} %line{23} %argrw{"wrr"}
+	compref		$tmp1 Color $const1 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_rgb_to_bw.osl"} %line{23} %argrw{"wrr"}
 	mul		$tmp2 $tmp1 $const2 	%argrw{"wrr"}
 	compref		$tmp3 Color $const3 	%argrw{"wrr"}
 	mul		$tmp4 $tmp3 $const4 	%argrw{"wrr"}

@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_checker_texture.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_checker_texture.oso
 shader node_checker_texture
 param	int	use_mapping	0		%read{2,2} %write{2147483647,-1}
 param	matrix	mapping	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0		%read{3,3} %write{2147483647,-1}
@@ -50,60 +50,60 @@ const	float	$const7	1		%read{36,40} %write{2147483647,-1}
 const	float	$const8	0		%read{38,38} %write{2147483647,-1}
 temp	int	$tmp25	%read{41,41} %write{40,40}
 code Vector
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:45
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:45
 # 	point Vector = P,
-	assign		Vector P 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl"} %line{45} %argrw{"wr"}
+	assign		Vector P 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl"} %line{45} %argrw{"wr"}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:51
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:51
 # 	point p = Vector;
-	assign		p Vector 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl"} %line{51} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:53
+	assign		p Vector 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl"} %line{51} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:53
 # 	if (use_mapping)
 	if		use_mapping 4 4 	%line{53} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:54
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:54
 # 		p = transform(mapping, p);
 	transform	p mapping p 	%line{54} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:56
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:56
 # 	Fac = checker(p * Scale);
 	mul		$tmp1 p Scale 	%line{56} %argrw{"wrr"}
 	functioncall	$const1 40 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:25
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:25
 # 	p[0] = (ip[0] + 0.000001) * 0.999999;
 	compref		$tmp2 $tmp1 $const2 	%line{25} %argrw{"wrr"}
 	add		$tmp3 $tmp2 $const3 	%argrw{"wrr"}
 	mul		$tmp4 $tmp3 $const4 	%argrw{"wrr"}
 	compassign	___688_p $const2 $tmp4 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:26
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:26
 # 	p[1] = (ip[1] + 0.000001) * 0.999999;
 	compref		$tmp5 $tmp1 $const5 	%line{26} %argrw{"wrr"}
 	add		$tmp6 $tmp5 $const3 	%argrw{"wrr"}
 	mul		$tmp7 $tmp6 $const4 	%argrw{"wrr"}
 	compassign	___688_p $const5 $tmp7 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:27
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:27
 # 	p[2] = (ip[2] + 0.000001) * 0.999999;
 	compref		$tmp8 $tmp1 $const6 	%line{27} %argrw{"wrr"}
 	add		$tmp9 $tmp8 $const3 	%argrw{"wrr"}
 	mul		$tmp10 $tmp9 $const4 	%argrw{"wrr"}
 	compassign	___688_p $const6 $tmp10 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:29
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:29
 # 	int xi = (int)fabs(floor(p[0]));
 	compref		$tmp13 ___688_p $const2 	%line{29} %argrw{"wrr"}
 	floor		$tmp12 $tmp13 	%argrw{"wr"}
 	fabs		$tmp11 $tmp12 	%argrw{"wr"}
 	assign		___688_xi $tmp11 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:30
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:30
 # 	int yi = (int)fabs(floor(p[1]));
 	compref		$tmp16 ___688_p $const5 	%line{30} %argrw{"wrr"}
 	floor		$tmp15 $tmp16 	%argrw{"wr"}
 	fabs		$tmp14 $tmp15 	%argrw{"wr"}
 	assign		___688_yi $tmp14 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:31
 # 	int zi = (int)fabs(floor(p[2]));
 	compref		$tmp19 ___688_p $const6 	%line{31} %argrw{"wrr"}
 	floor		$tmp18 $tmp19 	%argrw{"wr"}
 	fabs		$tmp17 $tmp18 	%argrw{"wr"}
 	assign		___688_zi $tmp17 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:33
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:33
 # 	if ((xi % 2 == yi % 2) == (zi % 2)) {
 	mod		$tmp20 ___688_xi $const6 	%line{33} %argrw{"wrr"}
 	mod		$tmp21 ___688_yi $const6 	%argrw{"wrr"}
@@ -111,22 +111,22 @@ code ___main___
 	mod		$tmp23 ___688_zi $const6 	%argrw{"wrr"}
 	eq		$tmp24 $tmp22 $tmp23 	%argrw{"wrr"}
 	if		$tmp24 38 40 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:34
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:34
 # 		return 1.0;
 	assign		Fac $const7 	%line{34} %argrw{"wr"}
 	return
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:37
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:37
 # 		return 0.0;
 	assign		Fac $const8 	%line{37} %argrw{"wr"}
 	return
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:57
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:57
 # 	if (Fac == 1.0) {
 	eq		$tmp25 Fac $const7 	%line{57} %argrw{"wrr"}
 	if		$tmp25 43 44 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:58
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:58
 # 		Color = Color1;
 	assign		Color Color1 	%line{58} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_checker_texture.osl:61
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_checker_texture.osl:61
 # 		Color = Color2;
 	assign		Color Color2 	%line{61} %argrw{"wr"}
 	end

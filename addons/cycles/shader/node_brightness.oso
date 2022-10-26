@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_brightness.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_brightness.oso
 shader node_brightness
 param	color	ColorIn	0.80000001 0.80000001 0.80000001		%read{3,13} %write{2147483647,-1}
 param	float	Bright	0		%read{2,2} %write{2147483647,-1}
@@ -28,28 +28,28 @@ temp	float	$tmp11	%read{14,14} %write{13,13}
 temp	float	$tmp12	%read{15,15} %write{14,14}
 temp	float	$tmp13	%read{16,16} %write{15,15}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_brightness.osl:25
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_brightness.osl:25
 # 	float a = 1.0 + Contrast;
-	add		a $const1 Contrast 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_brightness.osl"} %line{25} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_brightness.osl:26
+	add		a $const1 Contrast 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_brightness.osl"} %line{25} %argrw{"wrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_brightness.osl:26
 # 	float b = Bright - Contrast * 0.5;
 	mul		$tmp1 Contrast $const2 	%line{26} %argrw{"wrr"}
 	sub		b Bright $tmp1 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_brightness.osl:28
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_brightness.osl:28
 # 	ColorOut[0] = max(a * ColorIn[0] + b, 0.0);
 	compref		$tmp3 ColorIn $const3 	%line{28} %argrw{"wrr"}
 	mul		$tmp4 a $tmp3 	%argrw{"wrr"}
 	add		$tmp5 $tmp4 b 	%argrw{"wrr"}
 	max		$tmp2 $tmp5 $const4 	%argrw{"wrr"}
 	compassign	ColorOut $const3 $tmp2 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_brightness.osl:29
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_brightness.osl:29
 # 	ColorOut[1] = max(a * ColorIn[1] + b, 0.0);
 	compref		$tmp7 ColorIn $const5 	%line{29} %argrw{"wrr"}
 	mul		$tmp8 a $tmp7 	%argrw{"wrr"}
 	add		$tmp9 $tmp8 b 	%argrw{"wrr"}
 	max		$tmp6 $tmp9 $const4 	%argrw{"wrr"}
 	compassign	ColorOut $const5 $tmp6 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_brightness.osl:30
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_brightness.osl:30
 # 	ColorOut[2] = max(a * ColorIn[2] + b, 0.0);
 	compref		$tmp11 ColorIn $const6 	%line{30} %argrw{"wrr"}
 	mul		$tmp12 a $tmp11 	%argrw{"wrr"}

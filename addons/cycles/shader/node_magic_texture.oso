@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_magic_texture.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_magic_texture.oso
 shader node_magic_texture
 param	int	use_mapping	0		%read{2,2} %write{2147483647,-1}
 param	matrix	mapping	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0		%read{3,3} %write{2147483647,-1}
@@ -107,27 +107,27 @@ const	float	$const16	1		%read{120,120} %write{2147483647,-1}
 const	float	$const17	3		%read{120,120} %write{2147483647,-1}
 temp	float	$tmp73	%read{121,121} %write{120,120}
 code Vector
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:99
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:99
 # 	point Vector = P,
-	assign		Vector P 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl"} %line{99} %argrw{"wr"}
+	assign		Vector P 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl"} %line{99} %argrw{"wr"}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:103
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:103
 # 	point p = Vector;
-	assign		p Vector 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl"} %line{103} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:105
+	assign		p Vector 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl"} %line{103} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:105
 # 	if (use_mapping)
 	if		use_mapping 4 4 	%line{105} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:106
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:106
 # 		p = transform(mapping, p);
 	transform	p mapping p 	%line{106} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:108
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:108
 # 	Color = magic(p * Scale, depth, Distortion);
 	mul		$tmp1 p Scale 	%line{108} %argrw{"wrr"}
 	functioncall	$const1 115 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:24
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:24
 # 	float dist = distortion;
 	assign		___688_dist Distortion 	%line{24} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:26
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:26
 # 	float x =  sin(( p[0] + p[1] + p[2]) * 5.0);
 	compref		$tmp2 $tmp1 $const2 	%line{26} %argrw{"wrr"}
 	compref		$tmp3 $tmp1 $const3 	%argrw{"wrr"}
@@ -136,7 +136,7 @@ code ___main___
 	add		$tmp6 $tmp4 $tmp5 	%argrw{"wrr"}
 	mul		$tmp7 $tmp6 $const5 	%argrw{"wrr"}
 	sin		___688_x $tmp7 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:27
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:27
 # 	float y =  cos((-p[0] + p[1] - p[2]) * 5.0);
 	compref		$tmp8 $tmp1 $const2 	%line{27} %argrw{"wrr"}
 	neg		$tmp9 $tmp8 	%argrw{"wr"}
@@ -146,7 +146,7 @@ code ___main___
 	sub		$tmp13 $tmp11 $tmp12 	%argrw{"wrr"}
 	mul		$tmp14 $tmp13 $const5 	%argrw{"wrr"}
 	cos		___688_y $tmp14 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:28
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:28
 # 	float z = -cos((-p[0] - p[1] + p[2]) * 5.0);
 	compref		$tmp16 $tmp1 $const2 	%line{28} %argrw{"wrr"}
 	neg		$tmp17 $tmp16 	%argrw{"wr"}
@@ -157,169 +157,169 @@ code ___main___
 	mul		$tmp22 $tmp21 $const5 	%argrw{"wrr"}
 	cos		$tmp15 $tmp22 	%argrw{"wr"}
 	neg		___688_z $tmp15 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:30
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:30
 # 	if (n > 0) {
 	gt		$tmp23 depth $const2 	%line{30} %argrw{"wrr"}
 	if		$tmp23 105 105 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:31
 # 		x *= dist;
 	mul		___688_x ___688_x ___688_dist 	%line{31} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:32
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:32
 # 		y *= dist;
 	mul		___688_y ___688_y ___688_dist 	%line{32} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:33
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:33
 # 		z *= dist;
 	mul		___688_z ___688_z ___688_dist 	%line{33} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:34
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:34
 # 		y = -cos(x - y + z);
 	sub		$tmp25 ___688_x ___688_y 	%line{34} %argrw{"wrr"}
 	add		$tmp26 $tmp25 ___688_z 	%argrw{"wrr"}
 	cos		$tmp24 $tmp26 	%argrw{"wr"}
 	neg		___688_y $tmp24 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:35
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:35
 # 		y *= dist;
 	mul		___688_y ___688_y ___688_dist 	%line{35} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:37
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:37
 # 		if (n > 1) {
 	gt		$tmp27 depth $const3 	%line{37} %argrw{"wrr"}
 	if		$tmp27 105 105 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:38
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:38
 # 			x = cos(x - y - z);
 	sub		$tmp28 ___688_x ___688_y 	%line{38} %argrw{"wrr"}
 	sub		$tmp29 $tmp28 ___688_z 	%argrw{"wrr"}
 	cos		___688_x $tmp29 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:39
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:39
 # 			x *= dist;
 	mul		___688_x ___688_x ___688_dist 	%line{39} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:41
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:41
 # 			if (n > 2) {
 	gt		$tmp30 depth $const4 	%line{41} %argrw{"wrr"}
 	if		$tmp30 105 105 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:42
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:42
 # 				z = sin(-x - y - z);
 	neg		$tmp31 ___688_x 	%line{42} %argrw{"wr"}
 	sub		$tmp32 $tmp31 ___688_y 	%argrw{"wrr"}
 	sub		$tmp33 $tmp32 ___688_z 	%argrw{"wrr"}
 	sin		___688_z $tmp33 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:43
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:43
 # 				z *= dist;
 	mul		___688_z ___688_z ___688_dist 	%line{43} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:45
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:45
 # 				if (n > 3) {
 	gt		$tmp34 depth $const6 	%line{45} %argrw{"wrr"}
 	if		$tmp34 105 105 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:46
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:46
 # 					x = -cos(-x + y - z);
 	neg		$tmp36 ___688_x 	%line{46} %argrw{"wr"}
 	add		$tmp37 $tmp36 ___688_y 	%argrw{"wrr"}
 	sub		$tmp38 $tmp37 ___688_z 	%argrw{"wrr"}
 	cos		$tmp35 $tmp38 	%argrw{"wr"}
 	neg		___688_x $tmp35 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:47
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:47
 # 					x *= dist;
 	mul		___688_x ___688_x ___688_dist 	%line{47} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:49
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:49
 # 					if (n > 4) {
 	gt		$tmp39 depth $const7 	%line{49} %argrw{"wrr"}
 	if		$tmp39 105 105 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:50
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:50
 # 						y = -sin(-x + y + z);
 	neg		$tmp41 ___688_x 	%line{50} %argrw{"wr"}
 	add		$tmp42 $tmp41 ___688_y 	%argrw{"wrr"}
 	add		$tmp43 $tmp42 ___688_z 	%argrw{"wrr"}
 	sin		$tmp40 $tmp43 	%argrw{"wr"}
 	neg		___688_y $tmp40 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:51
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:51
 # 						y *= dist;
 	mul		___688_y ___688_y ___688_dist 	%line{51} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:53
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:53
 # 						if (n > 5) {
 	gt		$tmp44 depth $const8 	%line{53} %argrw{"wrr"}
 	if		$tmp44 105 105 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:54
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:54
 # 							y = -cos(-x + y + z);
 	neg		$tmp46 ___688_x 	%line{54} %argrw{"wr"}
 	add		$tmp47 $tmp46 ___688_y 	%argrw{"wrr"}
 	add		$tmp48 $tmp47 ___688_z 	%argrw{"wrr"}
 	cos		$tmp45 $tmp48 	%argrw{"wr"}
 	neg		___688_y $tmp45 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:55
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:55
 # 							y *= dist;
 	mul		___688_y ___688_y ___688_dist 	%line{55} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:57
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:57
 # 							if (n > 6) {
 	gt		$tmp49 depth $const9 	%line{57} %argrw{"wrr"}
 	if		$tmp49 105 105 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:58
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:58
 # 								x = cos(x + y + z);
 	add		$tmp50 ___688_x ___688_y 	%line{58} %argrw{"wrr"}
 	add		$tmp51 $tmp50 ___688_z 	%argrw{"wrr"}
 	cos		___688_x $tmp51 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:59
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:59
 # 								x *= dist;
 	mul		___688_x ___688_x ___688_dist 	%line{59} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:61
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:61
 # 								if (n > 7) {
 	gt		$tmp52 depth $const10 	%line{61} %argrw{"wrr"}
 	if		$tmp52 105 105 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:62
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:62
 # 									z = sin(x + y - z);
 	add		$tmp53 ___688_x ___688_y 	%line{62} %argrw{"wrr"}
 	sub		$tmp54 $tmp53 ___688_z 	%argrw{"wrr"}
 	sin		___688_z $tmp54 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:63
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:63
 # 									z *= dist;
 	mul		___688_z ___688_z ___688_dist 	%line{63} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:65
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:65
 # 									if (n > 8) {
 	gt		$tmp55 depth $const11 	%line{65} %argrw{"wrr"}
 	if		$tmp55 105 105 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:66
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:66
 # 										x = -cos(-x - y + z);
 	neg		$tmp57 ___688_x 	%line{66} %argrw{"wr"}
 	sub		$tmp58 $tmp57 ___688_y 	%argrw{"wrr"}
 	add		$tmp59 $tmp58 ___688_z 	%argrw{"wrr"}
 	cos		$tmp56 $tmp59 	%argrw{"wr"}
 	neg		___688_x $tmp56 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:67
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:67
 # 										x *= dist;
 	mul		___688_x ___688_x ___688_dist 	%line{67} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:69
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:69
 # 										if (n > 9) {
 	gt		$tmp60 depth $const12 	%line{69} %argrw{"wrr"}
 	if		$tmp60 105 105 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:70
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:70
 # 											y = -sin(x - y + z);
 	sub		$tmp62 ___688_x ___688_y 	%line{70} %argrw{"wrr"}
 	add		$tmp63 $tmp62 ___688_z 	%argrw{"wrr"}
 	sin		$tmp61 $tmp63 	%argrw{"wr"}
 	neg		___688_y $tmp61 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:71
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:71
 # 											y *= dist;
 	mul		___688_y ___688_y ___688_dist 	%line{71} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:83
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:83
 # 	if (dist != 0.0) {
 	neq		$tmp64 ___688_dist $const13 	%line{83} %argrw{"wrr"}
 	if		$tmp64 111 111 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:84
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:84
 # 		dist *= 2.0;
 	mul		___688_dist ___688_dist $const14 	%line{84} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:85
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:85
 # 		x /= dist;
 	div		___688_x ___688_x ___688_dist 	%line{85} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:86
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:86
 # 		y /= dist;
 	div		___688_y ___688_y ___688_dist 	%line{86} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:87
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:87
 # 		z /= dist;
 	div		___688_z ___688_z ___688_dist 	%line{87} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:90
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:90
 # 	return color(0.5 - x, 0.5 - y, 0.5 - z);
 	sub		$tmp65 $const15 ___688_x 	%line{90} %argrw{"wrr"}
 	sub		$tmp66 $const15 ___688_y 	%argrw{"wrr"}
 	sub		$tmp67 $const15 ___688_z 	%argrw{"wrr"}
 	color		Color $tmp65 $tmp66 $tmp67 	%argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_magic_texture.osl:109
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_magic_texture.osl:109
 # 	Fac = (Color[0] + Color[1] + Color[2]) * (1.0 / 3.0);
 	compref		$tmp68 Color $const2 	%line{109} %argrw{"wrr"}
 	compref		$tmp69 Color $const3 	%argrw{"wrr"}

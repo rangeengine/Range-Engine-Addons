@@ -15,7 +15,7 @@
 #
 
 # <pep8 compliant>
-
+from __future__ import annotations
 
 def _is_using_buggy_driver():
     import bgl
@@ -33,7 +33,7 @@ def _is_using_buggy_driver():
             # in the version string, but those cards do not quite work and
             # causing crashes.
             return True
-        regex = re.compile(".*Compatibility Profile Context ([0-9]+(\.[0-9]+)+)$")
+        regex = re.compile(".*Compatibility Profile Context ([0-9]+(\\.[0-9]+)+)$")
         if not regex.match(version):
             # Skip cards like FireGL
             return False

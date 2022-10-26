@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.oso
 shader node_anisotropic_bsdf
 param	color	Color	0 0 0		%read{75,89} %write{2147483647,-1}
 param	string	distribution	"GGX"		%read{72,84} %write{2147483647,-1}
@@ -105,171 +105,171 @@ const	string	$const19	"microfacet_multi_ggx_aniso"		%read{86,86} %write{21474836
 temp	closure color	$tmp60	%read{89,89} %write{88,88}
 const	string	$const20	"ashikhmin_shirley"		%read{88,88} %write{2147483647,-1}
 code Normal
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:25
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:25
 # 	normal Normal = N,
-	assign		Normal N 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl"} %line{25} %argrw{"wr"}
+	assign		Normal N 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl"} %line{25} %argrw{"wr"}
 code Tangent
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:26
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:26
 # 	normal Tangent = normalize(dPdu),
-	normalize	Tangent dPdu 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl"} %line{26} %argrw{"wr"}
+	normalize	Tangent dPdu 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl"} %line{26} %argrw{"wr"}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:30
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:30
 # 	vector T = Tangent;
-	assign		T Tangent 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl"} %line{30} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:32
+	assign		T Tangent 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl"} %line{30} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:32
 # 	if (Rotation != 0.0)
 	neq		$tmp1 Rotation $const1 	%line{32} %argrw{"wrr"}
 	if		$tmp1 58 58 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:33
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:33
 # 		T = rotate(T, Rotation * M_2PI, point(0.0, 0.0, 0.0), Normal);
 	mul		$tmp2 Rotation $const2 	%line{33} %argrw{"wrr"}
 	functioncall	$const4 58 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:250
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:250
 #     vector axis = normalize (b - a);
-	sub		$tmp4 Normal $const3 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{250} %argrw{"wrr"}
+	sub		$tmp4 Normal $const3 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{250} %argrw{"wrr"}
 	normalize	___554_axis $tmp4 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:264
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:264
 #     sinang = sin (angle);
 	sin		___554_sinang $tmp2 	%line{264} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:265
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:265
 #     cosang = cos (angle);
 	cos		___554_cosang $tmp2 	%line{265} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:266
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:266
 # #endif
 	sub		___554_cosang1 $const5 ___554_cosang 	%line{266} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:267
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:267
 #     float cosang1 = 1.0 - cosang;
 	compref		___554_x ___554_axis $const6 	%line{267} %argrw{"wrr"}
 	compref		___554_y ___554_axis $const7 	%argrw{"wrr"}
 	compref		___554_z ___554_axis $const8 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:268
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:268
 #     float x = axis[0], y = axis[1], z = axis[2];
 	mul		$tmp5 ___554_x ___554_x 	%line{268} %argrw{"wrr"}
 	mul		$tmp6 ___554_x ___554_x 	%argrw{"wrr"}
 	sub		$tmp7 $const5 $tmp6 	%argrw{"wrr"}
 	mul		$tmp8 $tmp7 ___554_cosang 	%argrw{"wrr"}
 	add		$tmp9 $tmp5 $tmp8 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:269
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:269
 #     matrix M = matrix (x * x + (1.0 - x * x) * cosang,
 	mul		$tmp10 ___554_x ___554_y 	%line{269} %argrw{"wrr"}
 	mul		$tmp11 $tmp10 ___554_cosang1 	%argrw{"wrr"}
 	mul		$tmp12 ___554_z ___554_sinang 	%argrw{"wrr"}
 	add		$tmp13 $tmp11 $tmp12 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:270
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:270
 #                        x * y * cosang1 + z * sinang,
 	mul		$tmp14 ___554_x ___554_z 	%line{270} %argrw{"wrr"}
 	mul		$tmp15 $tmp14 ___554_cosang1 	%argrw{"wrr"}
 	mul		$tmp16 ___554_y ___554_sinang 	%argrw{"wrr"}
 	sub		$tmp17 $tmp15 $tmp16 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:272
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:272
 #                        0.0,
 	mul		$tmp18 ___554_x ___554_y 	%line{272} %argrw{"wrr"}
 	mul		$tmp19 $tmp18 ___554_cosang1 	%argrw{"wrr"}
 	mul		$tmp20 ___554_z ___554_sinang 	%argrw{"wrr"}
 	sub		$tmp21 $tmp19 $tmp20 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:273
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:273
 #                        x * y * cosang1 - z * sinang,
 	mul		$tmp22 ___554_y ___554_y 	%line{273} %argrw{"wrr"}
 	mul		$tmp23 ___554_y ___554_y 	%argrw{"wrr"}
 	sub		$tmp24 $const5 $tmp23 	%argrw{"wrr"}
 	mul		$tmp25 $tmp24 ___554_cosang 	%argrw{"wrr"}
 	add		$tmp26 $tmp22 $tmp25 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:274
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:274
 #                        y * y + (1.0 - y * y) * cosang,
 	mul		$tmp27 ___554_y ___554_z 	%line{274} %argrw{"wrr"}
 	mul		$tmp28 $tmp27 ___554_cosang1 	%argrw{"wrr"}
 	mul		$tmp29 ___554_x ___554_sinang 	%argrw{"wrr"}
 	add		$tmp30 $tmp28 $tmp29 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:276
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:276
 #                        0.0,
 	mul		$tmp31 ___554_x ___554_z 	%line{276} %argrw{"wrr"}
 	mul		$tmp32 $tmp31 ___554_cosang1 	%argrw{"wrr"}
 	mul		$tmp33 ___554_y ___554_sinang 	%argrw{"wrr"}
 	add		$tmp34 $tmp32 $tmp33 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:277
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:277
 #                        x * z * cosang1 + y * sinang,
 	mul		$tmp35 ___554_y ___554_z 	%line{277} %argrw{"wrr"}
 	mul		$tmp36 $tmp35 ___554_cosang1 	%argrw{"wrr"}
 	mul		$tmp37 ___554_x ___554_sinang 	%argrw{"wrr"}
 	sub		$tmp38 $tmp36 $tmp37 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:278
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:278
 #                        y * z * cosang1 - x * sinang,
 	mul		$tmp39 ___554_z ___554_z 	%line{278} %argrw{"wrr"}
 	mul		$tmp40 ___554_z ___554_z 	%argrw{"wrr"}
 	sub		$tmp41 $const5 $tmp40 	%argrw{"wrr"}
 	mul		$tmp42 $tmp41 ___554_cosang 	%argrw{"wrr"}
 	add		$tmp43 $tmp39 $tmp42 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:280
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:280
 #                        0.0,
 	matrix		___554_M $tmp9 $tmp13 $tmp17 $const1 $tmp21 $tmp26 $tmp30 $const1 $tmp34 $tmp38 $tmp43 $const1 $const1 $const1 $const1 $const5 	%line{280} %argrw{"wrrrrrrrrrrrrrrrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:281
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:281
 #                        0.0, 0.0, 0.0, 1.0);
 	sub		$tmp45 T $const3 	%line{281} %argrw{"wrr"}
 	transformv	$tmp44 ___554_M $tmp45 	%argrw{"wrr"}
 	add		T $tmp44 $const3 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:36
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:36
 # 	float roughness = Roughness * Roughness;
-	mul		roughness Roughness Roughness 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl"} %line{36} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:38
+	mul		roughness Roughness Roughness 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl"} %line{36} %argrw{"wrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:38
 # 	float aniso = clamp(Anisotropy, -0.99, 0.99);
 	functioncall	$const11 62 	%line{38} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:144
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:144
 # float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
-	min		$tmp46 Anisotropy $const10 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
+	min		$tmp46 Anisotropy $const10 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
 	max		aniso $tmp46 $const9 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:40
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:40
 # 	if (aniso < 0.0) {
-	lt		$tmp47 aniso $const1 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl"} %line{40} %argrw{"wrr"}
+	lt		$tmp47 aniso $const1 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl"} %line{40} %argrw{"wrr"}
 	if		$tmp47 68 72 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:41
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:41
 # 		roughness_u = roughness / (1.0 + aniso);
 	add		$tmp48 $const5 aniso 	%line{41} %argrw{"wrr"}
 	div		roughness_u roughness $tmp48 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:42
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:42
 # 		roughness_v = roughness * (1.0 + aniso);
 	add		$tmp49 $const5 aniso 	%line{42} %argrw{"wrr"}
 	mul		roughness_v roughness $tmp49 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:45
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:45
 # 		roughness_u = roughness * (1.0 - aniso);
 	sub		$tmp50 $const5 aniso 	%line{45} %argrw{"wrr"}
 	mul		roughness_u roughness $tmp50 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:46
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:46
 # 		roughness_v = roughness / (1.0 - aniso);
 	sub		$tmp51 $const5 aniso 	%line{46} %argrw{"wrr"}
 	div		roughness_v roughness $tmp51 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:49
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:49
 # 	if (distribution == "sharp")
 	eq		$tmp52 distribution $const12 	%line{49} %argrw{"wrr"}
 	if		$tmp52 76 90 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:50
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:50
 # 		BSDF = Color * reflection(Normal);
 	closure		$tmp53 $const13 Normal 	%line{50} %argrw{"wrr"}
 	mul		BSDF $tmp53 Color 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:51
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:51
 # 	else if (distribution == "beckmann")
 	eq		$tmp54 distribution $const14 	%line{51} %argrw{"wrr"}
 	if		$tmp54 80 90 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:52
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:52
 # 		BSDF = Color * microfacet_beckmann_aniso(Normal, T, roughness_u, roughness_v);
 	closure		$tmp55 $const15 Normal T roughness_u roughness_v 	%line{52} %argrw{"wrrrrr"}
 	mul		BSDF $tmp55 Color 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:53
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:53
 # 	else if (distribution == "GGX")
 	eq		$tmp56 distribution $const16 	%line{53} %argrw{"wrr"}
 	if		$tmp56 84 90 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:54
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:54
 # 		BSDF = Color * microfacet_ggx_aniso(Normal, T, roughness_u, roughness_v);
 	closure		$tmp57 $const17 Normal T roughness_u roughness_v 	%line{54} %argrw{"wrrrrr"}
 	mul		BSDF $tmp57 Color 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:55
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:55
 # 	else if (distribution == "Multiscatter GGX")
 	eq		$tmp58 distribution $const18 	%line{55} %argrw{"wrr"}
 	if		$tmp58 88 90 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:56
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:56
 # 		BSDF = Color * microfacet_multi_ggx_aniso(Normal, T, roughness_u, roughness_v, Color);
 	closure		$tmp59 $const19 Normal T roughness_u roughness_v Color 	%line{56} %argrw{"wrrrrrr"}
 	mul		BSDF $tmp59 Color 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:58
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_anisotropic_bsdf.osl:58
 # 		BSDF = Color * ashikhmin_shirley(Normal, T, roughness_u, roughness_v);
 	closure		$tmp60 $const20 Normal T roughness_u roughness_v 	%line{58} %argrw{"wrrrrr"}
 	mul		BSDF $tmp60 Color 	%argrw{"wrr"}

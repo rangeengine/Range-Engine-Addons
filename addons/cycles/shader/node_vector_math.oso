@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_vector_math.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_vector_math.oso
 shader node_vector_math
 param	string	type	"add"		%read{0,38} %write{2147483647,-1}
 param	vector	Vector1	0 0 0		%read{2,41} %write{2147483647,-1}
@@ -43,14 +43,14 @@ temp	int	$tmp23	%read{34,34} %write{33,33}
 const	string	$const10	"normalize"		%read{38,38} %write{2147483647,-1}
 temp	int	$tmp24	%read{39,39} %write{38,38}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:26
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:26
 # 	if (type == "add") {
-	eq		$tmp1 type $const1 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl"} %line{26} %argrw{"wrr"}
+	eq		$tmp1 type $const1 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl"} %line{26} %argrw{"wrr"}
 	if		$tmp1 12 42 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:27
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:27
 # 		Vector = Vector1 + Vector2;
 	add		Vector Vector1 Vector2 	%line{27} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:28
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:28
 # 		Value = (abs(Vector[0]) + abs(Vector[1]) + abs(Vector[2])) / 3.0;
 	compref		$tmp3 Vector $const2 	%line{28} %argrw{"wrr"}
 	abs		$tmp2 $tmp3 	%argrw{"wr"}
@@ -61,14 +61,14 @@ code ___main___
 	abs		$tmp7 $tmp8 	%argrw{"wr"}
 	add		$tmp9 $tmp6 $tmp7 	%argrw{"wrr"}
 	div		Value $tmp9 $const5 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:30
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:30
 # 	else if (type == "subtract") {
 	eq		$tmp10 type $const6 	%line{30} %argrw{"wrr"}
 	if		$tmp10 24 42 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:31
 # 		Vector = Vector1 - Vector2;
 	sub		Vector Vector1 Vector2 	%line{31} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:32
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:32
 # 		Value = (abs(Vector[0]) + abs(Vector[1]) + abs(Vector[2])) / 3.0;
 	compref		$tmp12 Vector $const2 	%line{32} %argrw{"wrr"}
 	abs		$tmp11 $tmp12 	%argrw{"wr"}
@@ -79,46 +79,46 @@ code ___main___
 	abs		$tmp16 $tmp17 	%argrw{"wr"}
 	add		$tmp18 $tmp15 $tmp16 	%argrw{"wrr"}
 	div		Value $tmp18 $const5 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:34
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:34
 # 	else if (type == "average") {
 	eq		$tmp19 type $const7 	%line{34} %argrw{"wrr"}
 	if		$tmp19 30 42 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:35
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:35
 # 		Value = length(Vector1 + Vector2);
 	add		$tmp20 Vector1 Vector2 	%line{35} %argrw{"wrr"}
 	length		Value $tmp20 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:36
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:36
 # 		Vector = normalize(Vector1 + Vector2);
 	add		$tmp21 Vector1 Vector2 	%line{36} %argrw{"wrr"}
 	normalize	Vector $tmp21 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:38
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:38
 # 	else if (type == "dot_product") {
 	eq		$tmp22 type $const8 	%line{38} %argrw{"wrr"}
 	if		$tmp22 33 42 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:39
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:39
 # 		Value = dot(Vector1, Vector2);
 	dot		Value Vector1 Vector2 	%line{39} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:41
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:41
 # 	else if (type == "cross_product") {
 	eq		$tmp23 type $const9 	%line{41} %argrw{"wrr"}
 	if		$tmp23 38 42 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:42
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:42
 # 		vector c = cross(Vector1, Vector2);
 	cross		___673_c Vector1 Vector2 	%line{42} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:43
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:43
 # 		Value = length(c);
 	length		Value ___673_c 	%line{43} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:44
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:44
 # 		Vector = normalize(c);
 	normalize	Vector ___673_c 	%line{44} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:46
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:46
 # 	else if (type == "normalize") {
 	eq		$tmp24 type $const10 	%line{46} %argrw{"wrr"}
 	if		$tmp24 42 42 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:47
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:47
 # 		Value = length(Vector1);
 	length		Value Vector1 	%line{47} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_math.osl:48
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_math.osl:48
 # 		Vector = normalize(Vector1);
 	normalize	Vector Vector1 	%line{48} %argrw{"wr"}
 	end

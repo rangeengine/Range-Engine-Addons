@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_particle_info.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_particle_info.oso
 shader node_particle_info
 oparam	float	Index	0		%read{2147483647,-1} %write{2,2}
 oparam	float	Random	0		%read{2147483647,-1} %write{3,3}
@@ -28,36 +28,36 @@ const	string	$const8	"particle:velocity"		%read{8,8} %write{2147483647,-1}
 temp	int	$tmp8	%read{2147483647,-1} %write{9,9}
 const	string	$const9	"particle:angular_velocity"		%read{9,9} %write{2147483647,-1}
 code Velocity
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_particle_info.osl:26
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_particle_info.osl:26
 #     output vector Velocity = point(0.0, 0.0, 0.0),
-	assign		Velocity $const1 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_particle_info.osl"} %line{26} %argrw{"wr"}
+	assign		Velocity $const1 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_particle_info.osl"} %line{26} %argrw{"wr"}
 code AngularVelocity
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_particle_info.osl:27
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_particle_info.osl:27
 #     output vector AngularVelocity = point(0.0, 0.0, 0.0))
-	assign		AngularVelocity $const1 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_particle_info.osl"} %line{27} %argrw{"wr"}
+	assign		AngularVelocity $const1 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_particle_info.osl"} %line{27} %argrw{"wr"}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_particle_info.osl:29
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_particle_info.osl:29
 # 	getattribute("particle:index", Index);
-	getattribute	$tmp1 $const2 Index 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_particle_info.osl"} %line{29} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_particle_info.osl:30
+	getattribute	$tmp1 $const2 Index 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_particle_info.osl"} %line{29} %argrw{"wrw"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_particle_info.osl:30
 # 	getattribute("particle:random", Random);
 	getattribute	$tmp2 $const3 Random 	%line{30} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_particle_info.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_particle_info.osl:31
 # 	getattribute("particle:age", Age);
 	getattribute	$tmp3 $const4 Age 	%line{31} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_particle_info.osl:32
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_particle_info.osl:32
 # 	getattribute("particle:lifetime", Lifetime);
 	getattribute	$tmp4 $const5 Lifetime 	%line{32} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_particle_info.osl:33
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_particle_info.osl:33
 # 	getattribute("particle:location", Location);
 	getattribute	$tmp5 $const6 Location 	%line{33} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_particle_info.osl:34
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_particle_info.osl:34
 # 	getattribute("particle:size", Size);
 	getattribute	$tmp6 $const7 Size 	%line{34} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_particle_info.osl:35
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_particle_info.osl:35
 # 	getattribute("particle:velocity", Velocity);
 	getattribute	$tmp7 $const8 Velocity 	%line{35} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_particle_info.osl:36
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_particle_info.osl:36
 # 	getattribute("particle:angular_velocity", AngularVelocity);
 	getattribute	$tmp8 $const9 AngularVelocity 	%line{36} %argrw{"wrw"}
 	end

@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_separate_hsv.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_separate_hsv.oso
 shader node_separate_hsv
 param	color	Color	0.80000001 0.80000001 0.80000001		%read{1,30} %write{2147483647,-1}
 oparam	float	H	0		%read{2147483647,-1} %write{46,46}
@@ -49,55 +49,55 @@ const	float	$const8	6		%read{41,41} %write{2147483647,-1}
 temp	int	$tmp25	%read{43,43} %write{42,42}
 const	float	$const9	1		%read{44,44} %write{2147483647,-1}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_separate_hsv.osl:26
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_separate_hsv.osl:26
 # 	color col = rgb_to_hsv(Color);
-	functioncall	$const1 46 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_separate_hsv.osl"} %line{26} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:86
+	functioncall	$const1 46 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_separate_hsv.osl"} %line{26} %argrw{"r"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:86
 # 	cmax = max(rgb[0], max(rgb[1], rgb[2]));
-	compref		$tmp1 Color $const2 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h"} %line{86} %argrw{"wrr"}
+	compref		$tmp1 Color $const2 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h"} %line{86} %argrw{"wrr"}
 	compref		$tmp3 Color $const3 	%argrw{"wrr"}
 	compref		$tmp4 Color $const4 	%argrw{"wrr"}
 	max		$tmp2 $tmp3 $tmp4 	%argrw{"wrr"}
 	max		___676_cmax $tmp1 $tmp2 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:87
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:87
 # 	cmin = min(rgb[0], min(rgb[1], rgb[2]));
 	compref		$tmp5 Color $const2 	%line{87} %argrw{"wrr"}
 	compref		$tmp7 Color $const3 	%argrw{"wrr"}
 	compref		$tmp8 Color $const4 	%argrw{"wrr"}
 	min		$tmp6 $tmp7 $tmp8 	%argrw{"wrr"}
 	min		___676_cmin $tmp5 $tmp6 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:88
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:88
 # 	cdelta = cmax - cmin;
 	sub		___676_cdelta ___676_cmax ___676_cmin 	%line{88} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:90
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:90
 # 	v = cmax;
 	assign		___676_v ___676_cmax 	%line{90} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:92
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:92
 # 	if (cmax != 0.0) {
 	neq		$tmp9 ___676_cmax $const5 	%line{92} %argrw{"wrr"}
 	if		$tmp9 16 18 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:93
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:93
 # 		s = cdelta / cmax;
 	div		___676_s ___676_cdelta ___676_cmax 	%line{93} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:96
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:96
 # 		s = 0.0;
 	assign		___676_s $const5 	%line{96} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:97
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:97
 # 		h = 0.0;
 	assign		___676_h $const5 	%line{97} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:100
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:100
 # 	if (s == 0.0) {
 	eq		$tmp10 ___676_s $const5 	%line{100} %argrw{"wrr"}
 	if		$tmp10 21 45 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:101
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:101
 # 		h = 0.0;
 	assign		___676_h $const5 	%line{101} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:104
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:104
 # 		c = (color(cmax, cmax, cmax) - rgb) / cdelta;
 	color		$tmp11 ___676_cmax ___676_cmax ___676_cmax 	%line{104} %argrw{"wrrr"}
 	sub		$tmp12 $tmp11 Color 	%argrw{"wrr"}
 	div		___676_c $tmp12 ___676_cdelta 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:106
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:106
 # 		if (rgb[0] == cmax) h = c[2] - c[1];
 	compref		$tmp13 Color $const2 	%line{106} %argrw{"wrr"}
 	eq		$tmp14 $tmp13 ___676_cmax 	%argrw{"wrr"}
@@ -105,7 +105,7 @@ code ___main___
 	compref		$tmp15 ___676_c $const4 	%argrw{"wrr"}
 	compref		$tmp16 ___676_c $const3 	%argrw{"wrr"}
 	sub		___676_h $tmp15 $tmp16 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:107
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:107
 # 		else if (rgb[1] == cmax) h = 2.0 + c[0] -  c[2];
 	compref		$tmp17 Color $const3 	%line{107} %argrw{"wrr"}
 	eq		$tmp18 $tmp17 ___676_cmax 	%argrw{"wrr"}
@@ -114,32 +114,32 @@ code ___main___
 	add		$tmp20 $const6 $tmp19 	%argrw{"wrr"}
 	compref		$tmp21 ___676_c $const4 	%argrw{"wrr"}
 	sub		___676_h $tmp20 $tmp21 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:108
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:108
 # 		else h = 4.0 + c[1] - c[0];
 	compref		$tmp22 ___676_c $const3 	%line{108} %argrw{"wrr"}
 	add		$tmp23 $const7 $tmp22 	%argrw{"wrr"}
 	compref		$tmp24 ___676_c $const2 	%argrw{"wrr"}
 	sub		___676_h $tmp23 $tmp24 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:110
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:110
 # 		h /= 6.0;
 	div		___676_h ___676_h $const8 	%line{110} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:112
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:112
 # 		if (h < 0.0)
 	lt		$tmp25 ___676_h $const5 	%line{112} %argrw{"wrr"}
 	if		$tmp25 45 45 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:113
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:113
 # 			h += 1.0;
 	add		___676_h ___676_h $const9 	%line{113} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:116
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:116
 # 	return color(h, s, v);
 	color		col ___676_h ___676_s ___676_v 	%line{116} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_separate_hsv.osl:28
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_separate_hsv.osl:28
 # 	H = col[0];
-	compref		H col $const2 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_separate_hsv.osl"} %line{28} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_separate_hsv.osl:29
+	compref		H col $const2 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_separate_hsv.osl"} %line{28} %argrw{"wrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_separate_hsv.osl:29
 # 	S = col[1];
 	compref		S col $const3 	%line{29} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_separate_hsv.osl:30
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_separate_hsv.osl:30
 # 	V = col[2];
 	compref		V col $const4 	%line{30} %argrw{"wrr"}
 	end

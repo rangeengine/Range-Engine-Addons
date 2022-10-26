@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_bump.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_bump.oso
 surface node_bump
 param	int	invert	0		%read{23,23} %write{2147483647,-1}
 param	int	use_object_space	0		%read{4,36} %write{2147483647,-1}
@@ -133,76 +133,76 @@ temp	float	$tmp64	%read{147,147} %write{146,146}
 temp	vector	$tmp65	%read{153,153} %write{151,151}
 temp	normal	$tmp66	%read{153,153} %write{152,152}
 code NormalIn
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:25
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:25
 # 	normal NormalIn = N,
-	assign		NormalIn N 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl"} %line{25} %argrw{"wr"}
+	assign		NormalIn N 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl"} %line{25} %argrw{"wr"}
 code NormalOut
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:31
 # 	output normal NormalOut = N)
-	assign		NormalOut N 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl"} %line{31} %argrw{"wr"}
+	assign		NormalOut N 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl"} %line{31} %argrw{"wr"}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:33
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:33
 # 	point Ptmp = P;
-	assign		Ptmp P 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl"} %line{33} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:34
+	assign		Ptmp P 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl"} %line{33} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:34
 # 	normal Normal = NormalIn;
 	assign		Normal NormalIn 	%line{34} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:36
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:36
 # 	if (use_object_space) {
 	if		use_object_space 10 10 	%line{36} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:37
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:37
 # 		Ptmp = transform("object", Ptmp);
 	functioncall	$const2 7 	%line{37} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:243
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:243
 # point  transform (string to, point p)  { return transform("common",to,p); }
-	transform	Ptmp $const3 $const1 Ptmp 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{243} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:38
+	transform	Ptmp $const3 $const1 Ptmp 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{243} %argrw{"wrrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:38
 # 		Normal = normalize(transform("object", Normal));
-	functioncall	$const2 9 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl"} %line{38} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:241
+	functioncall	$const2 9 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl"} %line{38} %argrw{"r"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:241
 # normal transform (string to, normal p) { return transform("common",to,p); }
-	transformn	$tmp1 $const3 $const1 Normal 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{241} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:38
+	transformn	$tmp1 $const3 $const1 Normal 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{241} %argrw{"wrrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:38
 # 		Normal = normalize(transform("object", Normal));
-	normalize	Normal $tmp1 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl"} %line{38} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:42
+	normalize	Normal $tmp1 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl"} %line{38} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:42
 # 	vector dPdx = Dx(Ptmp);
 	Dx		dPdx Ptmp 	%line{42} %argrw{"wr"} %argderivs{1}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:43
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:43
 # 	vector dPdy = Dy(Ptmp);
 	Dy		dPdy Ptmp 	%line{43} %argrw{"wr"} %argderivs{1}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:45
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:45
 # 	vector Rx = cross(dPdy, Normal);
 	cross		Rx dPdy Normal 	%line{45} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:46
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:46
 # 	vector Ry = cross(Normal, dPdx);
 	cross		Ry Normal dPdx 	%line{46} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:49
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:49
 # 	float det = dot(dPdx, Rx);
 	dot		det dPdx Rx 	%line{49} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:50
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:50
 # 	vector surfgrad = (SampleX - SampleCenter) * Rx + (SampleY - SampleCenter) * Ry;
 	sub		$tmp2 SampleX SampleCenter 	%line{50} %argrw{"wrr"}
 	mul		$tmp3 $tmp2 Rx 	%argrw{"wrr"}
 	sub		$tmp4 SampleY SampleCenter 	%argrw{"wrr"}
 	mul		$tmp5 $tmp4 Ry 	%argrw{"wrr"}
 	add		surfgrad $tmp3 $tmp5 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:52
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:52
 # 	float absdet = fabs(det);
 	fabs		absdet det 	%line{52} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:54
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:54
 # 	float strength = max(Strength, 0.0);
 	max		strength Strength $const4 	%line{54} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:55
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:55
 # 	float dist = Distance;
 	assign		dist Distance 	%line{55} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:57
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:57
 # 	if (invert)
 	if		invert 25 25 	%line{57} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:58
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:58
 # 		dist *= -1.0;
 	mul		dist dist $const5 	%line{58} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:61
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:61
 # 	NormalOut = normalize(absdet * Normal - dist * sign(det) * surfgrad);
 	mul		$tmp6 absdet Normal 	%line{61} %argrw{"wrr"}
 	sign		$tmp7 det 	%argrw{"wr"}
@@ -210,96 +210,96 @@ code ___main___
 	mul		$tmp9 $tmp8 surfgrad 	%argrw{"wrr"}
 	sub		$tmp10 $tmp6 $tmp9 	%argrw{"wrr"}
 	normalize	NormalOut $tmp10 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:62
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:62
 # 	NormalOut = normalize(strength * NormalOut + (1.0 - strength) * Normal);
 	mul		$tmp11 strength NormalOut 	%line{62} %argrw{"wrr"}
 	sub		$tmp12 $const6 strength 	%argrw{"wrr"}
 	mul		$tmp13 $tmp12 Normal 	%argrw{"wrr"}
 	add		$tmp14 $tmp11 $tmp13 	%argrw{"wrr"}
 	normalize	NormalOut $tmp14 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:64
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:64
 # 	if (use_object_space) {
 	if		use_object_space 39 39 	%line{64} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:65
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:65
 # 		NormalOut = normalize(transform("object", "world", NormalOut));
 	transformn	$tmp15 $const1 $const7 NormalOut 	%line{65} %argrw{"wrrr"}
 	normalize	NormalOut $tmp15 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_bump.osl:68
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_bump.osl:68
 # 	NormalOut = ensure_valid_reflection(Ng, I, NormalOut);
 	functioncall	$const8 155 	%line{68} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:292
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:292
 #     vector R = 2*dot(N, I)*N - I;
-	dot		$tmp16 NormalOut I 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{292} %argrw{"wrr"}
+	dot		$tmp16 NormalOut I 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{292} %argrw{"wrr"}
 	mul		$tmp17 $const10 $tmp16 	%argrw{"wrr"}
 	mul		$tmp18 $tmp17 NormalOut 	%argrw{"wrr"}
 	sub		___555_R $tmp18 I 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:294
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:294
 #     float threshold = min(0.9*dot(Ng, I), 0.01);
 	dot		$tmp19 Ng I 	%line{294} %argrw{"wrr"}
 	mul		$tmp20 $const11 $tmp19 	%argrw{"wrr"}
 	min		___555_threshold $tmp20 $const12 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:295
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:295
 #     if(dot(Ng, R) >= threshold) {
 	dot		$tmp21 Ng ___555_R 	%line{295} %argrw{"wrr"}
 	ge		$tmp22 $tmp21 ___555_threshold 	%argrw{"wrr"}
 	if		$tmp22 52 52 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:296
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:296
 #         return N;
 	assign		NormalOut NormalOut 	%line{296} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:299
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:299
 #     float NdotNg = dot(N, Ng);
 	dot		___555_NdotNg NormalOut Ng 	%line{299} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:300
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:300
 #     vector X = normalize(N - NdotNg*Ng);
 	mul		$tmp23 ___555_NdotNg Ng 	%line{300} %argrw{"wrr"}
 	sub		$tmp24 NormalOut $tmp23 	%argrw{"wrr"}
 	normalize	___555_X $tmp24 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:302
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:302
 #     float Ix = dot(I, X), Iz = dot(I, Ng);
 	dot		___555_Ix I ___555_X 	%line{302} %argrw{"wrr"}
 	dot		___555_Iz I Ng 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:303
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:303
 #     float Ix2 = sqr(Ix), Iz2 = sqr(Iz);
 	functioncall	$const13 60 	%line{303} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:290
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:290
 #     float sqr(float x) { return x*x; }
 	mul		___555_Ix2 ___555_Ix ___555_Ix 	%line{290} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:303
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:303
 #     float Ix2 = sqr(Ix), Iz2 = sqr(Iz);
 	functioncall	$const13 62 	%line{303} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:290
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:290
 #     float sqr(float x) { return x*x; }
 	mul		___555_Iz2 ___555_Iz ___555_Iz 	%line{290} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:304
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:304
 #     float a = Ix2 + Iz2;
 	add		___555_a ___555_Ix2 ___555_Iz2 	%line{304} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:306
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:306
 #     float b = sqrt(Ix2*(a - sqr(threshold)));
 	functioncall	$const13 65 	%line{306} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:290
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:290
 #     float sqr(float x) { return x*x; }
 	mul		$tmp25 ___555_threshold ___555_threshold 	%line{290} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:306
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:306
 #     float b = sqrt(Ix2*(a - sqr(threshold)));
 	sub		$tmp26 ___555_a $tmp25 	%line{306} %argrw{"wrr"}
 	mul		$tmp27 ___555_Ix2 $tmp26 	%argrw{"wrr"}
 	sqrt		___555_b $tmp27 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:307
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:307
 #     float c = Iz*threshold + a;
 	mul		$tmp28 ___555_Iz ___555_threshold 	%line{307} %argrw{"wrr"}
 	add		___555_c $tmp28 ___555_a 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:309
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:309
 #     float fac = 0.5/a;
 	div		___555_fac $const14 ___555_a 	%line{309} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:310
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:310
 #     float N1_z2 = fac*(b+c), N2_z2 = fac*(-b+c);
 	add		$tmp29 ___555_b ___555_c 	%line{310} %argrw{"wrr"}
 	mul		___555_N1_z2 ___555_fac $tmp29 	%argrw{"wrr"}
 	neg		$tmp30 ___555_b 	%argrw{"wr"}
 	add		$tmp31 $tmp30 ___555_c 	%argrw{"wrr"}
 	mul		___555_N2_z2 ___555_fac $tmp31 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:311
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:311
 #     int valid1 = (N1_z2 > 1e-5) && (N1_z2 <= (1.0 + 1e-5));
 	gt		$tmp32 ___555_N1_z2 $const15 	%line{311} %argrw{"wrr"}
 	neq		$tmp33 $tmp32 $const16 	%argrw{"wrr"}
@@ -309,7 +309,7 @@ code ___main___
 	neq		$tmp36 $tmp35 $const16 	%argrw{"wrr"}
 	assign		$tmp33 $tmp36 	%argrw{"wr"}
 	assign		___555_valid1 $tmp33 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:312
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:312
 #     int valid2 = (N2_z2 > 1e-5) && (N2_z2 <= (1.0 + 1e-5));
 	gt		$tmp37 ___555_N2_z2 $const15 	%line{312} %argrw{"wrr"}
 	neq		$tmp38 $tmp37 $const16 	%argrw{"wrr"}
@@ -319,24 +319,24 @@ code ___main___
 	neq		$tmp41 $tmp40 $const16 	%argrw{"wrr"}
 	assign		$tmp38 $tmp41 	%argrw{"wr"}
 	assign		___555_valid2 $tmp38 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:315
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:315
 #     if(valid1 && valid2) {
 	neq		$tmp42 ___555_valid1 $const16 	%line{315} %argrw{"wrr"}
 	if		$tmp42 96 96 	%argrw{"r"}
 	neq		$tmp43 ___555_valid2 $const16 	%argrw{"wrr"}
 	assign		$tmp42 $tmp43 	%argrw{"wr"}
 	if		$tmp42 138 151 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:316
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:316
 #         float N1_x = sqrt(1.0 - N1_z2), N1_z = sqrt(N1_z2);
 	sub		$tmp44 $const6 ___555_N1_z2 	%line{316} %argrw{"wrr"}
 	sqrt		___558_N1_x $tmp44 	%argrw{"wr"}
 	sqrt		___558_N1_z ___555_N1_z2 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:317
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:317
 #         float N2_x = sqrt(1.0 - N2_z2), N2_z = sqrt(N2_z2);
 	sub		$tmp45 $const6 ___555_N2_z2 	%line{317} %argrw{"wrr"}
 	sqrt		___558_N2_x $tmp45 	%argrw{"wr"}
 	sqrt		___558_N2_z ___555_N2_z2 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:319
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:319
 #         float R1 = 2*(N1_x*Ix + N1_z*Iz)*N1_z - Iz;
 	mul		$tmp46 ___558_N1_x ___555_Ix 	%line{319} %argrw{"wrr"}
 	mul		$tmp47 ___558_N1_z ___555_Iz 	%argrw{"wrr"}
@@ -344,7 +344,7 @@ code ___main___
 	mul		$tmp49 $const10 $tmp48 	%argrw{"wrr"}
 	mul		$tmp50 $tmp49 ___558_N1_z 	%argrw{"wrr"}
 	sub		___558_R1 $tmp50 ___555_Iz 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:320
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:320
 #         float R2 = 2*(N2_x*Ix + N2_z*Iz)*N2_z - Iz;
 	mul		$tmp51 ___558_N2_x ___555_Ix 	%line{320} %argrw{"wrr"}
 	mul		$tmp52 ___558_N2_z ___555_Iz 	%argrw{"wrr"}
@@ -352,67 +352,67 @@ code ___main___
 	mul		$tmp54 $const10 $tmp53 	%argrw{"wrr"}
 	mul		$tmp55 $tmp54 ___558_N2_z 	%argrw{"wrr"}
 	sub		___558_R2 $tmp55 ___555_Iz 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:322
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:322
 #         valid1 = (R1 >= 1e-5);
 	ge		___555_valid1 ___558_R1 $const15 	%line{322} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:323
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:323
 #         valid2 = (R2 >= 1e-5);
 	ge		___555_valid2 ___558_R2 $const15 	%line{323} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:324
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:324
 #         if(valid1 && valid2) {
 	neq		$tmp56 ___555_valid1 $const16 	%line{324} %argrw{"wrr"}
 	if		$tmp56 121 121 	%argrw{"r"}
 	neq		$tmp57 ___555_valid2 $const16 	%argrw{"wrr"}
 	assign		$tmp56 $tmp57 	%argrw{"wr"}
 	if		$tmp56 130 138 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:325
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:325
 #             N_new_x = (R1 < R2)? N1_x : N2_x;
 	lt		$tmp58 ___558_R1 ___558_R2 	%line{325} %argrw{"wrr"}
 	if		$tmp58 125 126 	%argrw{"r"}
 	assign		___555_N_new_x ___558_N1_x 	%argrw{"wr"}
 	assign		___555_N_new_x ___558_N2_x 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:326
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:326
 #             N_new_z = (R1 < R2)? N1_z : N2_z;
 	lt		$tmp59 ___558_R1 ___558_R2 	%line{326} %argrw{"wrr"}
 	if		$tmp59 129 130 	%argrw{"r"}
 	assign		___555_N_new_z ___558_N1_z 	%argrw{"wr"}
 	assign		___555_N_new_z ___558_N2_z 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:329
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:329
 #             N_new_x = (R1 > R2)? N1_x : N2_x;
 	gt		$tmp60 ___558_R1 ___558_R2 	%line{329} %argrw{"wrr"}
 	if		$tmp60 133 134 	%argrw{"r"}
 	assign		___555_N_new_x ___558_N1_x 	%argrw{"wr"}
 	assign		___555_N_new_x ___558_N2_x 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:330
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:330
 #             N_new_z = (R1 > R2)? N1_z : N2_z;
 	gt		$tmp61 ___558_R1 ___558_R2 	%line{330} %argrw{"wrr"}
 	if		$tmp61 137 138 	%argrw{"r"}
 	assign		___555_N_new_z ___558_N1_z 	%argrw{"wr"}
 	assign		___555_N_new_z ___558_N2_z 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:334
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:334
 #     else if(valid1 || valid2) {
 	neq		$tmp62 ___555_valid1 $const16 	%line{334} %argrw{"wrr"}
 	if		$tmp62 140 142 	%argrw{"r"}
 	neq		$tmp63 ___555_valid2 $const16 	%argrw{"wrr"}
 	assign		$tmp62 $tmp63 	%argrw{"wr"}
 	if		$tmp62 149 151 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:335
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:335
 #         float Nz2 = valid1? N1_z2 : N2_z2;
 	if		___555_valid1 145 146 	%line{335} %argrw{"r"}
 	assign		___561_Nz2 ___555_N1_z2 	%argrw{"wr"}
 	assign		___561_Nz2 ___555_N2_z2 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:336
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:336
 #         N_new_x = sqrt(1.0 - Nz2);
 	sub		$tmp64 $const6 ___561_Nz2 	%line{336} %argrw{"wrr"}
 	sqrt		___555_N_new_x $tmp64 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:337
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:337
 #         N_new_z = sqrt(Nz2);
 	sqrt		___555_N_new_z ___561_Nz2 	%line{337} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:340
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:340
 #         return Ng;
 	assign		NormalOut Ng 	%line{340} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:343
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:343
 #     return N_new_x*X + N_new_z*Ng;
 	mul		$tmp65 ___555_N_new_x ___555_X 	%line{343} %argrw{"wrr"}
 	mul		$tmp66 ___555_N_new_z Ng 	%argrw{"wrr"}

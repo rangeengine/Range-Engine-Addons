@@ -22,7 +22,7 @@ bl_info = {
     "name": "Layer Management",
     "author": "Alfonso Annarumma, Bastien Montagne",
     "version": (1, 5, 4),
-    "blender": (2, 76, 0),
+    "blender": (2, 79, 5),
     "location": "Toolshelf > Layers Tab",
     "warning": "",
     "description": "Display and Edit Layer Name",
@@ -57,18 +57,18 @@ FAKE_LAYER_GROUP = [True] * NUM_LAYERS
 
 
 class NamedLayer(PropertyGroup):
-    name = StringProperty(
+    name: StringProperty(
             name="Layer Name"
             )
-    use_lock = BoolProperty(
+    use_lock: BoolProperty(
             name="Lock Layer",
             default=False
             )
-    use_object_select = BoolProperty(
+    use_object_select: BoolProperty(
             name="Object Select",
             default=True
             )
-    use_wire = BoolProperty(
+    use_wire: BoolProperty(
             name="Wire Layer",
             default=False
             )
@@ -77,24 +77,24 @@ class NamedLayer(PropertyGroup):
 class NamedLayers(PropertyGroup):
     layers = CollectionProperty(type=NamedLayer)
 
-    use_hide_empty_layers = BoolProperty(
+    use_hide_empty_layers: BoolProperty(
             name="Hide Empty Layer",
             default=False
             )
-    use_extra_options = BoolProperty(
+    use_extra_options: BoolProperty(
             name="Show Extra Options",
             default=True
             )
-    use_layer_indices = BoolProperty(
+    use_layer_indices: BoolProperty(
             name="Show Layer Indices",
             default=False
             )
-    use_classic = BoolProperty(
+    use_classic: BoolProperty(
             name="Classic",
             default=False,
             description="Use a classic layer selection visibility"
             )
-    use_init = BoolProperty(
+    use_init: BoolProperty(
             default=True,
             options={'HIDDEN'}
             )
@@ -114,11 +114,11 @@ def check_init_data(scene):
 
 
 class LayerGroup(PropertyGroup):
-    use_toggle = BoolProperty(name="", default=False)
-    use_wire = BoolProperty(name="", default=False)
-    use_lock = BoolProperty(name="", default=False)
+    use_toggle: BoolProperty(name="", default=False)
+    use_wire: BoolProperty(name="", default=False)
+    use_lock: BoolProperty(name="", default=False)
 
-    layers = BoolVectorProperty(name="Layers", default=([False] * NUM_LAYERS), size=NUM_LAYERS, subtype='LAYER')
+    layers: BoolVectorProperty(name="Layers", default=([False] * NUM_LAYERS), size=NUM_LAYERS, subtype='LAYER')
 
 
 class SCENE_OT_namedlayer_group_add(Operator):
@@ -126,7 +126,7 @@ class SCENE_OT_namedlayer_group_add(Operator):
     bl_idname = "scene.namedlayer_group_add"
     bl_label = "Add Layer Group"
 
-    layers = BoolVectorProperty(name="Layers", default=([False] * NUM_LAYERS), size=NUM_LAYERS)
+    layers: BoolVectorProperty(name="Layers", default=([False] * NUM_LAYERS), size=NUM_LAYERS)
 
     @classmethod
     def poll(cls, context):
@@ -173,10 +173,10 @@ class SCENE_OT_namedlayer_toggle_visibility(Operator):
     bl_idname = "scene.namedlayer_toggle_visibility"
     bl_label = "Show/Hide Layer"
 
-    layer_idx = IntProperty()
-    group_idx = IntProperty()
-    use_spacecheck = BoolProperty()
-    extend = BoolProperty(options={'SKIP_SAVE'})
+    layer_idx: IntProperty()
+    group_idx: IntProperty()
+    use_spacecheck: BoolProperty()
+    extend: BoolProperty(options={'SKIP_SAVE'})
 
     @classmethod
     def poll(cls, context):
@@ -218,8 +218,8 @@ class SCENE_OT_namedlayer_move_to_layer(Operator):
     bl_idname = "scene.namedlayer_move_to_layer"
     bl_label = "Move Objects To Layer"
 
-    layer_idx = IntProperty()
-    extend = BoolProperty(options={'SKIP_SAVE'})
+    layer_idx: IntProperty()
+    extend: BoolProperty(options={'SKIP_SAVE'})
 
     @classmethod
     def poll(cls, context):
@@ -252,9 +252,9 @@ class SCENE_OT_namedlayer_toggle_wire(Operator):
     bl_idname = "scene.namedlayer_toggle_wire"
     bl_label = "Toggle Objects Draw Wire"
 
-    layer_idx = IntProperty()
-    use_wire = BoolProperty()
-    group_idx = IntProperty()
+    layer_idx: IntProperty()
+    use_wire: BoolProperty()
+    group_idx: IntProperty()
 
     @classmethod
     def poll(cls, context):
@@ -292,9 +292,9 @@ class SCENE_OT_namedlayer_lock_all(Operator):
     bl_idname = "scene.namedlayer_lock_all"
     bl_label = "Lock Objects"
 
-    layer_idx = IntProperty()
-    use_lock = BoolProperty()
-    group_idx = IntProperty()
+    layer_idx: IntProperty()
+    use_lock: BoolProperty()
+    group_idx: IntProperty()
 
     @classmethod
     def poll(cls, context):
@@ -335,8 +335,8 @@ class SCENE_OT_namedlayer_select_objects_by_layer(Operator):
     select_obj = BoolProperty()
     layer_idx = IntProperty()
 
-    extend = BoolProperty(options={'SKIP_SAVE'})
-    active = BoolProperty(options={'SKIP_SAVE'})
+    extend: BoolProperty(options={'SKIP_SAVE'})
+    active: BoolProperty(options={'SKIP_SAVE'})
 
     @classmethod
     def poll(cls, context):
@@ -618,7 +618,7 @@ class LayerMAddonPreferences(AddonPreferences):
     # when defining this in a submodule of a python package.
     bl_idname = __name__
 
-    category = StringProperty(
+    category: StringProperty(
             name="Tab Category",
             description="Choose a name for the category of the panel",
             default="Layers",
@@ -633,23 +633,42 @@ class LayerMAddonPreferences(AddonPreferences):
         col.label(text="Tab Category:")
         col.prop(self, "category", text="")
 
+classes = (
+    NamedLayer,
+    NamedLayers,
+    LayerGroup,
+    SCENE_OT_namedlayer_group_add,
+    SCENE_OT_namedlayer_group_remove,
+    SCENE_OT_namedlayer_toggle_visibility,
+    SCENE_OT_namedlayer_move_to_layer,
+    SCENE_OT_namedlayer_toggle_wire,
+    SCENE_OT_namedlayer_lock_all,
+    SCENE_OT_namedlayer_select_objects_by_layer,
+    SCENE_OT_namedlayer_show_all,
+    SCENE_PT_namedlayer_layers,
+    SCENE_UL_namedlayer_groups,
+    SCENE_PT_namedlayer_groups,
+    LayerMAddonPreferences,
+    )
 
 def register():
-    bpy.utils.register_module(__name__)
-    bpy.types.Scene.layergroups = CollectionProperty(type=LayerGroup)
+    bpy.types.Scene.layergroups: CollectionProperty(type=LayerGroup)
     # Unused, but this is needed for the TemplateList to work...
-    bpy.types.Scene.layergroups_index = IntProperty(default=-1)
+    bpy.types.Scene.layergroups_index: IntProperty(default=-1)
     bpy.types.Scene.namedlayers = PointerProperty(type=NamedLayers)
     bpy.app.handlers.scene_update_post.append(check_init_data)
     update_panel(None, bpy.context)
+    for cls in classes:
+        bpy.utils.register_class(cls)
 
 
 def unregister():
     bpy.app.handlers.scene_update_post.remove(check_init_data)
-    del bpy.types.Scene.layergroups
-    del bpy.types.Scene.layergroups_index
-    del bpy.types.Scene.namedlayers
-    bpy.utils.unregister_module(__name__)
+    #del bpy.types.Scene.layergroups
+    #del bpy.types.Scene.layergroups_index
+    #del bpy.types.Scene.namedlayers
+    for cls in classes:
+        bpy.utils.unregister_class(cls)
 
 
 if __name__ == "__main__":

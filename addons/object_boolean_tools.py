@@ -778,8 +778,8 @@ class BTool_MoveStack(Operator):
     bl_label = ""
     bl_description = "Move this Brush Up/Down in the Stack"
 
-    modif = StringProperty("")
-    direction = StringProperty("")
+    modif: StringProperty("")
+    direction: StringProperty("")
 
     @classmethod
     def poll(cls, context):
@@ -799,7 +799,7 @@ class BTool_EnableBrush(Operator):
     bl_label = ""
     bl_description = "Removes all BoolTool config assigned to it"
 
-    thisObj = StringProperty("")
+    thisObj: StringProperty("")
 
     @classmethod
     def poll(cls, context):
@@ -850,8 +850,8 @@ class BTool_Remove(Operator):
     bl_description = "Removes all BoolTool config assigned to it"
     bl_options = {'UNDO'}
 
-    thisObj = StringProperty("")
-    Prop = StringProperty("")
+    thisObj: StringProperty("")
+    Prop: StringProperty("")
 
     @classmethod
     def poll(cls, context):
@@ -1242,37 +1242,37 @@ def update_panels(self, context):
 class PREFS_BoolTool_Props(AddonPreferences):
     bl_idname = __name__
 
-    fast_transform = BoolProperty(
+    fast_transform: BoolProperty(
             name="Fast Transformations",
             default=False,
             update=UpdateBoolTool_Pref,
             description="Replace the Transform HotKeys (G,R,S)\n"
                         "for a custom version that can optimize the visualization of Brushes",
             )
-    make_vertex_groups = BoolProperty(
+    make_vertex_groups: BoolProperty(
             name="Make Vertex Groups",
             default=False,
             description="When Applying a Brush to the Object it will create\n"
                         "a new vertex group for the new faces",
             )
-    make_boundary = BoolProperty(
+    make_boundary: BoolProperty(
             name="Make Boundary",
             default=False,
             description="When Apply a Brush to the Object it will create a\n"
                         "new vertex group of the boundary boolean area",
             )
-    use_wire = BoolProperty(
+    use_wire: BoolProperty(
             name="Use Bmesh",
             default=False,
             description="Use The Wireframe Instead of Bounding Box for visualization",
             )
-    category = StringProperty(
+    category: StringProperty(
             name="Tab Category",
             description="Choose a name for the category of the panel",
             default="Tools",
             update=update_panels,
             )
-    Enable_Tab_01 = BoolProperty(
+    Enable_Tab_01: BoolProperty(
             default=False
             )
 

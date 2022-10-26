@@ -19,8 +19,8 @@
 bl_info = {
     "name": "Node Wrangler",
     "author": "Bartek Skorupa, Greg Zaal, Sebastian Koenig, Christian Brinkmann, Florian Meyer",
-    "version": (3, 35),
-    "blender": (2, 78, 0),
+    "version": (3, 36),
+    "blender": (2, 79, 0),
     "location": "Node Editor Toolbar or Ctrl-Space",
     "description": "Various tools to enhance and speed up node-based workflow",
     "warning": "",
@@ -1000,39 +1000,39 @@ def get_nodes_links(context):
 
 # Principled prefs
 class NWPrincipledPreferences(bpy.types.PropertyGroup):
-    base_color = StringProperty(
+    base_color : StringProperty(
         name='Base Color',
         default='diffuse diff albedo base col color',
         description='Naming Components for Base Color maps')
-    sss_color = StringProperty(
+    sss_color : StringProperty(
         name='Subsurface Color',
         default='sss subsurface',
         description='Naming Components for Subsurface Color maps')
-    metallic = StringProperty(
+    metallic : StringProperty(
         name='Metallic',
         default='metallic metalness metal mtl',
         description='Naming Components for metallness maps')
-    specular = StringProperty(
+    specular : StringProperty(
         name='Specular',
         default='specularity specular spec spc',
         description='Naming Components for Specular maps')
-    normal = StringProperty(
+    normal : StringProperty(
         name='Normal',
         default='normal nor nrm nrml norm',
         description='Naming Components for Normal maps')
-    bump = StringProperty(
+    bump : StringProperty(
         name='Bump',
         default='bump bmp',
         description='Naming Components for bump maps')
-    rough = StringProperty(
+    rough : StringProperty(
         name='Roughness',
         default='roughness rough rgh',
         description='Naming Components for roughness maps')
-    gloss = StringProperty(
+    gloss : StringProperty(
         name='Gloss',
         default='gloss glossy glossyness',
         description='Naming Components for glossy maps')
-    displacement = StringProperty(
+    displacement : StringProperty(
         name='Displacement',
         default='displacement displace disp dsp height heightmap',
         description='Naming Components for displacement maps')
@@ -1041,7 +1041,7 @@ class NWPrincipledPreferences(bpy.types.PropertyGroup):
 class NWNodeWrangler(bpy.types.AddonPreferences):
     bl_idname = __name__
 
-    merge_hide = EnumProperty(
+    merge_hide : EnumProperty(
         name="Hide Mix nodes",
         items=(
             ("ALWAYS", "Always", "Always collapse the new merge nodes"),
@@ -1050,7 +1050,7 @@ class NWNodeWrangler(bpy.types.AddonPreferences):
         ),
         default='NON_SHADER',
         description="When merging nodes with the Ctrl+Numpad0 hotkey (and similar) specify whether to collapse them or show the full node with options expanded")
-    merge_position = EnumProperty(
+    merge_position : EnumProperty(
         name="Mix Node Position",
         items=(
             ("CENTER", "Center", "Place the Mix node between the two nodes"),
@@ -1059,17 +1059,17 @@ class NWNodeWrangler(bpy.types.AddonPreferences):
         default='CENTER',
         description="When merging nodes with the Ctrl+Numpad0 hotkey (and similar) specify the position of the new nodes")
 
-    show_hotkey_list = BoolProperty(
+    show_hotkey_list : BoolProperty(
         name="Show Hotkey List",
         default=False,
         description="Expand this box into a list of all the hotkeys for functions in this addon"
     )
-    hotkey_list_filter = StringProperty(
+    hotkey_list_filter : StringProperty(
         name="        Filter by Name",
         default="",
         description="Show only hotkeys that have this text in their name"
     )
-    show_principled_lists = BoolProperty(
+    show_principled_lists : BoolProperty(
         name="Show Principled naming tags",
         default=False,
         description="Expand this box into a list of all naming tags for principled texture setup"
@@ -1223,7 +1223,7 @@ class NWLazyConnect(Operator, NWBase):
     bl_idname = "node.nw_lazy_connect"
     bl_label = "Lazy Connect"
     bl_options = {'REGISTER', 'UNDO'}
-    with_menu = BoolProperty()
+    with_menu : BoolProperty()
 
     def modal(self, context, event):
         context.area.tag_redraw()
@@ -1329,8 +1329,8 @@ class NWDeleteUnused(Operator, NWBase):
     bl_label = 'Delete Unused Nodes'
     bl_options = {'REGISTER', 'UNDO'}
 
-    delete_muted = BoolProperty(name="Delete Muted", description="Delete (but reconnect, like Ctrl-X) all muted nodes", default=True)
-    delete_frames = BoolProperty(name="Delete Empty Frames", description="Delete all frames that have no nodes inside them", default=True)
+    delete_muted : BoolProperty(name="Delete Muted", description="Delete (but reconnect, like Ctrl-X) all muted nodes", default=True)
+    delete_frames : BoolProperty(name="Delete Empty Frames", description="Delete all frames that have no nodes inside them", default=True)
 
     def is_unused_node(self, node):
         end_types = ['OUTPUT_MATERIAL', 'OUTPUT', 'VIEWER', 'COMPOSITE', \
@@ -1567,7 +1567,7 @@ class NWAddAttrNode(Operator, NWBase):
     """Add an Attribute node with this name"""
     bl_idname = 'node.nw_add_attr_node'
     bl_label = 'Add UV map'
-    attr_name = StringProperty()
+    attr_name : StringProperty()
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
@@ -1734,8 +1734,8 @@ class NWFrameSelected(Operator, NWBase):
     bl_label = "Frame Selected"
     bl_description = "Add a frame node and parent the selected nodes to it"
     bl_options = {'REGISTER', 'UNDO'}
-    label_prop = StringProperty(name='Label', default=' ', description='The visual name of the frame node')
-    color_prop = FloatVectorProperty(name="Color", description="The color of the frame node", default=(0.6, 0.6, 0.6),
+    label_prop : StringProperty(name='Label', default=' ', description='The visual name of the frame node')
+    color_prop : FloatVectorProperty(name="Color", description="The color of the frame node", default=(0.6, 0.6, 0.6),
                                      min=0, max=1, step=1, precision=3, subtype='COLOR_GAMMA', size=3)
 
     def execute(self, context):
@@ -1795,7 +1795,7 @@ class NWSwitchNodeType(Operator, NWBase):
     bl_label = "Switch Node Type"
     bl_options = {'REGISTER', 'UNDO'}
 
-    to_type = EnumProperty(
+    to_type : EnumProperty(
         name="Switch to type",
         items=list(shaders_input_nodes_props) +
         list(shaders_output_nodes_props) +
@@ -2009,12 +2009,12 @@ class NWMergeNodes(Operator, NWBase):
     bl_description = "Merge Selected Nodes"
     bl_options = {'REGISTER', 'UNDO'}
 
-    mode = EnumProperty(
+    mode : EnumProperty(
         name="mode",
         description="All possible blend types and math operations",
         items=blend_types + [op for op in operations if op not in blend_types],
     )
-    merge_type = EnumProperty(
+    merge_type : EnumProperty(
         name="merge type",
         description="Type of Merge to be used",
         items=(
@@ -2260,11 +2260,11 @@ class NWBatchChangeNodes(Operator, NWBase):
     bl_description = "Batch Change Blend Type and Math Operation"
     bl_options = {'REGISTER', 'UNDO'}
 
-    blend_type = EnumProperty(
+    blend_type : EnumProperty(
         name="Blend Type",
         items=blend_types + navs,
     )
-    operation = EnumProperty(
+    operation : EnumProperty(
         name="Operation",
         items=operations + navs,
     )
@@ -2326,7 +2326,7 @@ class NWChangeMixFactor(Operator, NWBase):
     # option: Change factor.
     # If option is 1.0 or 0.0 - set to 1.0 or 0.0
     # Else - change factor by option value.
-    option = FloatProperty()
+    option : FloatProperty()
 
     def execute(self, context):
         nodes, links = get_nodes_links(context)
@@ -2465,7 +2465,7 @@ class NWCopyLabel(Operator, NWBase):
     bl_label = "Copy Label"
     bl_options = {'REGISTER', 'UNDO'}
 
-    option = EnumProperty(
+    option : EnumProperty(
         name="option",
         description="Source of name of label",
         items=(
@@ -2509,7 +2509,7 @@ class NWClearLabel(Operator, NWBase):
     bl_label = "Clear Label"
     bl_options = {'REGISTER', 'UNDO'}
 
-    option = BoolProperty()
+    option : BoolProperty()
 
     def execute(self, context):
         nodes, links = get_nodes_links(context)
@@ -2531,16 +2531,16 @@ class NWModifyLabels(Operator, NWBase):
     bl_label = "Modify Labels"
     bl_options = {'REGISTER', 'UNDO'}
 
-    prepend = StringProperty(
+    prepend : StringProperty(
         name="Add to Beginning"
     )
-    append = StringProperty(
+    append : StringProperty(
         name="Add to End"
     )
-    replace_from = StringProperty(
+    replace_from : StringProperty(
         name="Text to Replace"
     )
-    replace_to = StringProperty(
+    replace_to : StringProperty(
         name="Replace with"
     )
 
@@ -2564,7 +2564,7 @@ class NWAddTextureSetup(Operator, NWBase):
     bl_description = "Add Texture Node Setup to Selected Shaders"
     bl_options = {'REGISTER', 'UNDO'}
 
-    add_mapping = BoolProperty(name="Add Mapping Nodes", description="Create coordinate and mapping nodes for the texture (ignored for selected texture nodes)", default=True)
+    add_mapping : BoolProperty(name="Add Mapping Nodes", description="Create coordinate and mapping nodes for the texture (ignored for selected texture nodes)", default=True)
 
     @classmethod
     def poll(cls, context):
@@ -2642,12 +2642,12 @@ class NWAddPrincipledSetup(Operator, NWBase, ImportHelper):
     bl_description = "Add Texture Node Setup for Principled BSDF"
     bl_options = {'REGISTER', 'UNDO'}
 
-    directory = StringProperty(
+    directory : StringProperty(
                     name='Directory',
                     subtype='DIR_PATH',
                     default='',
                     description='Folder to search in for image files')
-    files = CollectionProperty(
+    files : CollectionProperty(
                     type=bpy.types.OperatorFileListElement,
                     options={'HIDDEN', 'SKIP_SAVE'})
 
@@ -2895,7 +2895,7 @@ class NWAddReroutes(Operator, NWBase):
     bl_description = "Add Reroutes to Outputs"
     bl_options = {'REGISTER', 'UNDO'}
 
-    option = EnumProperty(
+    option : EnumProperty(
         name="option",
         items=[
             ('ALL', 'to all', 'Add to all outputs'),
@@ -2995,9 +2995,9 @@ class NWLinkActiveToSelected(Operator, NWBase):
     bl_label = "Link Active Node to Selected"
     bl_options = {'REGISTER', 'UNDO'}
 
-    replace = BoolProperty()
-    use_node_name = BoolProperty()
-    use_outputs_names = BoolProperty()
+    replace : BoolProperty()
+    use_node_name : BoolProperty()
+    use_outputs_names : BoolProperty()
 
     @classmethod
     def poll(cls, context):
@@ -3075,7 +3075,7 @@ class NWAlignNodes(Operator, NWBase):
     bl_idname = "node.nw_align_nodes"
     bl_label = "Align Nodes"
     bl_options = {'REGISTER', 'UNDO'}
-    margin = IntProperty(name='Margin', default=50, description='The amount of space between nodes')
+    margin : IntProperty(name='Margin', default=50, description='The amount of space between nodes')
 
     def execute(self, context):
         nodes, links = get_nodes_links(context)
@@ -3145,7 +3145,7 @@ class NWSelectParentChildren(Operator, NWBase):
     bl_label = "Select Parent or Children"
     bl_options = {'REGISTER', 'UNDO'}
 
-    option = EnumProperty(
+    option : EnumProperty(
         name="option",
         items=(
             ('PARENT', 'Select Parent', 'Select Parent Frame'),
@@ -3266,8 +3266,8 @@ class NWMakeLink(Operator, NWBase):
     bl_idname = 'node.nw_make_link'
     bl_label = 'Make Link'
     bl_options = {'REGISTER', 'UNDO'}
-    from_socket = IntProperty()
-    to_socket = IntProperty()
+    from_socket : IntProperty()
+    to_socket : IntProperty()
 
     def execute(self, context):
         nodes, links = get_nodes_links(context)
@@ -3287,7 +3287,7 @@ class NWCallInputsMenu(Operator, NWBase):
     bl_idname = 'node.nw_call_inputs_menu'
     bl_label = 'Make Link'
     bl_options = {'REGISTER', 'UNDO'}
-    from_socket = IntProperty()
+    from_socket : IntProperty()
 
     def execute(self, context):
         nodes, links = get_nodes_links(context)
@@ -3308,9 +3308,9 @@ class NWAddSequence(Operator, ImportHelper):
     bl_idname = 'node.nw_add_sequence'
     bl_label = 'Import Image Sequence'
     bl_options = {'REGISTER', 'UNDO'}
-    directory = StringProperty(subtype="DIR_PATH")
-    filename = StringProperty(subtype="FILE_NAME")
-    files = CollectionProperty(type=bpy.types.OperatorFileListElement, options={'HIDDEN', 'SKIP_SAVE'})
+    directory : StringProperty(subtype="DIR_PATH")
+    filename : StringProperty(subtype="FILE_NAME")
+    files : CollectionProperty(type=bpy.types.OperatorFileListElement, options={'HIDDEN', 'SKIP_SAVE'})
 
     def execute(self, context):
         nodes, links = get_nodes_links(context)
@@ -3402,8 +3402,8 @@ class NWAddMultipleImages(Operator, ImportHelper):
     bl_idname = 'node.nw_add_multiple_images'
     bl_label = 'Open Selected Images'
     bl_options = {'REGISTER', 'UNDO'}
-    directory = StringProperty(subtype="DIR_PATH")
-    files = CollectionProperty(type=bpy.types.OperatorFileListElement, options={'HIDDEN', 'SKIP_SAVE'})
+    directory : StringProperty(subtype="DIR_PATH")
+    files : CollectionProperty(type=bpy.types.OperatorFileListElement, options={'HIDDEN', 'SKIP_SAVE'})
 
     def execute(self, context):
         nodes, links = get_nodes_links(context)
@@ -3505,8 +3505,8 @@ class NWSaveViewer(bpy.types.Operator, ExportHelper):
     """Save the current viewer node to an image file"""
     bl_idname = "node.nw_save_viewer"
     bl_label = "Save This Image"
-    filepath = StringProperty(subtype="FILE_PATH")
-    filename_ext = EnumProperty(
+    filepath : StringProperty(subtype="FILE_PATH")
+    filename_ext : EnumProperty(
             name="Format",
             description="Choose the file format to save to",
             items=(('.bmp', "PNG", ""),
@@ -3740,11 +3740,11 @@ class NodeWranglerPanel(Panel, NWBase):
     bl_region_type = "TOOLS"
     bl_category = "Node Wrangler"
 
-    prepend = StringProperty(
+    prepend : StringProperty(
         name='prepend',
     )
-    append = StringProperty()
-    remove = StringProperty()
+    append : StringProperty()
+    remove : StringProperty()
 
     def draw(self, context):
         self.layout.label(text="(Quick access: Ctrl+Space)")
@@ -4746,19 +4746,19 @@ def register():
     from bpy.utils import register_class
 
     # props
-    bpy.types.Scene.NWBusyDrawing = StringProperty(
+    bpy.types.Scene.NWBusyDrawing : StringProperty(
         name="Busy Drawing!",
         default="",
         description="An internal property used to store only the first mouse position")
-    bpy.types.Scene.NWLazySource = StringProperty(
+    bpy.types.Scene.NWLazySource : StringProperty(
         name="Lazy Source!",
         default="x",
         description="An internal property used to store the first node in a Lazy Connect operation")
-    bpy.types.Scene.NWLazyTarget = StringProperty(
+    bpy.types.Scene.NWLazyTarget : StringProperty(
         name="Lazy Target!",
         default="x",
         description="An internal property used to store the last node in a Lazy Connect operation")
-    bpy.types.Scene.NWSourceSocket = IntProperty(
+    bpy.types.Scene.NWSourceSocket : IntProperty(
         name="Source Socket!",
         default=0,
         description="An internal property used to store the source socket in a Lazy Connect operation")

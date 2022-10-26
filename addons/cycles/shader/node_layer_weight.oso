@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_layer_weight.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_layer_weight.oso
 shader node_layer_weight
 param	float	Blend	0.5		%read{1,3} %write{2147483647,-1}
 param	normal	Normal	0 0 0		%read{2,2} %write{0,0} %initexpr
@@ -48,50 +48,50 @@ temp	int	$tmp22	%read{42,42} %write{41,41}
 const	float	$const9	2		%read{43,43} %write{2147483647,-1}
 temp	float	$tmp23	%read{45,45} %write{44,44}
 code Normal
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl:22
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl:22
 # 	normal Normal = N,
-	assign		Normal N 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl"} %line{22} %argrw{"wr"}
+	assign		Normal N 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl"} %line{22} %argrw{"wr"}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl:26
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl:26
 # 	float blend = Blend;
-	assign		blend Blend 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl"} %line{26} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl:27
+	assign		blend Blend 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl"} %line{26} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl:27
 # 	float cosi = dot(I, Normal);
 	dot		cosi I Normal 	%line{27} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl:30
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl:30
 # 	float eta = max(1.0 - Blend, 1e-5);
 	sub		$tmp1 $const1 Blend 	%line{30} %argrw{"wrr"}
 	max		eta $tmp1 $const2 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl:31
 # 	eta = backfacing() ? eta : 1.0 / eta;
 	backfacing	$tmp2 	%line{31} %argrw{"w"}
 	if		$tmp2 7 8 	%argrw{"r"}
 	div		eta $const1 eta 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl:32
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl:32
 # 	Fresnel = fresnel_dielectric_cos(cosi, eta);
 	functioncall	$const3 34 	%line{32} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:37
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:37
 # 	float c = fabs(cosi);
-	fabs		___669_c cosi 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h"} %line{37} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:38
+	fabs		___669_c cosi 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h"} %line{37} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:38
 # 	float g = eta * eta - 1 + c * c;
 	mul		$tmp3 eta eta 	%line{38} %argrw{"wrr"}
 	sub		$tmp4 $tmp3 $const1 	%argrw{"wrr"}
 	mul		$tmp5 ___669_c ___669_c 	%argrw{"wrr"}
 	add		___669_g $tmp4 $tmp5 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:41
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:41
 # 	if (g > 0) {
 	gt		$tmp6 ___669_g $const5 	%line{41} %argrw{"wrr"}
 	if		$tmp6 32 33 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:42
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:42
 # 		g = sqrt(g);
 	sqrt		___669_g ___669_g 	%line{42} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:43
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:43
 # 		float A = (g - c) / (g + c);
 	sub		$tmp7 ___669_g ___669_c 	%line{43} %argrw{"wrr"}
 	add		$tmp8 ___669_g ___669_c 	%argrw{"wrr"}
 	div		___670_A $tmp7 $tmp8 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:44
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:44
 # 		float B = (c * (g + c) - 1) / (c * (g - c) + 1);
 	add		$tmp9 ___669_g ___669_c 	%line{44} %argrw{"wrr"}
 	mul		$tmp10 ___669_c $tmp9 	%argrw{"wrr"}
@@ -100,45 +100,45 @@ code ___main___
 	mul		$tmp13 ___669_c $tmp12 	%argrw{"wrr"}
 	add		$tmp14 $tmp13 $const1 	%argrw{"wrr"}
 	div		___670_B $tmp11 $tmp14 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:45
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:45
 # 		result = 0.5 * A * A * (1 + B * B);
 	mul		$tmp15 $const6 ___670_A 	%line{45} %argrw{"wrr"}
 	mul		$tmp16 $tmp15 ___670_A 	%argrw{"wrr"}
 	mul		$tmp17 ___670_B ___670_B 	%argrw{"wrr"}
 	add		$tmp18 $const1 $tmp17 	%argrw{"wrr"}
 	mul		___669_result $tmp16 $tmp18 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:48
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:48
 # 		result = 1.0;  /* TIR (no refracted component) */
 	assign		___669_result $const1 	%line{48} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_fresnel.h:50
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_fresnel.h:50
 # 	return result;
 	assign		Fresnel ___669_result 	%line{50} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl:35
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl:35
 # 	Facing = fabs(cosi);
-	fabs		Facing cosi 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl"} %line{35} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl:37
+	fabs		Facing cosi 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl"} %line{35} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl:37
 # 	if (blend != 0.5) {
 	neq		$tmp19 blend $const6 	%line{37} %argrw{"wrr"}
 	if		$tmp19 47 47 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl:38
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl:38
 # 		blend = clamp(blend, 0.0, 1.0 - 1e-5);
 	sub		$tmp20 $const1 $const2 	%line{38} %argrw{"wrr"}
 	functioncall	$const8 41 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:144
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:144
 # float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
-	min		$tmp21 blend $tmp20 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
+	min		$tmp21 blend $tmp20 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
 	max		blend $tmp21 $const7 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl:39
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl:39
 # 		blend = (blend < 0.5) ? 2.0 * blend : 0.5 / (1.0 - blend);
-	lt		$tmp22 blend $const6 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl"} %line{39} %argrw{"wrr"}
+	lt		$tmp22 blend $const6 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl"} %line{39} %argrw{"wrr"}
 	if		$tmp22 44 46 	%argrw{"r"}
 	mul		blend $const9 blend 	%argrw{"wrr"}
 	sub		$tmp23 $const1 blend 	%argrw{"wrr"}
 	div		blend $const6 $tmp23 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl:41
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl:41
 # 		Facing = pow(Facing, blend);
 	pow		Facing Facing blend 	%line{41} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_layer_weight.osl:44
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_layer_weight.osl:44
 # 	Facing = 1.0 - Facing;
 	sub		Facing $const1 Facing 	%line{44} %argrw{"wrr"}
 	end

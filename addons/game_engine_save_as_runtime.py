@@ -19,10 +19,10 @@
 bl_info = {
     "name": "Save As Game Engine Runtime",
     "author": "Mitchell Stokes (Moguri)",
-    "version": (0, 3, 1),
-    "blender": (2, 61, 0),
+    "version": (0, 3, 2),
+    "blender": (2, 79, 0),
     "location": "File > Export",
-    "description": "Bundle a .blend file with the Blenderplayer",
+    "description": "Bundle a .range file with the Blenderplayer",
     "warning": "",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/"
                 "Scripts/Game_Engine/Save_As_Runtime",
@@ -209,31 +209,31 @@ class SaveAsRuntime(bpy.types.Operator):
         ext = os.path.splitext(blender_bin_path)[-1].lower()
 
     default_player_path = os.path.join(blender_bin_dir, 'blenderplayer' + ext)
-    player_path = StringProperty(
+    player_path: StringProperty(
             name="Player Path",
             description="The path to the player to use",
             default=default_player_path,
             subtype='FILE_PATH',
             )
-    filepath = StringProperty(
+    filepath: StringProperty(
             subtype='FILE_PATH',
             )
-    copy_python = BoolProperty(
+    copy_python: BoolProperty(
             name="Copy Python",
             description="Copy bundle Python with the runtime",
             default=True,
             )
-    overwrite_lib = BoolProperty(
+    overwrite_lib: BoolProperty(
             name="Overwrite 'lib' folder",
             description="Overwrites the lib folder (if one exists) with the bundled Python lib folder",
             default=False,
             )
-    copy_scripts = BoolProperty(
+    copy_scripts: BoolProperty(
             name="Copy Scripts folder",
             description="Copy bundle Scripts folder with the runtime",
             default=False,
             )
-    copy_datafiles = BoolProperty(
+    copy_datafiles: BoolProperty(
             name="Copy Datafiles folder",
             description="Copy bundle datafiles folder with the runtime",
             default=True,
@@ -241,7 +241,7 @@ class SaveAsRuntime(bpy.types.Operator):
 
     # Only Windows has dlls to copy
     if ext == '.exe':
-        copy_dlls = BoolProperty(
+        copy_dlls: BoolProperty(
                 name="Copy DLLs",
                 description="Copy all needed DLLs with the runtime",
                 default=True,
@@ -277,16 +277,22 @@ class SaveAsRuntime(bpy.types.Operator):
 
 def menu_func(self, context):
     self.layout.operator(SaveAsRuntime.bl_idname)
+    
+classes = (
+    SaveAsRuntime,
+)
 
 
 def register():
-    bpy.utils.register_module(__name__)
+    for cls in classes:
+        bpy.utils.register_class(cls)
 
     bpy.types.INFO_MT_file_export.append(menu_func)
 
 
 def unregister():
-    bpy.utils.unregister_module(__name__)
+    for cls in classes:
+        bpy.utils.unregister_class(cls)
 
     bpy.types.INFO_MT_file_export.remove(menu_func)
 

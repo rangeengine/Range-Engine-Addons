@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.oso
 shader node_principled_hair_bsdf
 param	color	Color	0.017512999 0.0057629999 0.0020590001		%read{78,82} %write{2147483647,-1}
 param	float	Melanin	0.80000001		%read{28,28} %write{2147483647,-1}
@@ -118,101 +118,101 @@ temp	color	$tmp56	%read{90,90} %write{88,88}
 temp	color	$tmp58	%read{90,90} %write{89,89}
 const	string	$const28	"principled_hair"		%read{91,91} %write{2147483647,-1}
 code Normal
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:44
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:44
 # 	normal Normal = Ng,
-	assign		Normal Ng 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl"} %line{44} %argrw{"wr"}
+	assign		Normal Ng 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl"} %line{44} %argrw{"wr"}
 code Offset
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:46
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:46
 # 	float Offset = radians(2),
-	functioncall	$const3 4 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl"} %line{46} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:88
+	functioncall	$const3 4 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl"} %line{46} %argrw{"r"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:88
 # float  radians (float x)  { return x*(M_PI/180.0); }
-	div		$tmp1 $const4 $const5 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{88} %argrw{"wrr"}
+	div		$tmp1 $const4 $const5 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{88} %argrw{"wrr"}
 	mul		Offset $const2 $tmp1 	%argrw{"wrr"}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:58
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:58
 # 	float random_value = 0.0;
-	assign		random_value $const6 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl"} %line{58} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:60
+	assign		random_value $const6 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl"} %line{58} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:60
 # 	if (isconnected(Random)) {
 	isconnected	$tmp2 Random 	%line{60} %argrw{"wr"}
 	if		$tmp2 8 9 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:61
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:61
 # 		random_value = Random;
 	assign		random_value Random 	%line{61} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:64
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:64
 # 		getattribute(AttrRandom, random_value);
 	getattribute	$tmp3 AttrRandom random_value 	%line{64} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:68
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:68
 # 	float factor_random_roughness = 1.0 + 2.0*(random_value - 0.5)*RandomRoughness;
 	sub		$tmp4 random_value $const8 	%line{68} %argrw{"wrr"}
 	mul		$tmp5 $const2 $tmp4 	%argrw{"wrr"}
 	mul		$tmp6 $tmp5 RandomRoughness 	%argrw{"wrr"}
 	add		factor_random_roughness $const7 $tmp6 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:69
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:69
 # 	float m0_roughness = 1.0 - clamp(Coat, 0.0, 1.0);
 	functioncall	$const9 16 	%line{69} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:144
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:144
 # float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
-	min		$tmp8 Coat $const7 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
+	min		$tmp8 Coat $const7 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
 	max		$tmp7 $tmp8 $const6 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:69
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:69
 # 	float m0_roughness = 1.0 - clamp(Coat, 0.0, 1.0);
-	sub		m0_roughness $const7 $tmp7 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl"} %line{69} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:70
+	sub		m0_roughness $const7 $tmp7 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl"} %line{69} %argrw{"wrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:70
 # 	float roughness = Roughness*factor_random_roughness;
 	mul		roughness Roughness factor_random_roughness 	%line{70} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:71
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:71
 # 	float radial_roughness = RadialRoughness*factor_random_roughness;
 	mul		radial_roughness RadialRoughness factor_random_roughness 	%line{71} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:76
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:76
 # 	if (parametrization == "Absorption coefficient") {
 	eq		$tmp9 parametrization $const10 	%line{76} %argrw{"wrr"}
 	if		$tmp9 22 91 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:77
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:77
 # 		sigma = AbsorptionCoefficient;
 	assign		sigma AbsorptionCoefficient 	%line{77} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:79
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:79
 # 	else if (parametrization == "Melanin concentration") {
 	eq		$tmp10 parametrization $const11 	%line{79} %argrw{"wrr"}
 	if		$tmp10 63 91 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:81
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:81
 # 		float factor_random_color = 1.0 + 2.0*(random_value - 0.5) * RandomColor;
 	sub		$tmp11 random_value $const8 	%line{81} %argrw{"wrr"}
 	mul		$tmp12 $const2 $tmp11 	%argrw{"wrr"}
 	mul		$tmp13 $tmp12 RandomColor 	%argrw{"wrr"}
 	add		___675_factor_random_color $const7 $tmp13 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:82
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:82
 # 		float melanin = Melanin * factor_random_color;
 	mul		___675_melanin Melanin ___675_factor_random_color 	%line{82} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:85
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:85
 # 		melanin = -log(max(1.0 - melanin, 0.0001));
 	sub		$tmp16 $const7 ___675_melanin 	%line{85} %argrw{"wrr"}
 	max		$tmp15 $tmp16 $const12 	%argrw{"wrr"}
 	log		$tmp14 $tmp15 	%argrw{"wr"}
 	neg		___675_melanin $tmp14 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:88
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:88
 # 		float eumelanin = melanin * (1.0 - MelaninRedness);
 	sub		$tmp17 $const7 MelaninRedness 	%line{88} %argrw{"wrr"}
 	mul		___675_eumelanin ___675_melanin $tmp17 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:89
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:89
 # 		float pheomelanin = melanin * MelaninRedness;
 	mul		___675_pheomelanin ___675_melanin MelaninRedness 	%line{89} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:90
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:90
 # 		color melanin_sigma = sigma_from_concentration(eumelanin, pheomelanin);
 	functioncall	$const13 40 	%line{90} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:26
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:26
 # 	return eumelanin*color(0.506, 0.841, 1.653) + pheomelanin*color(0.343, 0.733, 1.924);
 	mul		$tmp19 ___675_eumelanin $const14 	%line{26} %argrw{"wrr"}
 	mul		$tmp21 ___675_pheomelanin $const15 	%argrw{"wrr"}
 	add		___675_melanin_sigma $tmp19 $tmp21 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:93
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:93
 # 		color tint_sigma = sigma_from_reflectance(Tint, radial_roughness);
 	functioncall	$const16 62 	%line{93} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:31
 # 	float x = azimuthal_roughness;
 	assign		___671_x radial_roughness 	%line{31} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:32
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:32
 # 	float roughness_fac = (((((0.245*x) + 5.574)*x - 10.73)*x + 2.532)*x - 0.215)*x + 5.969;
 	mul		$tmp22 $const17 ___671_x 	%line{32} %argrw{"wrr"}
 	add		$tmp23 $tmp22 $const18 	%argrw{"wrr"}
@@ -224,10 +224,10 @@ code ___main___
 	sub		$tmp29 $tmp28 $const21 	%argrw{"wrr"}
 	mul		$tmp30 $tmp29 ___671_x 	%argrw{"wrr"}
 	add		___671_roughness_fac $tmp30 $const22 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:33
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:33
 # 	color sigma = log3(c) / roughness_fac;
 	functioncall	$const23 60 	%line{33} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:21
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:21
 # 	return color(log(a[0]), log(a[1]), log(a[2]));
 	compref		$tmp33 Tint $const24 	%line{21} %argrw{"wrr"}
 	log		$tmp32 $tmp33 	%argrw{"wr"}
@@ -236,26 +236,26 @@ code ___main___
 	compref		$tmp37 Tint $const1 	%argrw{"wrr"}
 	log		$tmp36 $tmp37 	%argrw{"wr"}
 	color		$tmp31 $tmp32 $tmp34 $tmp36 	%argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:33
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:33
 # 	color sigma = log3(c) / roughness_fac;
 	div		___671_sigma $tmp31 ___671_roughness_fac 	%line{33} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:34
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:34
 # 	return sigma * sigma;
 	mul		___675_tint_sigma ___671_sigma ___671_sigma 	%line{34} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:94
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:94
 # 		sigma = melanin_sigma + tint_sigma;
 	add		sigma ___675_melanin_sigma ___675_tint_sigma 	%line{94} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:96
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:96
 # 	else if (parametrization == "Direct coloring"){
 	eq		$tmp38 parametrization $const26 	%line{96} %argrw{"wrr"}
 	if		$tmp38 87 91 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:97
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:97
 # 		sigma = sigma_from_reflectance(Color, radial_roughness);
 	functioncall	$const16 87 	%line{97} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:31
 # 	float x = azimuthal_roughness;
 	assign		___671_x radial_roughness 	%line{31} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:32
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:32
 # 	float roughness_fac = (((((0.245*x) + 5.574)*x - 10.73)*x + 2.532)*x - 0.215)*x + 5.969;
 	mul		$tmp39 $const17 ___671_x 	%line{32} %argrw{"wrr"}
 	add		$tmp40 $tmp39 $const18 	%argrw{"wrr"}
@@ -267,10 +267,10 @@ code ___main___
 	sub		$tmp46 $tmp45 $const21 	%argrw{"wrr"}
 	mul		$tmp47 $tmp46 ___671_x 	%argrw{"wrr"}
 	add		___671_roughness_fac $tmp47 $const22 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:33
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:33
 # 	color sigma = log3(c) / roughness_fac;
 	functioncall	$const23 85 	%line{33} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:21
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:21
 # 	return color(log(a[0]), log(a[1]), log(a[2]));
 	compref		$tmp50 Color $const24 	%line{21} %argrw{"wrr"}
 	log		$tmp49 $tmp50 	%argrw{"wr"}
@@ -279,21 +279,21 @@ code ___main___
 	compref		$tmp54 Color $const1 	%argrw{"wrr"}
 	log		$tmp53 $tmp54 	%argrw{"wr"}
 	color		$tmp48 $tmp49 $tmp51 $tmp53 	%argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:33
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:33
 # 	color sigma = log3(c) / roughness_fac;
 	div		___671_sigma $tmp48 ___671_roughness_fac 	%line{33} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:34
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:34
 # 	return sigma * sigma;
 	mul		sigma ___671_sigma ___671_sigma 	%line{34} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:101
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:101
 # 		sigma = sigma_from_concentration(0.0, 0.8054375);
 	functioncall	$const13 91 	%line{101} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:26
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:26
 # 	return eumelanin*color(0.506, 0.841, 1.653) + pheomelanin*color(0.343, 0.733, 1.924);
 	mul		$tmp56 $const6 $const14 	%line{26} %argrw{"wrr"}
 	mul		$tmp58 $const27 $const15 	%argrw{"wrr"}
 	add		sigma $tmp56 $tmp58 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:104
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_principled_hair_bsdf.osl:104
 # 	BSDF = principled_hair(Normal, sigma, roughness, radial_roughness, m0_roughness, Offset, IOR);
 	closure		BSDF $const28 Normal sigma roughness radial_roughness m0_roughness Offset IOR 	%line{104} %argrw{"wrrrrrrrr"}
 	end

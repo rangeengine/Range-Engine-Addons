@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_wireframe.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_wireframe.oso
 shader node_wireframe
 param	string	bump_offset	"center"		%read{74,156} %write{2147483647,-1}
 param	int	use_pixel_size	0		%read{33,193} %write{2147483647,-1}
@@ -152,38 +152,38 @@ temp	float	$tmp113	%read{236,236} %write{234,234}
 temp	float	$tmp114	%read{236,236} %write{235,235}
 temp	float	$tmp115	%read{237,237} %write{236,236}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl:26
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl:26
 # 	Fac = wireframe("triangles", Size, use_pixel_size);
-	functioncall	$const2 74 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl"} %line{26} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:43
+	functioncall	$const2 74 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl"} %line{26} %argrw{"r"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:43
 #    if (raytype("path:diffuse")) return 0.0;
-	raytype		$tmp1 $const3 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h"} %line{43} %argrw{"wr"}
+	raytype		$tmp1 $const3 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h"} %line{43} %argrw{"wr"}
 	if		$tmp1 5 5 	%argrw{"r"}
 	assign		Fac $const4 	%argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:45
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:45
 #    int np = 0;
 	assign		___669_np $const5 	%line{45} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:47
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:47
 #    float pixelWidth = 1;
 	assign		___669_pixelWidth $const6 	%line{47} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:49
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:49
 #    if (edge_type == "triangles")
 	eq		$tmp2 $const1 $const1 	%line{49} %argrw{"wrr"}
 	if		$tmp2 15 33 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:51
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:51
 #       np = 3;
 	assign		___669_np $const7 	%line{51} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:52
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:52
 #       if (!getattribute("geom:trianglevertices", p))
 	getattribute	$tmp3 $const8 ___669_p 	%line{52} %argrw{"wrw"}
 	eq		$tmp4 $tmp3 $const5 	%argrw{"wrr"}
 	if		$tmp4 15 15 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:53
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:53
 #          return 0.0;
 	assign		Fac $const4 	%line{53} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:55
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:55
 #    else if (edge_type == "polygons" || edge_type == "patches")
 	eq		$tmp5 $const1 $const9 	%line{55} %argrw{"wrr"}
 	neq		$tmp6 $tmp5 $const5 	%argrw{"wrr"}
@@ -192,10 +192,10 @@ code ___main___
 	neq		$tmp8 $tmp7 $const5 	%argrw{"wrr"}
 	assign		$tmp6 $tmp8 	%argrw{"wr"}
 	if		$tmp6 33 33 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:57
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:57
 #       getattribute("geom:numpolyvertices", np);
 	getattribute	$tmp9 $const11 ___669_np 	%line{57} %argrw{"wrw"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:58
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:58
 #       if (np < 3 || !getattribute("geom:polyvertices", p))
 	lt		$tmp10 ___669_np $const7 	%line{58} %argrw{"wrr"}
 	neq		$tmp11 $tmp10 $const5 	%argrw{"wrr"}
@@ -205,14 +205,14 @@ code ___main___
 	neq		$tmp14 $tmp13 $const5 	%argrw{"wrr"}
 	assign		$tmp11 $tmp14 	%argrw{"wr"}
 	if		$tmp11 33 33 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:59
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:59
 #          return 0.0;
 	assign		Fac $const4 	%line{59} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:62
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:62
 #    if (raster)
 	if		use_pixel_size 48 48 	%line{62} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:66
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:66
 #       float pixelWidthX = length(Dx(P) - dot(Dx(P), I) * I);
 	Dx		$tmp15 P 	%line{66} %argrw{"wr"} %argderivs{1}
 	Dx		$tmp17 P 	%argrw{"wr"} %argderivs{1}
@@ -220,7 +220,7 @@ code ___main___
 	mul		$tmp18 $tmp16 I 	%argrw{"wrr"}
 	sub		$tmp19 $tmp15 $tmp18 	%argrw{"wrr"}
 	length		___672_pixelWidthX $tmp19 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:67
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:67
 #       float pixelWidthY = length(Dy(P) - dot(Dy(P), I) * I);
 	Dy		$tmp20 P 	%line{67} %argrw{"wr"} %argderivs{1}
 	Dy		$tmp22 P 	%argrw{"wr"} %argderivs{1}
@@ -228,100 +228,100 @@ code ___main___
 	mul		$tmp23 $tmp21 I 	%argrw{"wrr"}
 	sub		$tmp24 $tmp20 $tmp23 	%argrw{"wrr"}
 	length		___672_pixelWidthY $tmp24 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:69
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:69
 #       pixelWidth = (pixelWidthX + pixelWidthY) / 2;
 	add		$tmp25 ___672_pixelWidthX ___672_pixelWidthY 	%line{69} %argrw{"wrr"}
 	div		___669_pixelWidth $tmp25 $const14 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:74
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:74
 #    pixelWidth *= 0.5 * line_width;
 	mul		$tmp26 $const15 Size 	%line{74} %argrw{"wrr"}
 	mul		___669_pixelWidth ___669_pixelWidth $tmp26 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:75
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:75
 #    pixelWidth *= pixelWidth;
 	mul		___669_pixelWidth ___669_pixelWidth ___669_pixelWidth 	%line{75} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:76
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:76
 #    for (int i = 0; i < np; i++)
 	for		$tmp27 53 54 70 72 	%line{76} %argrw{"r"}
 	assign		___673_i $const5 	%argrw{"wr"}
 	lt		$tmp27 ___673_i ___669_np 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:78
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:78
 #       int i2 = i ? i - 1 : np - 1;
 	if		___673_i 56 57 	%line{78} %argrw{"r"}
 	sub		___674_i2 ___673_i $const6 	%argrw{"wrr"}
 	sub		___674_i2 ___669_np $const6 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:79
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:79
 #       vector dir = P - p[i];
 	aref		$tmp28 ___669_p ___673_i 	%line{79} %argrw{"wrr"}
 	sub		___674_dir P $tmp28 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:80
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:80
 #       vector edge = p[i] - p[i2];
 	aref		$tmp29 ___669_p ___673_i 	%line{80} %argrw{"wrr"}
 	aref		$tmp30 ___669_p ___674_i2 	%argrw{"wrr"}
 	sub		___674_edge $tmp29 $tmp30 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:81
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:81
 #       vector crs = cross(edge, dir);
 	cross		___674_crs ___674_edge ___674_dir 	%line{81} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:85
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:85
 #       if (dot(crs, crs) < (dot(edge, edge) * pixelWidth))
 	dot		$tmp31 ___674_crs ___674_crs 	%line{85} %argrw{"wrr"}
 	dot		$tmp32 ___674_edge ___674_edge 	%argrw{"wrr"}
 	mul		$tmp33 $tmp32 ___669_pixelWidth 	%argrw{"wrr"}
 	lt		$tmp34 $tmp31 $tmp33 	%argrw{"wrr"}
 	if		$tmp34 70 70 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:86
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:86
 #          return 1;
 	assign		Fac $const6 	%line{86} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:76
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:76
 #    for (int i = 0; i < np; i++)
 	assign		$tmp35 ___673_i 	%line{76} %argrw{"wr"}
 	add		___673_i ___673_i $const6 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:88
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:88
 #    return 0;
 	assign		Fac $const5 	%line{88} %argrw{"wr"}
 	return
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl:31
 # 	if (bump_offset == "dx") {
-	eq		$tmp36 bump_offset $const16 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl"} %line{31} %argrw{"wrr"}
+	eq		$tmp36 bump_offset $const16 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl"} %line{31} %argrw{"wrr"}
 	if		$tmp36 156 238 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl:32
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl:32
 # 		point dx = Dx(P);
 	Dx		___678_dx P 	%line{32} %argrw{"wr"} %argderivs{1}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl:33
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl:33
 # 		P -= dx;
 	sub		P P ___678_dx 	%line{33} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl:34
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl:34
 # 		Fac += (Fac - wireframe("triangles", Size, use_pixel_size)) / length(dx);
 	functioncall	$const2 152 	%line{34} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:43
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:43
 #    if (raytype("path:diffuse")) return 0.0;
-	raytype		$tmp38 $const3 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h"} %line{43} %argrw{"wr"}
+	raytype		$tmp38 $const3 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h"} %line{43} %argrw{"wr"}
 	if		$tmp38 83 83 	%argrw{"r"}
 	assign		$tmp37 $const4 	%argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:45
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:45
 #    int np = 0;
 	assign		___669_np $const5 	%line{45} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:47
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:47
 #    float pixelWidth = 1;
 	assign		___669_pixelWidth $const6 	%line{47} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:49
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:49
 #    if (edge_type == "triangles")
 	eq		$tmp39 $const1 $const1 	%line{49} %argrw{"wrr"}
 	if		$tmp39 93 111 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:51
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:51
 #       np = 3;
 	assign		___669_np $const7 	%line{51} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:52
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:52
 #       if (!getattribute("geom:trianglevertices", p))
 	getattribute	$tmp40 $const8 ___669_p 	%line{52} %argrw{"wrw"}
 	eq		$tmp41 $tmp40 $const5 	%argrw{"wrr"}
 	if		$tmp41 93 93 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:53
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:53
 #          return 0.0;
 	assign		$tmp37 $const4 	%line{53} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:55
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:55
 #    else if (edge_type == "polygons" || edge_type == "patches")
 	eq		$tmp42 $const1 $const9 	%line{55} %argrw{"wrr"}
 	neq		$tmp43 $tmp42 $const5 	%argrw{"wrr"}
@@ -330,10 +330,10 @@ code ___main___
 	neq		$tmp45 $tmp44 $const5 	%argrw{"wrr"}
 	assign		$tmp43 $tmp45 	%argrw{"wr"}
 	if		$tmp43 111 111 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:57
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:57
 #       getattribute("geom:numpolyvertices", np);
 	getattribute	$tmp46 $const11 ___669_np 	%line{57} %argrw{"wrw"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:58
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:58
 #       if (np < 3 || !getattribute("geom:polyvertices", p))
 	lt		$tmp47 ___669_np $const7 	%line{58} %argrw{"wrr"}
 	neq		$tmp48 $tmp47 $const5 	%argrw{"wrr"}
@@ -343,14 +343,14 @@ code ___main___
 	neq		$tmp51 $tmp50 $const5 	%argrw{"wrr"}
 	assign		$tmp48 $tmp51 	%argrw{"wr"}
 	if		$tmp48 111 111 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:59
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:59
 #          return 0.0;
 	assign		$tmp37 $const4 	%line{59} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:62
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:62
 #    if (raster)
 	if		use_pixel_size 126 126 	%line{62} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:66
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:66
 #       float pixelWidthX = length(Dx(P) - dot(Dx(P), I) * I);
 	Dx		$tmp52 P 	%line{66} %argrw{"wr"} %argderivs{1}
 	Dx		$tmp54 P 	%argrw{"wr"} %argderivs{1}
@@ -358,7 +358,7 @@ code ___main___
 	mul		$tmp55 $tmp53 I 	%argrw{"wrr"}
 	sub		$tmp56 $tmp52 $tmp55 	%argrw{"wrr"}
 	length		___672_pixelWidthX $tmp56 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:67
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:67
 #       float pixelWidthY = length(Dy(P) - dot(Dy(P), I) * I);
 	Dy		$tmp57 P 	%line{67} %argrw{"wr"} %argderivs{1}
 	Dy		$tmp59 P 	%argrw{"wr"} %argderivs{1}
@@ -366,106 +366,106 @@ code ___main___
 	mul		$tmp60 $tmp58 I 	%argrw{"wrr"}
 	sub		$tmp61 $tmp57 $tmp60 	%argrw{"wrr"}
 	length		___672_pixelWidthY $tmp61 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:69
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:69
 #       pixelWidth = (pixelWidthX + pixelWidthY) / 2;
 	add		$tmp62 ___672_pixelWidthX ___672_pixelWidthY 	%line{69} %argrw{"wrr"}
 	div		___669_pixelWidth $tmp62 $const14 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:74
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:74
 #    pixelWidth *= 0.5 * line_width;
 	mul		$tmp63 $const15 Size 	%line{74} %argrw{"wrr"}
 	mul		___669_pixelWidth ___669_pixelWidth $tmp63 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:75
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:75
 #    pixelWidth *= pixelWidth;
 	mul		___669_pixelWidth ___669_pixelWidth ___669_pixelWidth 	%line{75} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:76
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:76
 #    for (int i = 0; i < np; i++)
 	for		$tmp64 131 132 148 150 	%line{76} %argrw{"r"}
 	assign		___673_i $const5 	%argrw{"wr"}
 	lt		$tmp64 ___673_i ___669_np 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:78
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:78
 #       int i2 = i ? i - 1 : np - 1;
 	if		___673_i 134 135 	%line{78} %argrw{"r"}
 	sub		___674_i2 ___673_i $const6 	%argrw{"wrr"}
 	sub		___674_i2 ___669_np $const6 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:79
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:79
 #       vector dir = P - p[i];
 	aref		$tmp65 ___669_p ___673_i 	%line{79} %argrw{"wrr"}
 	sub		___674_dir P $tmp65 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:80
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:80
 #       vector edge = p[i] - p[i2];
 	aref		$tmp66 ___669_p ___673_i 	%line{80} %argrw{"wrr"}
 	aref		$tmp67 ___669_p ___674_i2 	%argrw{"wrr"}
 	sub		___674_edge $tmp66 $tmp67 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:81
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:81
 #       vector crs = cross(edge, dir);
 	cross		___674_crs ___674_edge ___674_dir 	%line{81} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:85
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:85
 #       if (dot(crs, crs) < (dot(edge, edge) * pixelWidth))
 	dot		$tmp68 ___674_crs ___674_crs 	%line{85} %argrw{"wrr"}
 	dot		$tmp69 ___674_edge ___674_edge 	%argrw{"wrr"}
 	mul		$tmp70 $tmp69 ___669_pixelWidth 	%argrw{"wrr"}
 	lt		$tmp71 $tmp68 $tmp70 	%argrw{"wrr"}
 	if		$tmp71 148 148 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:86
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:86
 #          return 1;
 	assign		$tmp37 $const6 	%line{86} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:76
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:76
 #    for (int i = 0; i < np; i++)
 	assign		$tmp72 ___673_i 	%line{76} %argrw{"wr"}
 	add		___673_i ___673_i $const6 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:88
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:88
 #    return 0;
 	assign		$tmp37 $const5 	%line{88} %argrw{"wr"}
 	return
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl:34
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl:34
 # 		Fac += (Fac - wireframe("triangles", Size, use_pixel_size)) / length(dx);
-	sub		$tmp73 Fac $tmp37 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl"} %line{34} %argrw{"wrr"}
+	sub		$tmp73 Fac $tmp37 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl"} %line{34} %argrw{"wrr"}
 	length		$tmp74 ___678_dx 	%argrw{"wr"}
 	div		$tmp75 $tmp73 $tmp74 	%argrw{"wrr"}
 	add		Fac Fac $tmp75 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl:36
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl:36
 # 	else if (bump_offset == "dy") {
 	eq		$tmp76 bump_offset $const17 	%line{36} %argrw{"wrr"}
 	if		$tmp76 238 238 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl:37
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl:37
 # 		point dy = Dy(P);
 	Dy		___679_dy P 	%line{37} %argrw{"wr"} %argderivs{1}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl:38
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl:38
 # 		P -= dy;
 	sub		P P ___679_dy 	%line{38} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl:39
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl:39
 # 		Fac += (Fac - wireframe("triangles", Size, use_pixel_size)) / length(dy);
 	functioncall	$const2 234 	%line{39} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:43
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:43
 #    if (raytype("path:diffuse")) return 0.0;
-	raytype		$tmp78 $const3 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h"} %line{43} %argrw{"wr"}
+	raytype		$tmp78 $const3 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h"} %line{43} %argrw{"wr"}
 	if		$tmp78 165 165 	%argrw{"r"}
 	assign		$tmp77 $const4 	%argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:45
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:45
 #    int np = 0;
 	assign		___669_np $const5 	%line{45} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:47
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:47
 #    float pixelWidth = 1;
 	assign		___669_pixelWidth $const6 	%line{47} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:49
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:49
 #    if (edge_type == "triangles")
 	eq		$tmp79 $const1 $const1 	%line{49} %argrw{"wrr"}
 	if		$tmp79 175 193 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:51
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:51
 #       np = 3;
 	assign		___669_np $const7 	%line{51} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:52
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:52
 #       if (!getattribute("geom:trianglevertices", p))
 	getattribute	$tmp80 $const8 ___669_p 	%line{52} %argrw{"wrw"}
 	eq		$tmp81 $tmp80 $const5 	%argrw{"wrr"}
 	if		$tmp81 175 175 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:53
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:53
 #          return 0.0;
 	assign		$tmp77 $const4 	%line{53} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:55
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:55
 #    else if (edge_type == "polygons" || edge_type == "patches")
 	eq		$tmp82 $const1 $const9 	%line{55} %argrw{"wrr"}
 	neq		$tmp83 $tmp82 $const5 	%argrw{"wrr"}
@@ -474,10 +474,10 @@ code ___main___
 	neq		$tmp85 $tmp84 $const5 	%argrw{"wrr"}
 	assign		$tmp83 $tmp85 	%argrw{"wr"}
 	if		$tmp83 193 193 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:57
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:57
 #       getattribute("geom:numpolyvertices", np);
 	getattribute	$tmp86 $const11 ___669_np 	%line{57} %argrw{"wrw"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:58
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:58
 #       if (np < 3 || !getattribute("geom:polyvertices", p))
 	lt		$tmp87 ___669_np $const7 	%line{58} %argrw{"wrr"}
 	neq		$tmp88 $tmp87 $const5 	%argrw{"wrr"}
@@ -487,14 +487,14 @@ code ___main___
 	neq		$tmp91 $tmp90 $const5 	%argrw{"wrr"}
 	assign		$tmp88 $tmp91 	%argrw{"wr"}
 	if		$tmp88 193 193 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:59
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:59
 #          return 0.0;
 	assign		$tmp77 $const4 	%line{59} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:62
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:62
 #    if (raster)
 	if		use_pixel_size 208 208 	%line{62} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:66
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:66
 #       float pixelWidthX = length(Dx(P) - dot(Dx(P), I) * I);
 	Dx		$tmp92 P 	%line{66} %argrw{"wr"} %argderivs{1}
 	Dx		$tmp94 P 	%argrw{"wr"} %argderivs{1}
@@ -502,7 +502,7 @@ code ___main___
 	mul		$tmp95 $tmp93 I 	%argrw{"wrr"}
 	sub		$tmp96 $tmp92 $tmp95 	%argrw{"wrr"}
 	length		___672_pixelWidthX $tmp96 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:67
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:67
 #       float pixelWidthY = length(Dy(P) - dot(Dy(P), I) * I);
 	Dy		$tmp97 P 	%line{67} %argrw{"wr"} %argderivs{1}
 	Dy		$tmp99 P 	%argrw{"wr"} %argderivs{1}
@@ -510,61 +510,61 @@ code ___main___
 	mul		$tmp100 $tmp98 I 	%argrw{"wrr"}
 	sub		$tmp101 $tmp97 $tmp100 	%argrw{"wrr"}
 	length		___672_pixelWidthY $tmp101 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:69
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:69
 #       pixelWidth = (pixelWidthX + pixelWidthY) / 2;
 	add		$tmp102 ___672_pixelWidthX ___672_pixelWidthY 	%line{69} %argrw{"wrr"}
 	div		___669_pixelWidth $tmp102 $const14 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:74
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:74
 #    pixelWidth *= 0.5 * line_width;
 	mul		$tmp103 $const15 Size 	%line{74} %argrw{"wrr"}
 	mul		___669_pixelWidth ___669_pixelWidth $tmp103 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:75
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:75
 #    pixelWidth *= pixelWidth;
 	mul		___669_pixelWidth ___669_pixelWidth ___669_pixelWidth 	%line{75} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:76
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:76
 #    for (int i = 0; i < np; i++)
 	for		$tmp104 213 214 230 232 	%line{76} %argrw{"r"}
 	assign		___673_i $const5 	%argrw{"wr"}
 	lt		$tmp104 ___673_i ___669_np 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:78
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:78
 #       int i2 = i ? i - 1 : np - 1;
 	if		___673_i 216 217 	%line{78} %argrw{"r"}
 	sub		___674_i2 ___673_i $const6 	%argrw{"wrr"}
 	sub		___674_i2 ___669_np $const6 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:79
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:79
 #       vector dir = P - p[i];
 	aref		$tmp105 ___669_p ___673_i 	%line{79} %argrw{"wrr"}
 	sub		___674_dir P $tmp105 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:80
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:80
 #       vector edge = p[i] - p[i2];
 	aref		$tmp106 ___669_p ___673_i 	%line{80} %argrw{"wrr"}
 	aref		$tmp107 ___669_p ___674_i2 	%argrw{"wrr"}
 	sub		___674_edge $tmp106 $tmp107 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:81
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:81
 #       vector crs = cross(edge, dir);
 	cross		___674_crs ___674_edge ___674_dir 	%line{81} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:85
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:85
 #       if (dot(crs, crs) < (dot(edge, edge) * pixelWidth))
 	dot		$tmp108 ___674_crs ___674_crs 	%line{85} %argrw{"wrr"}
 	dot		$tmp109 ___674_edge ___674_edge 	%argrw{"wrr"}
 	mul		$tmp110 $tmp109 ___669_pixelWidth 	%argrw{"wrr"}
 	lt		$tmp111 $tmp108 $tmp110 	%argrw{"wrr"}
 	if		$tmp111 230 230 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:86
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:86
 #          return 1;
 	assign		$tmp77 $const6 	%line{86} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:76
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:76
 #    for (int i = 0; i < np; i++)
 	assign		$tmp112 ___673_i 	%line{76} %argrw{"wr"}
 	add		___673_i ___673_i $const6 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\oslutil.h:88
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\oslutil.h:88
 #    return 0;
 	assign		$tmp77 $const5 	%line{88} %argrw{"wr"}
 	return
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl:39
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl:39
 # 		Fac += (Fac - wireframe("triangles", Size, use_pixel_size)) / length(dy);
-	sub		$tmp113 Fac $tmp77 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_wireframe.osl"} %line{39} %argrw{"wrr"}
+	sub		$tmp113 Fac $tmp77 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_wireframe.osl"} %line{39} %argrw{"wrr"}
 	length		$tmp114 ___679_dy 	%argrw{"wr"}
 	div		$tmp115 $tmp113 $tmp114 	%argrw{"wrr"}
 	add		Fac Fac $tmp115 	%argrw{"wrr"}

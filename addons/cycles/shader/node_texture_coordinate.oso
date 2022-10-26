@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.oso
 shader node_texture_coordinate
 param	normal	NormalIn	0 0 0		%read{10,36} %write{0,0} %initexpr
 param	int	is_background	0		%read{1,1} %write{2147483647,-1}
@@ -67,171 +67,171 @@ temp	vector	$tmp26	%read{64,64} %write{63,63} %derivs
 temp	vector	$tmp27	%read{66,66} %write{65,65} %derivs
 const	float	$const19	0		%read{67,67} %write{2147483647,-1}
 code NormalIn
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:20
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:20
 # 	normal NormalIn = N,
-	assign		NormalIn N 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{20} %argrw{"wr"}
+	assign		NormalIn N 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{20} %argrw{"wr"}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:36
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:36
 # 	if (is_background) {
-	if		is_background 12 39 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{36} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:37
+	if		is_background 12 39 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{36} %argrw{"r"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:37
 # 		Generated = P;
 	assign		Generated P 	%line{37} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:38
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:38
 # 		UV = point(0.0, 0.0, 0.0);
 	assign		UV $const1 	%line{38} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:39
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:39
 # 		Object = P;
 	assign		Object P 	%line{39} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:40
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:40
 # 		point Pcam = transform("camera", "world", point(0, 0, 0));
 	transform	___669_Pcam $const2 $const3 $const1 	%line{40} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:41
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:41
 # 		Camera = transform("camera", P + Pcam);
 	add		$tmp2 P ___669_Pcam 	%line{41} %argrw{"wrr"}
 	functioncall	$const4 9 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:243
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:243
 # point  transform (string to, point p)  { return transform("common",to,p); }
-	transform	Camera $const5 $const2 $tmp2 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{243} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:42
+	transform	Camera $const5 $const2 $tmp2 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{243} %argrw{"wrrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:42
 # 		getattribute("NDC", Window);
-	getattribute	$tmp3 $const6 Window 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{42} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:43
+	getattribute	$tmp3 $const6 Window 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{42} %argrw{"wrw"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:43
 # 		Normal = NormalIn;
 	assign		Normal NormalIn 	%line{43} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:44
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:44
 # 		Reflection = I;
 	assign		Reflection I 	%line{44} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:47
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:47
 # 		if (from_dupli) {
 	if		from_dupli 15 24 	%line{47} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:48
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:48
 # 			getattribute("geom:dupli_generated", Generated); 
 	getattribute	$tmp4 $const7 Generated 	%line{48} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:49
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:49
 # 			getattribute("geom:dupli_uv", UV);
 	getattribute	$tmp5 $const8 UV 	%line{49} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:51
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:51
 # 		else if (is_volume) {
 	if		is_volume 22 24 	%line{51} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:52
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:52
 # 			Generated = transform("object", P);
 	functioncall	$const4 18 	%line{52} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:243
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:243
 # point  transform (string to, point p)  { return transform("common",to,p); }
-	transform	Generated $const5 $const9 P 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{243} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:55
+	transform	Generated $const5 $const9 P 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{243} %argrw{"wrrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:55
 # 			if (getattribute("geom:generated_transform", tfm))
-	getattribute	$tmp6 $const10 ___672_tfm 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{55} %argrw{"wrw"}
+	getattribute	$tmp6 $const10 ___672_tfm 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{55} %argrw{"wrw"}
 	if		$tmp6 21 21 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:56
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:56
 # 				Generated = transform(tfm, Generated);
 	transform	Generated ___672_tfm Generated 	%line{56} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:58
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:58
 # 			getattribute("geom:uv", UV);
 	getattribute	$tmp7 $const11 UV 	%line{58} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:61
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:61
 # 			getattribute("geom:generated", Generated); 
 	getattribute	$tmp8 $const12 Generated 	%line{61} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:62
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:62
 # 			getattribute("geom:uv", UV);
 	getattribute	$tmp9 $const11 UV 	%line{62} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:65
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:65
 # 		if (use_transform) {
 	if		use_transform 26 28 	%line{65} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:66
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:66
 # 			Object = transform(object_itfm, P);
 	transform	Object object_itfm P 	%line{66} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:69
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:69
 # 			Object = transform("object", P);
 	functioncall	$const4 28 	%line{69} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:243
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:243
 # point  transform (string to, point p)  { return transform("common",to,p); }
-	transform	Object $const5 $const9 P 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{243} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:71
+	transform	Object $const5 $const9 P 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{243} %argrw{"wrrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:71
 # 		Camera = transform("camera", P);
-	functioncall	$const4 30 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{71} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:243
+	functioncall	$const4 30 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{71} %argrw{"r"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:243
 # point  transform (string to, point p)  { return transform("common",to,p); }
-	transform	Camera $const5 $const2 P 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{243} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:72
+	transform	Camera $const5 $const2 P 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{243} %argrw{"wrrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:72
 # 		Window = transform("NDC", P);
-	functioncall	$const4 32 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{72} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:243
+	functioncall	$const4 32 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{72} %argrw{"r"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:243
 # point  transform (string to, point p)  { return transform("common",to,p); }
-	transform	Window $const5 $const6 P 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{243} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:73
+	transform	Window $const5 $const6 P 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{243} %argrw{"wrrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:73
 # 		Normal = transform("world", "object", NormalIn);
-	transformn	Normal $const3 $const9 NormalIn 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{73} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:74
+	transformn	Normal $const3 $const9 NormalIn 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{73} %argrw{"wrrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:74
 # 		Reflection = -reflect(I, NormalIn);
 	functioncall	$const13 38 	%line{74} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:192
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:192
 # vector reflect (vector I, vector N) { return I - 2*dot(N,I)*N; }
-	dot		$tmp11 NormalIn I 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{192} %argrw{"wrr"}
+	dot		$tmp11 NormalIn I 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{192} %argrw{"wrr"}
 	mul		$tmp12 $const15 $tmp11 	%argrw{"wrr"}
 	mul		$tmp13 $tmp12 NormalIn 	%argrw{"wrr"}
 	sub		$tmp10 I $tmp13 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:74
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:74
 # 		Reflection = -reflect(I, NormalIn);
-	neg		Reflection $tmp10 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{74} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:77
+	neg		Reflection $tmp10 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl"} %line{74} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:77
 # 	if (bump_offset == "dx") {
 	eq		$tmp14 bump_offset $const16 	%line{77} %argrw{"wrr"}
 	if		$tmp14 53 67 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:78
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:78
 # 		if (!from_dupli) {
 	eq		$tmp15 from_dupli $const17 	%line{78} %argrw{"wrr"}
 	if		$tmp15 47 47 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:79
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:79
 # 			Generated += Dx(Generated);
 	Dx		$tmp16 Generated 	%line{79} %argrw{"wr"} %argderivs{1}
 	add		Generated Generated $tmp16 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:80
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:80
 # 			UV += Dx(UV);
 	Dx		$tmp17 UV 	%line{80} %argrw{"wr"} %argderivs{1}
 	add		UV UV $tmp17 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:82
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:82
 # 		Object += Dx(Object);
 	Dx		$tmp18 Object 	%line{82} %argrw{"wr"} %argderivs{1}
 	add		Object Object $tmp18 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:83
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:83
 # 		Camera += Dx(Camera);
 	Dx		$tmp19 Camera 	%line{83} %argrw{"wr"} %argderivs{1}
 	add		Camera Camera $tmp19 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:84
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:84
 # 		Window += Dx(Window);
 	Dx		$tmp20 Window 	%line{84} %argrw{"wr"} %argderivs{1}
 	add		Window Window $tmp20 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:86
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:86
 # 	else if (bump_offset == "dy") {
 	eq		$tmp21 bump_offset $const18 	%line{86} %argrw{"wrr"}
 	if		$tmp21 67 67 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:87
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:87
 # 		if (!from_dupli) {
 	eq		$tmp22 from_dupli $const17 	%line{87} %argrw{"wrr"}
 	if		$tmp22 61 61 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:88
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:88
 # 			Generated += Dy(Generated);
 	Dy		$tmp23 Generated 	%line{88} %argrw{"wr"} %argderivs{1}
 	add		Generated Generated $tmp23 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:89
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:89
 # 			UV += Dy(UV);
 	Dy		$tmp24 UV 	%line{89} %argrw{"wr"} %argderivs{1}
 	add		UV UV $tmp24 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:91
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:91
 # 		Object += Dy(Object);
 	Dy		$tmp25 Object 	%line{91} %argrw{"wr"} %argderivs{1}
 	add		Object Object $tmp25 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:92
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:92
 # 		Camera += Dy(Camera);
 	Dy		$tmp26 Camera 	%line{92} %argrw{"wr"} %argderivs{1}
 	add		Camera Camera $tmp26 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:93
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:93
 # 		Window += Dy(Window);
 	Dy		$tmp27 Window 	%line{93} %argrw{"wr"} %argderivs{1}
 	add		Window Window $tmp27 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_texture_coordinate.osl:96
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_texture_coordinate.osl:96
 # 	Window[2] = 0.0;
 	compassign	Window $const14 $const19 	%line{96} %argrw{"wrr"}
 	end

@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_voxel_texture.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_voxel_texture.oso
 shader node_voxel_texture
 param	string	filename	""		%read{44,44} %write{2147483647,-1}
 param	string	interpolation	"linear"		%read{44,44} %write{2147483647,-1}
@@ -50,33 +50,33 @@ const	string	$const12	"periodic"		%read{44,44} %write{2147483647,-1}
 const	string	$const13	"interp"		%read{44,44} %write{2147483647,-1}
 const	string	$const14	"alpha"		%read{44,44} %write{2147483647,-1}
 code Vector
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl:24
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl:24
 # 	point Vector = P,
-	assign		Vector P 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl"} %line{24} %argrw{"wr"}
+	assign		Vector P 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl"} %line{24} %argrw{"wr"}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl:28
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl:28
 # 	point p = Vector;
-	assign		p Vector 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl"} %line{28} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl:29
+	assign		p Vector 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl"} %line{28} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl:29
 # 	if (use_mapping) {
 	if		use_mapping 4 9 	%line{29} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl:30
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl:30
 # 		p = transform(mapping, p);
 	transform	p mapping p 	%line{30} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl:33
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl:33
 # 		p = transform("object", Vector);
 	functioncall	$const2 6 	%line{33} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:243
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:243
 # point  transform (string to, point p)  { return transform("common",to,p); }
-	transform	p $const3 $const1 Vector 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{243} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl:35
+	transform	p $const3 $const1 Vector 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{243} %argrw{"wrrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl:35
 # 		if (getattribute("geom:generated_transform", tfm))
-	getattribute	$tmp1 $const4 ___670_tfm 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl"} %line{35} %argrw{"wrw"}
+	getattribute	$tmp1 $const4 ___670_tfm 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl"} %line{35} %argrw{"wrw"}
 	if		$tmp1 9 9 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl:36
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl:36
 # 			p = transform(tfm, p);
 	transform	p ___670_tfm p 	%line{36} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl:38
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl:38
 # 	if (p[0] < 0.0 || p[1] < 0.0 || p[2] < 0.0 ||
 	compref		$tmp2 p $const5 	%line{38} %argrw{"wrr"}
 	lt		$tmp3 $tmp2 $const6 	%argrw{"wrr"}
@@ -93,7 +93,7 @@ code ___main___
 	neq		$tmp11 $tmp10 $const5 	%argrw{"wrr"}
 	assign		$tmp8 $tmp11 	%argrw{"wr"}
 	neq		$tmp12 $tmp8 $const5 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl:39
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl:39
 # 	    p[0] > 1.0 || p[1] > 1.0 || p[2] > 1.0)
 	if		$tmp12 25 29 	%line{39} %argrw{"r"}
 	compref		$tmp13 p $const5 	%argrw{"wrr"}
@@ -112,16 +112,16 @@ code ___main___
 	gt		$tmp22 $tmp21 $const9 	%argrw{"wrr"}
 	neq		$tmp23 $tmp22 $const5 	%argrw{"wrr"}
 	assign		$tmp20 $tmp23 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl:38
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl:38
 # 	if (p[0] < 0.0 || p[1] < 0.0 || p[2] < 0.0 ||
 	if		$tmp20 44 45 	%line{38} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl:41
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl:41
 # 		Density = 0;
 	assign		Density $const5 	%line{41} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl:42
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl:42
 # 		Color = color(0, 0, 0);
 	assign		Color $const10 	%line{42} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voxel_texture.osl:45
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voxel_texture.osl:45
 # 		Color = (color)texture3d(filename, p, "wrap", "periodic", "interp", interpolation, "alpha", Density);
 	texture3d	Color filename p $const11 $const12 $const13 interpolation $const14 Density 	%line{45} %argrw{"wrrrrrrrw"} %argderivs{2}
 	end

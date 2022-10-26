@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_vector_curves.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_vector_curves.oso
 shader node_vector_curves
 param	color[]	ramp	0 0 0		%read{7,186} %write{2147483647,-1}
 param	float	min_x	0		%read{0,2} %write{2147483647,-1}
@@ -126,23 +126,23 @@ temp	float	$tmp97	%read{191,191} %write{190,190}
 temp	float	$tmp98	%read{193,193} %write{192,192}
 temp	float	$tmp99	%read{195,195} %write{194,194}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_curves.osl:29
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_curves.osl:29
 # 	vector c = (VectorIn - vector(min_x, min_x, min_x)) / (max_x - min_x);
-	vector		$tmp1 min_x min_x min_x 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_curves.osl"} %line{29} %argrw{"wrrr"}
+	vector		$tmp1 min_x min_x min_x 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_curves.osl"} %line{29} %argrw{"wrrr"}
 	sub		$tmp2 VectorIn $tmp1 	%argrw{"wrr"}
 	sub		$tmp3 max_x min_x 	%argrw{"wrr"}
 	div		c $tmp2 $tmp3 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_curves.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_curves.osl:31
 # 	color r = rgb_ramp_lookup(ramp, c[0], 1, 1);
 	compref		$tmp4 c $const1 	%line{31} %argrw{"wrr"}
 	functioncall	$const3 66 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:21
 # 	float f = at;
-	assign		___669_f $tmp4 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h"} %line{21} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:22
+	assign		___669_f $tmp4 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h"} %line{21} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:22
 # 	int table_size = arraylength(ramp);
 	arraylength	___669_table_size ramp 	%line{22} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:24
 # 	if ((f < 0.0 || f > 1.0) && extrapolate) {
 	lt		$tmp5 ___669_f $const4 	%line{24} %argrw{"wrr"}
 	neq		$tmp6 $tmp5 $const1 	%argrw{"wrr"}
@@ -155,33 +155,33 @@ code ___main___
 	neq		$tmp10 $const2 $const1 	%argrw{"wrr"}
 	assign		$tmp9 $tmp10 	%argrw{"wr"}
 	if		$tmp9 37 37 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:26
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:26
 # 		if (f < 0.0) {
 	lt		$tmp11 ___669_f $const4 	%line{26} %argrw{"wrr"}
 	if		$tmp11 25 31 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:27
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:27
 # 			t0 = ramp[0];
 	aref		___670_t0 ramp $const1 	%line{27} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:28
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:28
 # 			dy = t0 - ramp[1];
 	aref		$tmp12 ramp $const2 	%line{28} %argrw{"wrr"}
 	sub		___670_dy ___670_t0 $tmp12 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:29
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:29
 # 			f = -f;
 	neg		___669_f ___669_f 	%line{29} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:32
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:32
 # 			t0 = ramp[table_size - 1];
 	sub		$tmp13 ___669_table_size $const2 	%line{32} %argrw{"wrr"}
 	aref		___670_t0 ramp $tmp13 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:33
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:33
 # 			dy = t0 - ramp[table_size - 2];
 	sub		$tmp14 ___669_table_size $const6 	%line{33} %argrw{"wrr"}
 	aref		$tmp15 ramp $tmp14 	%argrw{"wrr"}
 	sub		___670_dy ___670_t0 $tmp15 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:34
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:34
 # 			f = f - 1.0;
 	sub		___669_f ___669_f $const5 	%line{34} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:36
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:36
 # 		return t0 + dy * f * (table_size - 1);
 	mul		$tmp16 ___670_dy ___669_f 	%line{36} %argrw{"wrr"}
 	sub		$tmp17 ___669_table_size $const2 	%argrw{"wrr"}
@@ -189,39 +189,39 @@ code ___main___
 	mul		$tmp18 $tmp16 $tmp19 	%argrw{"wrr"}
 	add		r ___670_t0 $tmp18 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:39
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:39
 # 	f = clamp(at, 0.0, 1.0) * (table_size - 1);
 	functioncall	$const7 40 	%line{39} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:144
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:144
 # float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
-	min		$tmp21 $tmp4 $const5 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
+	min		$tmp21 $tmp4 $const5 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
 	max		$tmp20 $tmp21 $const4 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:39
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:39
 # 	f = clamp(at, 0.0, 1.0) * (table_size - 1);
-	sub		$tmp22 ___669_table_size $const2 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h"} %line{39} %argrw{"wrr"}
+	sub		$tmp22 ___669_table_size $const2 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h"} %line{39} %argrw{"wrr"}
 	assign		$tmp23 $tmp22 	%argrw{"wr"}
 	mul		___669_f $tmp20 $tmp23 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:42
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:42
 # 	int i = (int)f;
 	assign		___669_i ___669_f 	%line{42} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:43
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:43
 # 	if (i < 0) i = 0;
 	lt		$tmp24 ___669_i $const1 	%line{43} %argrw{"wrr"}
 	if		$tmp24 47 47 	%argrw{"r"}
 	assign		___669_i $const1 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:44
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:44
 # 	if (i >= table_size) i = table_size - 1;
 	ge		$tmp25 ___669_i ___669_table_size 	%line{44} %argrw{"wrr"}
 	if		$tmp25 50 50 	%argrw{"r"}
 	sub		___669_i ___669_table_size $const2 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:45
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:45
 # 	float t = f - (float)i;
 	assign		$tmp26 ___669_i 	%line{45} %argrw{"wr"}
 	sub		___669_t ___669_f $tmp26 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:47
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:47
 # 	color result = ramp[i];
 	aref		___669_result ramp ___669_i 	%line{47} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:49
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:49
 # 	if (interpolate && t > 0.0)
 	neq		$tmp27 $const2 $const1 	%line{49} %argrw{"wrr"}
 	if		$tmp27 58 58 	%argrw{"r"}
@@ -229,7 +229,7 @@ code ___main___
 	neq		$tmp29 $tmp28 $const1 	%argrw{"wrr"}
 	assign		$tmp27 $tmp29 	%argrw{"wr"}
 	if		$tmp27 65 65 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:50
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:50
 # 		result = (1.0 - t) * result + t * ramp[i + 1];
 	sub		$tmp30 $const5 ___669_t 	%line{50} %argrw{"wrr"}
 	mul		$tmp31 $tmp30 ___669_result 	%argrw{"wrr"}
@@ -237,20 +237,20 @@ code ___main___
 	aref		$tmp33 ramp $tmp32 	%argrw{"wrr"}
 	mul		$tmp34 ___669_t $tmp33 	%argrw{"wrr"}
 	add		___669_result $tmp31 $tmp34 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:52
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:52
 # 	return result;
 	assign		r ___669_result 	%line{52} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_curves.osl:32
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_curves.osl:32
 # 	color g = rgb_ramp_lookup(ramp, c[0], 1, 1);
-	compref		$tmp35 c $const1 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_curves.osl"} %line{32} %argrw{"wrr"}
+	compref		$tmp35 c $const1 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_curves.osl"} %line{32} %argrw{"wrr"}
 	functioncall	$const3 128 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:21
 # 	float f = at;
-	assign		___669_f $tmp35 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h"} %line{21} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:22
+	assign		___669_f $tmp35 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h"} %line{21} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:22
 # 	int table_size = arraylength(ramp);
 	arraylength	___669_table_size ramp 	%line{22} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:24
 # 	if ((f < 0.0 || f > 1.0) && extrapolate) {
 	lt		$tmp36 ___669_f $const4 	%line{24} %argrw{"wrr"}
 	neq		$tmp37 $tmp36 $const1 	%argrw{"wrr"}
@@ -263,33 +263,33 @@ code ___main___
 	neq		$tmp41 $const2 $const1 	%argrw{"wrr"}
 	assign		$tmp40 $tmp41 	%argrw{"wr"}
 	if		$tmp40 99 99 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:26
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:26
 # 		if (f < 0.0) {
 	lt		$tmp42 ___669_f $const4 	%line{26} %argrw{"wrr"}
 	if		$tmp42 87 93 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:27
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:27
 # 			t0 = ramp[0];
 	aref		___670_t0 ramp $const1 	%line{27} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:28
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:28
 # 			dy = t0 - ramp[1];
 	aref		$tmp43 ramp $const2 	%line{28} %argrw{"wrr"}
 	sub		___670_dy ___670_t0 $tmp43 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:29
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:29
 # 			f = -f;
 	neg		___669_f ___669_f 	%line{29} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:32
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:32
 # 			t0 = ramp[table_size - 1];
 	sub		$tmp44 ___669_table_size $const2 	%line{32} %argrw{"wrr"}
 	aref		___670_t0 ramp $tmp44 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:33
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:33
 # 			dy = t0 - ramp[table_size - 2];
 	sub		$tmp45 ___669_table_size $const6 	%line{33} %argrw{"wrr"}
 	aref		$tmp46 ramp $tmp45 	%argrw{"wrr"}
 	sub		___670_dy ___670_t0 $tmp46 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:34
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:34
 # 			f = f - 1.0;
 	sub		___669_f ___669_f $const5 	%line{34} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:36
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:36
 # 		return t0 + dy * f * (table_size - 1);
 	mul		$tmp47 ___670_dy ___669_f 	%line{36} %argrw{"wrr"}
 	sub		$tmp48 ___669_table_size $const2 	%argrw{"wrr"}
@@ -297,39 +297,39 @@ code ___main___
 	mul		$tmp49 $tmp47 $tmp50 	%argrw{"wrr"}
 	add		g ___670_t0 $tmp49 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:39
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:39
 # 	f = clamp(at, 0.0, 1.0) * (table_size - 1);
 	functioncall	$const7 102 	%line{39} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:144
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:144
 # float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
-	min		$tmp52 $tmp35 $const5 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
+	min		$tmp52 $tmp35 $const5 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
 	max		$tmp51 $tmp52 $const4 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:39
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:39
 # 	f = clamp(at, 0.0, 1.0) * (table_size - 1);
-	sub		$tmp53 ___669_table_size $const2 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h"} %line{39} %argrw{"wrr"}
+	sub		$tmp53 ___669_table_size $const2 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h"} %line{39} %argrw{"wrr"}
 	assign		$tmp54 $tmp53 	%argrw{"wr"}
 	mul		___669_f $tmp51 $tmp54 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:42
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:42
 # 	int i = (int)f;
 	assign		___669_i ___669_f 	%line{42} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:43
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:43
 # 	if (i < 0) i = 0;
 	lt		$tmp55 ___669_i $const1 	%line{43} %argrw{"wrr"}
 	if		$tmp55 109 109 	%argrw{"r"}
 	assign		___669_i $const1 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:44
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:44
 # 	if (i >= table_size) i = table_size - 1;
 	ge		$tmp56 ___669_i ___669_table_size 	%line{44} %argrw{"wrr"}
 	if		$tmp56 112 112 	%argrw{"r"}
 	sub		___669_i ___669_table_size $const2 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:45
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:45
 # 	float t = f - (float)i;
 	assign		$tmp57 ___669_i 	%line{45} %argrw{"wr"}
 	sub		___669_t ___669_f $tmp57 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:47
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:47
 # 	color result = ramp[i];
 	aref		___669_result ramp ___669_i 	%line{47} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:49
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:49
 # 	if (interpolate && t > 0.0)
 	neq		$tmp58 $const2 $const1 	%line{49} %argrw{"wrr"}
 	if		$tmp58 120 120 	%argrw{"r"}
@@ -337,7 +337,7 @@ code ___main___
 	neq		$tmp60 $tmp59 $const1 	%argrw{"wrr"}
 	assign		$tmp58 $tmp60 	%argrw{"wr"}
 	if		$tmp58 127 127 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:50
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:50
 # 		result = (1.0 - t) * result + t * ramp[i + 1];
 	sub		$tmp61 $const5 ___669_t 	%line{50} %argrw{"wrr"}
 	mul		$tmp62 $tmp61 ___669_result 	%argrw{"wrr"}
@@ -345,20 +345,20 @@ code ___main___
 	aref		$tmp64 ramp $tmp63 	%argrw{"wrr"}
 	mul		$tmp65 ___669_t $tmp64 	%argrw{"wrr"}
 	add		___669_result $tmp62 $tmp65 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:52
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:52
 # 	return result;
 	assign		g ___669_result 	%line{52} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_curves.osl:33
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_curves.osl:33
 # 	color b = rgb_ramp_lookup(ramp, c[0], 1, 1);
-	compref		$tmp66 c $const1 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_curves.osl"} %line{33} %argrw{"wrr"}
+	compref		$tmp66 c $const1 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_curves.osl"} %line{33} %argrw{"wrr"}
 	functioncall	$const3 190 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:21
 # 	float f = at;
-	assign		___669_f $tmp66 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h"} %line{21} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:22
+	assign		___669_f $tmp66 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h"} %line{21} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:22
 # 	int table_size = arraylength(ramp);
 	arraylength	___669_table_size ramp 	%line{22} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:24
 # 	if ((f < 0.0 || f > 1.0) && extrapolate) {
 	lt		$tmp67 ___669_f $const4 	%line{24} %argrw{"wrr"}
 	neq		$tmp68 $tmp67 $const1 	%argrw{"wrr"}
@@ -371,33 +371,33 @@ code ___main___
 	neq		$tmp72 $const2 $const1 	%argrw{"wrr"}
 	assign		$tmp71 $tmp72 	%argrw{"wr"}
 	if		$tmp71 161 161 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:26
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:26
 # 		if (f < 0.0) {
 	lt		$tmp73 ___669_f $const4 	%line{26} %argrw{"wrr"}
 	if		$tmp73 149 155 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:27
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:27
 # 			t0 = ramp[0];
 	aref		___670_t0 ramp $const1 	%line{27} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:28
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:28
 # 			dy = t0 - ramp[1];
 	aref		$tmp74 ramp $const2 	%line{28} %argrw{"wrr"}
 	sub		___670_dy ___670_t0 $tmp74 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:29
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:29
 # 			f = -f;
 	neg		___669_f ___669_f 	%line{29} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:32
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:32
 # 			t0 = ramp[table_size - 1];
 	sub		$tmp75 ___669_table_size $const2 	%line{32} %argrw{"wrr"}
 	aref		___670_t0 ramp $tmp75 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:33
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:33
 # 			dy = t0 - ramp[table_size - 2];
 	sub		$tmp76 ___669_table_size $const6 	%line{33} %argrw{"wrr"}
 	aref		$tmp77 ramp $tmp76 	%argrw{"wrr"}
 	sub		___670_dy ___670_t0 $tmp77 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:34
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:34
 # 			f = f - 1.0;
 	sub		___669_f ___669_f $const5 	%line{34} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:36
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:36
 # 		return t0 + dy * f * (table_size - 1);
 	mul		$tmp78 ___670_dy ___669_f 	%line{36} %argrw{"wrr"}
 	sub		$tmp79 ___669_table_size $const2 	%argrw{"wrr"}
@@ -405,39 +405,39 @@ code ___main___
 	mul		$tmp80 $tmp78 $tmp81 	%argrw{"wrr"}
 	add		b ___670_t0 $tmp80 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:39
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:39
 # 	f = clamp(at, 0.0, 1.0) * (table_size - 1);
 	functioncall	$const7 164 	%line{39} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:144
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:144
 # float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
-	min		$tmp83 $tmp66 $const5 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
+	min		$tmp83 $tmp66 $const5 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
 	max		$tmp82 $tmp83 $const4 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:39
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:39
 # 	f = clamp(at, 0.0, 1.0) * (table_size - 1);
-	sub		$tmp84 ___669_table_size $const2 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h"} %line{39} %argrw{"wrr"}
+	sub		$tmp84 ___669_table_size $const2 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h"} %line{39} %argrw{"wrr"}
 	assign		$tmp85 $tmp84 	%argrw{"wr"}
 	mul		___669_f $tmp82 $tmp85 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:42
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:42
 # 	int i = (int)f;
 	assign		___669_i ___669_f 	%line{42} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:43
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:43
 # 	if (i < 0) i = 0;
 	lt		$tmp86 ___669_i $const1 	%line{43} %argrw{"wrr"}
 	if		$tmp86 171 171 	%argrw{"r"}
 	assign		___669_i $const1 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:44
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:44
 # 	if (i >= table_size) i = table_size - 1;
 	ge		$tmp87 ___669_i ___669_table_size 	%line{44} %argrw{"wrr"}
 	if		$tmp87 174 174 	%argrw{"r"}
 	sub		___669_i ___669_table_size $const2 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:45
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:45
 # 	float t = f - (float)i;
 	assign		$tmp88 ___669_i 	%line{45} %argrw{"wr"}
 	sub		___669_t ___669_f $tmp88 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:47
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:47
 # 	color result = ramp[i];
 	aref		___669_result ramp ___669_i 	%line{47} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:49
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:49
 # 	if (interpolate && t > 0.0)
 	neq		$tmp89 $const2 $const1 	%line{49} %argrw{"wrr"}
 	if		$tmp89 182 182 	%argrw{"r"}
@@ -445,7 +445,7 @@ code ___main___
 	neq		$tmp91 $tmp90 $const1 	%argrw{"wrr"}
 	assign		$tmp89 $tmp91 	%argrw{"wr"}
 	if		$tmp89 189 189 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:50
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:50
 # 		result = (1.0 - t) * result + t * ramp[i + 1];
 	sub		$tmp92 $const5 ___669_t 	%line{50} %argrw{"wrr"}
 	mul		$tmp93 $tmp92 ___669_result 	%argrw{"wrr"}
@@ -453,22 +453,22 @@ code ___main___
 	aref		$tmp95 ramp $tmp94 	%argrw{"wrr"}
 	mul		$tmp96 ___669_t $tmp95 	%argrw{"wrr"}
 	add		___669_result $tmp93 $tmp96 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_ramp_util.h:52
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_ramp_util.h:52
 # 	return result;
 	assign		b ___669_result 	%line{52} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_curves.osl:35
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_curves.osl:35
 # 	VectorOut[0] = r[0];
-	compref		$tmp97 r $const1 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_curves.osl"} %line{35} %argrw{"wrr"}
+	compref		$tmp97 r $const1 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_curves.osl"} %line{35} %argrw{"wrr"}
 	compassign	VectorOut $const1 $tmp97 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_curves.osl:36
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_curves.osl:36
 # 	VectorOut[1] = g[1];
 	compref		$tmp98 g $const2 	%line{36} %argrw{"wrr"}
 	compassign	VectorOut $const2 $tmp98 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_curves.osl:37
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_curves.osl:37
 # 	VectorOut[2] = b[2];
 	compref		$tmp99 b $const6 	%line{37} %argrw{"wrr"}
 	compassign	VectorOut $const6 $tmp99 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_vector_curves.osl:39
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_vector_curves.osl:39
 # 	VectorOut = mix(VectorIn, VectorOut, Fac);
 	mix		VectorOut VectorIn VectorOut Fac 	%line{39} %argrw{"wrrr"}
 	end

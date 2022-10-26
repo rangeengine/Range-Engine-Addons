@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_tangent.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_tangent.oso
 shader node_tangent
 param	normal	NormalIn	0 0 0		%read{34,36} %write{0,0} %initexpr
 param	string	attr_name	"geom:tangent"		%read{4,4} %write{2147483647,-1}
@@ -49,38 +49,38 @@ const	string	$const12	"world"		%read{33,33} %write{2147483647,-1}
 temp	vector	$tmp23	%read{36,36} %write{35,35}
 temp	vector	$tmp24	%read{35,35} %write{34,34}
 code NormalIn
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl:20
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl:20
 # 	normal NormalIn = N,
-	assign		NormalIn N 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl"} %line{20} %argrw{"wr"}
+	assign		NormalIn N 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl"} %line{20} %argrw{"wr"}
 code Tangent
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl:24
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl:24
 # 	output normal Tangent = normalize(dPdu))
-	normalize	Tangent dPdu 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl"} %line{24} %argrw{"wr"}
+	normalize	Tangent dPdu 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl"} %line{24} %argrw{"wr"}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl:28
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl:28
 # 	if (direction_type == "uv_map") {
-	eq		$tmp1 direction_type $const1 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl"} %line{28} %argrw{"wrr"}
+	eq		$tmp1 direction_type $const1 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl"} %line{28} %argrw{"wrr"}
 	if		$tmp1 5 33 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl:29
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl:29
 # 		getattribute(attr_name, T);
 	getattribute	$tmp2 attr_name T 	%line{29} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl:31
 # 	else if (direction_type == "radial") {
 	eq		$tmp3 direction_type $const2 	%line{31} %argrw{"wrr"}
 	if		$tmp3 33 33 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl:34
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl:34
 # 		if (!getattribute("geom:generated", generated))
 	getattribute	$tmp4 $const3 ___670_generated 	%line{34} %argrw{"wrw"}
 	eq		$tmp5 $tmp4 $const4 	%argrw{"wrr"}
 	if		$tmp5 11 11 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl:35
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl:35
 # 			generated = P;
 	assign		___670_generated P 	%line{35} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl:37
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl:37
 # 		if (axis == "x")
 	eq		$tmp6 axis $const5 	%line{37} %argrw{"wrr"}
 	if		$tmp6 19 33 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl:38
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl:38
 # 			T = vector(0.0, -(generated[2] - 0.5), (generated[1] - 0.5));
 	compref		$tmp7 ___670_generated $const7 	%line{38} %argrw{"wrr"}
 	sub		$tmp8 $tmp7 $const8 	%argrw{"wrr"}
@@ -88,11 +88,11 @@ code ___main___
 	compref		$tmp10 ___670_generated $const9 	%argrw{"wrr"}
 	sub		$tmp11 $tmp10 $const8 	%argrw{"wrr"}
 	vector		T $const6 $tmp9 $tmp11 	%argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl:39
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl:39
 # 		else if (axis == "y")
 	eq		$tmp12 axis $const10 	%line{39} %argrw{"wrr"}
 	if		$tmp12 27 33 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl:40
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl:40
 # 			T = vector(-(generated[2] - 0.5), 0.0, (generated[0] - 0.5));
 	compref		$tmp13 ___670_generated $const7 	%line{40} %argrw{"wrr"}
 	sub		$tmp14 $tmp13 $const8 	%argrw{"wrr"}
@@ -100,7 +100,7 @@ code ___main___
 	compref		$tmp16 ___670_generated $const4 	%argrw{"wrr"}
 	sub		$tmp17 $tmp16 $const8 	%argrw{"wrr"}
 	vector		T $tmp15 $const6 $tmp17 	%argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl:42
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl:42
 # 			T = vector(-(generated[1] - 0.5), (generated[0] - 0.5), 0.0);
 	compref		$tmp18 ___670_generated $const9 	%line{42} %argrw{"wrr"}
 	sub		$tmp19 $tmp18 $const8 	%argrw{"wrr"}
@@ -108,10 +108,10 @@ code ___main___
 	compref		$tmp21 ___670_generated $const4 	%argrw{"wrr"}
 	sub		$tmp22 $tmp21 $const8 	%argrw{"wrr"}
 	vector		T $tmp20 $tmp22 $const6 	%argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl:45
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl:45
 # 	T = transform("object", "world", T);
 	transformv	T $const11 $const12 T 	%line{45} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_tangent.osl:46
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_tangent.osl:46
 # 	Tangent = cross(NormalIn, normalize(cross(T, NormalIn)));
 	cross		$tmp24 T NormalIn 	%line{46} %argrw{"wrr"}
 	normalize	$tmp23 $tmp24 	%argrw{"wr"}

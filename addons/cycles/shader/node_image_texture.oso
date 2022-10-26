@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_image_texture.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_image_texture.oso
 shader node_image_texture
 param	int	use_mapping	0		%read{2,2} %write{2147483647,-1}
 param	matrix	mapping	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0		%read{3,3} %write{2147483647,-1} %derivs
@@ -474,80 +474,80 @@ temp	float	$tmp408	%read{701,701} %write{699,699}
 temp	float	$tmp409	%read{701,701} %write{700,700}
 temp	float	$tmp410	%read{702,702} %write{701,701}
 code Vector
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:86
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:86
 # 	point Vector = P,
-	assign		Vector P 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{86} %argrw{"wr"}
+	assign		Vector P 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{86} %argrw{"wr"}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:98
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:98
 # 	point p = Vector;
-	assign		p Vector 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{98} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:100
+	assign		p Vector 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{98} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:100
 # 	if (use_mapping)
 	if		use_mapping 4 4 	%line{100} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:101
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:101
 # 		p = transform(mapping, p);
 	transform	p mapping p 	%line{101} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:103
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:103
 # 	if (projection == "flat") {
 	eq		$tmp1 projection $const1 	%line{103} %argrw{"wrr"}
 	if		$tmp1 77 706 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:106
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:106
 # 		                             p[0], p[1],
 	compref		$tmp2 p $const2 	%line{106} %argrw{"wrr"}
 	compref		$tmp3 p $const3 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:111
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:111
 # 		                             extension);
 	functioncall	$const4 77 	%line{111} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:67
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:67
 # 	color rgb = (color)texture(filename, u, 1.0 - v, "wrap", extension, "interp", interpolation, "alpha", Alpha);
 	sub		$tmp4 $const5 $tmp3 	%line{67} %argrw{"wrr"}
 	texture		___693_rgb filename $tmp2 $tmp4 $const6 extension $const7 interpolation $const8 Alpha 	%argrw{"wrrrrrrrrw"} %argderivs{2,3}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:69
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:69
 # 	if (use_alpha) {
 	if		use_alpha 27 27 	%line{69} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:70
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:70
 # 		rgb = color_unpremultiply(rgb, Alpha);
 	functioncall	$const9 23 	%line{70} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:53
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:53
 # 	if (alpha != 1.0 && alpha != 0.0)
-	neq		$tmp5 Alpha $const5 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h"} %line{53} %argrw{"wrr"}
+	neq		$tmp5 Alpha $const5 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h"} %line{53} %argrw{"wrr"}
 	neq		$tmp6 $tmp5 $const2 	%argrw{"wrr"}
 	if		$tmp6 19 19 	%argrw{"r"}
 	neq		$tmp7 Alpha $const10 	%argrw{"wrr"}
 	neq		$tmp8 $tmp7 $const2 	%argrw{"wrr"}
 	assign		$tmp6 $tmp8 	%argrw{"wr"}
 	if		$tmp6 22 22 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:54
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:54
 # 		return c / alpha;
 	div		___693_rgb ___693_rgb Alpha 	%line{54} %argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:56
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:56
 # 	return c;
 	assign		___693_rgb ___693_rgb 	%line{56} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:72
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:72
 # 		if (!is_float)
-	eq		$tmp9 is_float $const2 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{72} %argrw{"wrr"}
+	eq		$tmp9 is_float $const2 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{72} %argrw{"wrr"}
 	if		$tmp9 27 27 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:73
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:73
 # 			rgb = min(rgb, 1.0);
 	assign		$tmp10 $const5 	%line{73} %argrw{"wr"}
 	min		___693_rgb ___693_rgb $tmp10 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:76
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:76
 # 	if (color_space == "sRGB") {
 	eq		$tmp11 color_space $const11 	%line{76} %argrw{"wrr"}
 	if		$tmp11 76 76 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:77
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:77
 # 		rgb = color_srgb_to_scene_linear(rgb);
 	functioncall	$const12 76 	%line{77} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:38
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:38
 # 		color_srgb_to_scene_linear(c[0]),
-	compref		$tmp13 ___693_rgb $const2 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h"} %line{38} %argrw{"wrr"}
+	compref		$tmp13 ___693_rgb $const2 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h"} %line{38} %argrw{"wrr"}
 	functioncall	$const12 45 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp14 $tmp13 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp14 40 45 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp15 $tmp13 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp15 37 39 	%argrw{"r"}
@@ -555,22 +555,22 @@ code ___main___
 	div		$tmp16 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp12 $tmp13 $tmp16 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp17 $tmp13 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp18 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp19 $tmp17 $tmp18 	%argrw{"wrr"}
 	pow		$tmp12 $tmp19 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:39
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:39
 # 		color_srgb_to_scene_linear(c[1]),
 	compref		$tmp21 ___693_rgb $const3 	%line{39} %argrw{"wrr"}
 	functioncall	$const12 60 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp22 $tmp21 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp22 55 60 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp23 $tmp21 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp23 52 54 	%argrw{"r"}
@@ -578,22 +578,22 @@ code ___main___
 	div		$tmp24 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp20 $tmp21 $tmp24 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp25 $tmp21 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp26 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp27 $tmp25 $tmp26 	%argrw{"wrr"}
 	pow		$tmp20 $tmp27 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:40
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:40
 # 		color_srgb_to_scene_linear(c[2]));
 	compref		$tmp29 ___693_rgb $const18 	%line{40} %argrw{"wrr"}
 	functioncall	$const12 75 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp30 $tmp29 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp30 70 75 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp31 $tmp29 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp31 67 69 	%argrw{"r"}
@@ -601,27 +601,27 @@ code ___main___
 	div		$tmp32 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp28 $tmp29 $tmp32 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp33 $tmp29 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp34 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp35 $tmp33 $tmp34 	%argrw{"wrr"}
 	pow		$tmp28 $tmp35 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:40
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:40
 # 		color_srgb_to_scene_linear(c[2]));
 	color		___693_rgb $tmp12 $tmp20 $tmp28 	%line{40} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:80
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:80
 # 	return rgb;
-	assign		Color ___693_rgb 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{80} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:113
+	assign		Color ___693_rgb 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{80} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:113
 # 	else if (projection == "box") {
 	eq		$tmp36 projection $const19 	%line{113} %argrw{"wrr"}
 	if		$tmp36 501 706 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:115
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:115
 # 		vector Nob = transform("world", "object", N);
 	transformn	___697_Nob $const20 $const21 N 	%line{115} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:118
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:118
 # 		Nob = vector(fabs(Nob[0]), fabs(Nob[1]), fabs(Nob[2]));
 	compref		$tmp38 ___697_Nob $const2 	%line{118} %argrw{"wrr"}
 	fabs		$tmp37 $tmp38 	%argrw{"wr"}
@@ -630,7 +630,7 @@ code ___main___
 	compref		$tmp42 ___697_Nob $const18 	%argrw{"wrr"}
 	fabs		$tmp41 $tmp42 	%argrw{"wr"}
 	vector		___697_Nob $tmp37 $tmp39 $tmp41 	%argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:119
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:119
 # 		Nob /= (Nob[0] + Nob[1] + Nob[2]);
 	compref		$tmp43 ___697_Nob $const2 	%line{119} %argrw{"wrr"}
 	compref		$tmp44 ___697_Nob $const3 	%argrw{"wrr"}
@@ -638,17 +638,17 @@ code ___main___
 	compref		$tmp46 ___697_Nob $const18 	%argrw{"wrr"}
 	add		$tmp47 $tmp45 $tmp46 	%argrw{"wrr"}
 	div		___697_Nob ___697_Nob $tmp47 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:131
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:131
 # 		vector weight = vector(0.0, 0.0, 0.0);
 	assign		___697_weight $const22 	%line{131} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:132
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:132
 # 		float blend = projection_blend;
 	assign		___697_blend projection_blend 	%line{132} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:133
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:133
 # 		float limit = 0.5 * (1.0 + blend);
 	add		$tmp48 $const5 ___697_blend 	%line{133} %argrw{"wrr"}
 	mul		___697_limit $const23 $tmp48 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:136
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:136
 # 		if (Nob[0] > limit * (Nob[0] + Nob[1]) && Nob[0] > limit * (Nob[0] + Nob[2])) {
 	compref		$tmp49 ___697_Nob $const2 	%line{136} %argrw{"wrr"}
 	compref		$tmp50 ___697_Nob $const2 	%argrw{"wrr"}
@@ -667,10 +667,10 @@ code ___main___
 	neq		$tmp62 $tmp61 $const2 	%argrw{"wrr"}
 	assign		$tmp55 $tmp62 	%argrw{"wr"}
 	if		$tmp55 115 259 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:137
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:137
 # 			weight[0] = 1.0;
 	compassign	___697_weight $const2 $const5 	%line{137} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:139
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:139
 # 		else if (Nob[1] > limit * (Nob[0] + Nob[1]) && Nob[1] > limit * (Nob[1] + Nob[2])) {
 	compref		$tmp63 ___697_Nob $const3 	%line{139} %argrw{"wrr"}
 	compref		$tmp64 ___697_Nob $const2 	%argrw{"wrr"}
@@ -689,10 +689,10 @@ code ___main___
 	neq		$tmp76 $tmp75 $const2 	%argrw{"wrr"}
 	assign		$tmp69 $tmp76 	%argrw{"wr"}
 	if		$tmp69 133 259 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:140
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:140
 # 			weight[1] = 1.0;
 	compassign	___697_weight $const3 $const5 	%line{140} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:142
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:142
 # 		else if (Nob[2] > limit * (Nob[0] + Nob[2]) && Nob[2] > limit * (Nob[1] + Nob[2])) {
 	compref		$tmp77 ___697_Nob $const18 	%line{142} %argrw{"wrr"}
 	compref		$tmp78 ___697_Nob $const2 	%argrw{"wrr"}
@@ -711,14 +711,14 @@ code ___main___
 	neq		$tmp90 $tmp89 $const2 	%argrw{"wrr"}
 	assign		$tmp83 $tmp90 	%argrw{"wr"}
 	if		$tmp83 151 259 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:143
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:143
 # 			weight[2] = 1.0;
 	compassign	___697_weight $const18 $const5 	%line{143} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:145
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:145
 # 		else if (blend > 0.0) {
 	gt		$tmp91 ___697_blend $const10 	%line{145} %argrw{"wrr"}
 	if		$tmp91 258 259 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:147
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:147
 # 			if (Nob[2] < (1.0 - limit) * (Nob[1] + Nob[0])) {
 	compref		$tmp92 ___697_Nob $const18 	%line{147} %argrw{"wrr"}
 	sub		$tmp93 $const5 ___697_limit 	%argrw{"wrr"}
@@ -728,7 +728,7 @@ code ___main___
 	mul		$tmp97 $tmp93 $tmp96 	%argrw{"wrr"}
 	lt		$tmp98 $tmp92 $tmp97 	%argrw{"wrr"}
 	if		$tmp98 179 258 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:148
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:148
 # 				weight[0] = Nob[0] / (Nob[0] + Nob[1]);
 	compref		$tmp99 ___697_Nob $const2 	%line{148} %argrw{"wrr"}
 	compref		$tmp100 ___697_Nob $const2 	%argrw{"wrr"}
@@ -736,7 +736,7 @@ code ___main___
 	add		$tmp102 $tmp100 $tmp101 	%argrw{"wrr"}
 	div		$tmp103 $tmp99 $tmp102 	%argrw{"wrr"}
 	compassign	___697_weight $const2 $tmp103 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:149
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:149
 # 				weight[0] = clamp((weight[0] - 0.5 * (1.0 - blend)) / blend, 0.0, 1.0);
 	compref		$tmp105 ___697_weight $const2 	%line{149} %argrw{"wrr"}
 	sub		$tmp106 $const5 ___697_blend 	%argrw{"wrr"}
@@ -744,19 +744,19 @@ code ___main___
 	sub		$tmp108 $tmp105 $tmp107 	%argrw{"wrr"}
 	div		$tmp109 $tmp108 ___697_blend 	%argrw{"wrr"}
 	functioncall	$const24 175 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:144
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:144
 # float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
-	min		$tmp110 $tmp109 $const5 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
+	min		$tmp110 $tmp109 $const5 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
 	max		$tmp104 $tmp110 $const10 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:149
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:149
 # 				weight[0] = clamp((weight[0] - 0.5 * (1.0 - blend)) / blend, 0.0, 1.0);
-	compassign	___697_weight $const2 $tmp104 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{149} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:150
+	compassign	___697_weight $const2 $tmp104 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{149} %argrw{"wrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:150
 # 				weight[1] = 1.0 - weight[0];
 	compref		$tmp111 ___697_weight $const2 	%line{150} %argrw{"wrr"}
 	sub		$tmp112 $const5 $tmp111 	%argrw{"wrr"}
 	compassign	___697_weight $const3 $tmp112 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:152
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:152
 # 			else if (Nob[0] < (1.0 - limit) * (Nob[1] + Nob[2])) {
 	compref		$tmp113 ___697_Nob $const2 	%line{152} %argrw{"wrr"}
 	sub		$tmp114 $const5 ___697_limit 	%argrw{"wrr"}
@@ -766,7 +766,7 @@ code ___main___
 	mul		$tmp118 $tmp114 $tmp117 	%argrw{"wrr"}
 	lt		$tmp119 $tmp113 $tmp118 	%argrw{"wrr"}
 	if		$tmp119 205 258 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:153
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:153
 # 				weight[1] = Nob[1] / (Nob[1] + Nob[2]);
 	compref		$tmp120 ___697_Nob $const3 	%line{153} %argrw{"wrr"}
 	compref		$tmp121 ___697_Nob $const3 	%argrw{"wrr"}
@@ -774,7 +774,7 @@ code ___main___
 	add		$tmp123 $tmp121 $tmp122 	%argrw{"wrr"}
 	div		$tmp124 $tmp120 $tmp123 	%argrw{"wrr"}
 	compassign	___697_weight $const3 $tmp124 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:154
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:154
 # 				weight[1] = clamp((weight[1] - 0.5 * (1.0 - blend)) / blend, 0.0, 1.0);
 	compref		$tmp126 ___697_weight $const3 	%line{154} %argrw{"wrr"}
 	sub		$tmp127 $const5 ___697_blend 	%argrw{"wrr"}
@@ -782,19 +782,19 @@ code ___main___
 	sub		$tmp129 $tmp126 $tmp128 	%argrw{"wrr"}
 	div		$tmp130 $tmp129 ___697_blend 	%argrw{"wrr"}
 	functioncall	$const24 201 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:144
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:144
 # float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
-	min		$tmp131 $tmp130 $const5 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
+	min		$tmp131 $tmp130 $const5 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
 	max		$tmp125 $tmp131 $const10 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:154
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:154
 # 				weight[1] = clamp((weight[1] - 0.5 * (1.0 - blend)) / blend, 0.0, 1.0);
-	compassign	___697_weight $const3 $tmp125 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{154} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:155
+	compassign	___697_weight $const3 $tmp125 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{154} %argrw{"wrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:155
 # 				weight[2] = 1.0 - weight[1];
 	compref		$tmp132 ___697_weight $const3 	%line{155} %argrw{"wrr"}
 	sub		$tmp133 $const5 $tmp132 	%argrw{"wrr"}
 	compassign	___697_weight $const18 $tmp133 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:157
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:157
 # 			else if (Nob[1] < (1.0 - limit) * (Nob[0] + Nob[2])) {
 	compref		$tmp134 ___697_Nob $const3 	%line{157} %argrw{"wrr"}
 	sub		$tmp135 $const5 ___697_limit 	%argrw{"wrr"}
@@ -804,7 +804,7 @@ code ___main___
 	mul		$tmp139 $tmp135 $tmp138 	%argrw{"wrr"}
 	lt		$tmp140 $tmp134 $tmp139 	%argrw{"wrr"}
 	if		$tmp140 231 258 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:158
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:158
 # 				weight[0] = Nob[0] / (Nob[0] + Nob[2]);
 	compref		$tmp141 ___697_Nob $const2 	%line{158} %argrw{"wrr"}
 	compref		$tmp142 ___697_Nob $const2 	%argrw{"wrr"}
@@ -812,7 +812,7 @@ code ___main___
 	add		$tmp144 $tmp142 $tmp143 	%argrw{"wrr"}
 	div		$tmp145 $tmp141 $tmp144 	%argrw{"wrr"}
 	compassign	___697_weight $const2 $tmp145 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:159
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:159
 # 				weight[0] = clamp((weight[0] - 0.5 * (1.0 - blend)) / blend, 0.0, 1.0);
 	compref		$tmp147 ___697_weight $const2 	%line{159} %argrw{"wrr"}
 	sub		$tmp148 $const5 ___697_blend 	%argrw{"wrr"}
@@ -820,19 +820,19 @@ code ___main___
 	sub		$tmp150 $tmp147 $tmp149 	%argrw{"wrr"}
 	div		$tmp151 $tmp150 ___697_blend 	%argrw{"wrr"}
 	functioncall	$const24 227 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:144
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:144
 # float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
-	min		$tmp152 $tmp151 $const5 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
+	min		$tmp152 $tmp151 $const5 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
 	max		$tmp146 $tmp152 $const10 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:159
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:159
 # 				weight[0] = clamp((weight[0] - 0.5 * (1.0 - blend)) / blend, 0.0, 1.0);
-	compassign	___697_weight $const2 $tmp146 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{159} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:160
+	compassign	___697_weight $const2 $tmp146 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{159} %argrw{"wrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:160
 # 				weight[2] = 1.0 - weight[0];
 	compref		$tmp153 ___697_weight $const2 	%line{160} %argrw{"wrr"}
 	sub		$tmp154 $const5 $tmp153 	%argrw{"wrr"}
 	compassign	___697_weight $const18 $tmp154 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:164
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:164
 # 				weight[0] = ((2.0 - limit) * Nob[0] + (limit - 1.0)) / (2.0 * limit - 1.0);
 	sub		$tmp155 $const25 ___697_limit 	%line{164} %argrw{"wrr"}
 	compref		$tmp156 ___697_Nob $const2 	%argrw{"wrr"}
@@ -843,7 +843,7 @@ code ___main___
 	sub		$tmp161 $tmp160 $const5 	%argrw{"wrr"}
 	div		$tmp162 $tmp159 $tmp161 	%argrw{"wrr"}
 	compassign	___697_weight $const2 $tmp162 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:165
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:165
 # 				weight[1] = ((2.0 - limit) * Nob[1] + (limit - 1.0)) / (2.0 * limit - 1.0);
 	sub		$tmp163 $const25 ___697_limit 	%line{165} %argrw{"wrr"}
 	compref		$tmp164 ___697_Nob $const3 	%argrw{"wrr"}
@@ -854,7 +854,7 @@ code ___main___
 	sub		$tmp169 $tmp168 $const5 	%argrw{"wrr"}
 	div		$tmp170 $tmp167 $tmp169 	%argrw{"wrr"}
 	compassign	___697_weight $const3 $tmp170 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:166
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:166
 # 				weight[2] = ((2.0 - limit) * Nob[2] + (limit - 1.0)) / (2.0 * limit - 1.0);
 	sub		$tmp171 $const25 ___697_limit 	%line{166} %argrw{"wrr"}
 	compref		$tmp172 ___697_Nob $const18 	%argrw{"wrr"}
@@ -865,80 +865,80 @@ code ___main___
 	sub		$tmp177 $tmp176 $const5 	%argrw{"wrr"}
 	div		$tmp178 $tmp175 $tmp177 	%argrw{"wrr"}
 	compassign	___697_weight $const18 $tmp178 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:171
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:171
 # 			weight[0] = 1.0;
 	compassign	___697_weight $const2 $const5 	%line{171} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:174
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:174
 # 		Color = color(0.0, 0.0, 0.0);
 	assign		Color $const26 	%line{174} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:175
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:175
 # 		Alpha = 0.0;
 	assign		Alpha $const10 	%line{175} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:179
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:179
 # 		if (weight[0] > 0.0) {
 	compref		$tmp179 ___697_weight $const2 	%line{179} %argrw{"wrr"}
 	gt		$tmp180 $tmp179 $const10 	%argrw{"wrr"}
 	if		$tmp180 341 341 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:180
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:180
 # 			Color += weight[0] * image_texture_lookup(filename,
 	compref		$tmp181 ___697_weight $const2 	%line{180} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:182
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:182
 # 			                                          p[1], p[2],
 	compref		$tmp183 p $const3 	%line{182} %argrw{"wrr"}
 	compref		$tmp184 p $const18 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:187
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:187
 # 			                                          extension);
 	functioncall	$const4 336 	%line{187} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:67
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:67
 # 	color rgb = (color)texture(filename, u, 1.0 - v, "wrap", extension, "interp", interpolation, "alpha", Alpha);
 	sub		$tmp185 $const5 $tmp184 	%line{67} %argrw{"wrr"}
 	texture		___693_rgb filename $tmp183 $tmp185 $const6 extension $const7 interpolation $const8 ___697_tmp_alpha 	%argrw{"wrrrrrrrrw"} %argderivs{2,3}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:69
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:69
 # 	if (use_alpha) {
 	if		use_alpha 286 286 	%line{69} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:70
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:70
 # 		rgb = color_unpremultiply(rgb, Alpha);
 	functioncall	$const9 282 	%line{70} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:53
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:53
 # 	if (alpha != 1.0 && alpha != 0.0)
-	neq		$tmp186 ___697_tmp_alpha $const5 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h"} %line{53} %argrw{"wrr"}
+	neq		$tmp186 ___697_tmp_alpha $const5 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h"} %line{53} %argrw{"wrr"}
 	neq		$tmp187 $tmp186 $const2 	%argrw{"wrr"}
 	if		$tmp187 278 278 	%argrw{"r"}
 	neq		$tmp188 ___697_tmp_alpha $const10 	%argrw{"wrr"}
 	neq		$tmp189 $tmp188 $const2 	%argrw{"wrr"}
 	assign		$tmp187 $tmp189 	%argrw{"wr"}
 	if		$tmp187 281 281 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:54
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:54
 # 		return c / alpha;
 	div		___693_rgb ___693_rgb ___697_tmp_alpha 	%line{54} %argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:56
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:56
 # 	return c;
 	assign		___693_rgb ___693_rgb 	%line{56} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:72
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:72
 # 		if (!is_float)
-	eq		$tmp190 is_float $const2 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{72} %argrw{"wrr"}
+	eq		$tmp190 is_float $const2 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{72} %argrw{"wrr"}
 	if		$tmp190 286 286 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:73
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:73
 # 			rgb = min(rgb, 1.0);
 	assign		$tmp191 $const5 	%line{73} %argrw{"wr"}
 	min		___693_rgb ___693_rgb $tmp191 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:76
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:76
 # 	if (color_space == "sRGB") {
 	eq		$tmp192 color_space $const11 	%line{76} %argrw{"wrr"}
 	if		$tmp192 335 335 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:77
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:77
 # 		rgb = color_srgb_to_scene_linear(rgb);
 	functioncall	$const12 335 	%line{77} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:38
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:38
 # 		color_srgb_to_scene_linear(c[0]),
-	compref		$tmp194 ___693_rgb $const2 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h"} %line{38} %argrw{"wrr"}
+	compref		$tmp194 ___693_rgb $const2 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h"} %line{38} %argrw{"wrr"}
 	functioncall	$const12 304 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp195 $tmp194 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp195 299 304 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp196 $tmp194 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp196 296 298 	%argrw{"r"}
@@ -946,22 +946,22 @@ code ___main___
 	div		$tmp197 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp193 $tmp194 $tmp197 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp198 $tmp194 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp199 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp200 $tmp198 $tmp199 	%argrw{"wrr"}
 	pow		$tmp193 $tmp200 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:39
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:39
 # 		color_srgb_to_scene_linear(c[1]),
 	compref		$tmp202 ___693_rgb $const3 	%line{39} %argrw{"wrr"}
 	functioncall	$const12 319 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp203 $tmp202 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp203 314 319 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp204 $tmp202 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp204 311 313 	%argrw{"r"}
@@ -969,22 +969,22 @@ code ___main___
 	div		$tmp205 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp201 $tmp202 $tmp205 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp206 $tmp202 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp207 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp208 $tmp206 $tmp207 	%argrw{"wrr"}
 	pow		$tmp201 $tmp208 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:40
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:40
 # 		color_srgb_to_scene_linear(c[2]));
 	compref		$tmp210 ___693_rgb $const18 	%line{40} %argrw{"wrr"}
 	functioncall	$const12 334 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp211 $tmp210 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp211 329 334 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp212 $tmp210 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp212 326 328 	%argrw{"r"}
@@ -992,93 +992,93 @@ code ___main___
 	div		$tmp213 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp209 $tmp210 $tmp213 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp214 $tmp210 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp215 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp216 $tmp214 $tmp215 	%argrw{"wrr"}
 	pow		$tmp209 $tmp216 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:40
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:40
 # 		color_srgb_to_scene_linear(c[2]));
 	color		___693_rgb $tmp193 $tmp201 $tmp209 	%line{40} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:80
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:80
 # 	return rgb;
-	assign		$tmp182 ___693_rgb 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{80} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:187
+	assign		$tmp182 ___693_rgb 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{80} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:187
 # 			                                          extension);
 	mul		$tmp217 $tmp181 $tmp182 	%line{187} %argrw{"wrr"}
 	add		Color Color $tmp217 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:188
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:188
 # 			Alpha += weight[0] * tmp_alpha;
 	compref		$tmp218 ___697_weight $const2 	%line{188} %argrw{"wrr"}
 	mul		$tmp219 $tmp218 ___697_tmp_alpha 	%argrw{"wrr"}
 	add		Alpha Alpha $tmp219 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:190
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:190
 # 		if (weight[1] > 0.0) {
 	compref		$tmp220 ___697_weight $const3 	%line{190} %argrw{"wrr"}
 	gt		$tmp221 $tmp220 $const10 	%argrw{"wrr"}
 	if		$tmp221 421 421 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:191
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:191
 # 			Color += weight[1] * image_texture_lookup(filename,
 	compref		$tmp222 ___697_weight $const3 	%line{191} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:193
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:193
 # 			                                          p[0], p[2],
 	compref		$tmp224 p $const2 	%line{193} %argrw{"wrr"}
 	compref		$tmp225 p $const18 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:198
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:198
 # 			                                          extension);
 	functioncall	$const4 416 	%line{198} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:67
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:67
 # 	color rgb = (color)texture(filename, u, 1.0 - v, "wrap", extension, "interp", interpolation, "alpha", Alpha);
 	sub		$tmp226 $const5 $tmp225 	%line{67} %argrw{"wrr"}
 	texture		___693_rgb filename $tmp224 $tmp226 $const6 extension $const7 interpolation $const8 ___697_tmp_alpha 	%argrw{"wrrrrrrrrw"} %argderivs{2,3}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:69
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:69
 # 	if (use_alpha) {
 	if		use_alpha 366 366 	%line{69} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:70
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:70
 # 		rgb = color_unpremultiply(rgb, Alpha);
 	functioncall	$const9 362 	%line{70} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:53
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:53
 # 	if (alpha != 1.0 && alpha != 0.0)
-	neq		$tmp227 ___697_tmp_alpha $const5 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h"} %line{53} %argrw{"wrr"}
+	neq		$tmp227 ___697_tmp_alpha $const5 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h"} %line{53} %argrw{"wrr"}
 	neq		$tmp228 $tmp227 $const2 	%argrw{"wrr"}
 	if		$tmp228 358 358 	%argrw{"r"}
 	neq		$tmp229 ___697_tmp_alpha $const10 	%argrw{"wrr"}
 	neq		$tmp230 $tmp229 $const2 	%argrw{"wrr"}
 	assign		$tmp228 $tmp230 	%argrw{"wr"}
 	if		$tmp228 361 361 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:54
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:54
 # 		return c / alpha;
 	div		___693_rgb ___693_rgb ___697_tmp_alpha 	%line{54} %argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:56
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:56
 # 	return c;
 	assign		___693_rgb ___693_rgb 	%line{56} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:72
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:72
 # 		if (!is_float)
-	eq		$tmp231 is_float $const2 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{72} %argrw{"wrr"}
+	eq		$tmp231 is_float $const2 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{72} %argrw{"wrr"}
 	if		$tmp231 366 366 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:73
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:73
 # 			rgb = min(rgb, 1.0);
 	assign		$tmp232 $const5 	%line{73} %argrw{"wr"}
 	min		___693_rgb ___693_rgb $tmp232 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:76
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:76
 # 	if (color_space == "sRGB") {
 	eq		$tmp233 color_space $const11 	%line{76} %argrw{"wrr"}
 	if		$tmp233 415 415 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:77
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:77
 # 		rgb = color_srgb_to_scene_linear(rgb);
 	functioncall	$const12 415 	%line{77} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:38
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:38
 # 		color_srgb_to_scene_linear(c[0]),
-	compref		$tmp235 ___693_rgb $const2 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h"} %line{38} %argrw{"wrr"}
+	compref		$tmp235 ___693_rgb $const2 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h"} %line{38} %argrw{"wrr"}
 	functioncall	$const12 384 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp236 $tmp235 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp236 379 384 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp237 $tmp235 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp237 376 378 	%argrw{"r"}
@@ -1086,22 +1086,22 @@ code ___main___
 	div		$tmp238 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp234 $tmp235 $tmp238 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp239 $tmp235 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp240 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp241 $tmp239 $tmp240 	%argrw{"wrr"}
 	pow		$tmp234 $tmp241 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:39
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:39
 # 		color_srgb_to_scene_linear(c[1]),
 	compref		$tmp243 ___693_rgb $const3 	%line{39} %argrw{"wrr"}
 	functioncall	$const12 399 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp244 $tmp243 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp244 394 399 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp245 $tmp243 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp245 391 393 	%argrw{"r"}
@@ -1109,22 +1109,22 @@ code ___main___
 	div		$tmp246 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp242 $tmp243 $tmp246 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp247 $tmp243 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp248 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp249 $tmp247 $tmp248 	%argrw{"wrr"}
 	pow		$tmp242 $tmp249 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:40
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:40
 # 		color_srgb_to_scene_linear(c[2]));
 	compref		$tmp251 ___693_rgb $const18 	%line{40} %argrw{"wrr"}
 	functioncall	$const12 414 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp252 $tmp251 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp252 409 414 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp253 $tmp251 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp253 406 408 	%argrw{"r"}
@@ -1132,93 +1132,93 @@ code ___main___
 	div		$tmp254 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp250 $tmp251 $tmp254 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp255 $tmp251 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp256 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp257 $tmp255 $tmp256 	%argrw{"wrr"}
 	pow		$tmp250 $tmp257 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:40
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:40
 # 		color_srgb_to_scene_linear(c[2]));
 	color		___693_rgb $tmp234 $tmp242 $tmp250 	%line{40} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:80
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:80
 # 	return rgb;
-	assign		$tmp223 ___693_rgb 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{80} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:198
+	assign		$tmp223 ___693_rgb 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{80} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:198
 # 			                                          extension);
 	mul		$tmp258 $tmp222 $tmp223 	%line{198} %argrw{"wrr"}
 	add		Color Color $tmp258 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:199
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:199
 # 			Alpha += weight[1] * tmp_alpha;
 	compref		$tmp259 ___697_weight $const3 	%line{199} %argrw{"wrr"}
 	mul		$tmp260 $tmp259 ___697_tmp_alpha 	%argrw{"wrr"}
 	add		Alpha Alpha $tmp260 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:201
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:201
 # 		if (weight[2] > 0.0) {
 	compref		$tmp261 ___697_weight $const18 	%line{201} %argrw{"wrr"}
 	gt		$tmp262 $tmp261 $const10 	%argrw{"wrr"}
 	if		$tmp262 501 501 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:202
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:202
 # 			Color += weight[2] * image_texture_lookup(filename,
 	compref		$tmp263 ___697_weight $const18 	%line{202} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:204
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:204
 # 			                                          p[1], p[0],
 	compref		$tmp265 p $const3 	%line{204} %argrw{"wrr"}
 	compref		$tmp266 p $const2 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:209
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:209
 # 			                                          extension);
 	functioncall	$const4 496 	%line{209} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:67
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:67
 # 	color rgb = (color)texture(filename, u, 1.0 - v, "wrap", extension, "interp", interpolation, "alpha", Alpha);
 	sub		$tmp267 $const5 $tmp266 	%line{67} %argrw{"wrr"}
 	texture		___693_rgb filename $tmp265 $tmp267 $const6 extension $const7 interpolation $const8 ___697_tmp_alpha 	%argrw{"wrrrrrrrrw"} %argderivs{2,3}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:69
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:69
 # 	if (use_alpha) {
 	if		use_alpha 446 446 	%line{69} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:70
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:70
 # 		rgb = color_unpremultiply(rgb, Alpha);
 	functioncall	$const9 442 	%line{70} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:53
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:53
 # 	if (alpha != 1.0 && alpha != 0.0)
-	neq		$tmp268 ___697_tmp_alpha $const5 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h"} %line{53} %argrw{"wrr"}
+	neq		$tmp268 ___697_tmp_alpha $const5 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h"} %line{53} %argrw{"wrr"}
 	neq		$tmp269 $tmp268 $const2 	%argrw{"wrr"}
 	if		$tmp269 438 438 	%argrw{"r"}
 	neq		$tmp270 ___697_tmp_alpha $const10 	%argrw{"wrr"}
 	neq		$tmp271 $tmp270 $const2 	%argrw{"wrr"}
 	assign		$tmp269 $tmp271 	%argrw{"wr"}
 	if		$tmp269 441 441 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:54
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:54
 # 		return c / alpha;
 	div		___693_rgb ___693_rgb ___697_tmp_alpha 	%line{54} %argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:56
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:56
 # 	return c;
 	assign		___693_rgb ___693_rgb 	%line{56} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:72
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:72
 # 		if (!is_float)
-	eq		$tmp272 is_float $const2 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{72} %argrw{"wrr"}
+	eq		$tmp272 is_float $const2 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{72} %argrw{"wrr"}
 	if		$tmp272 446 446 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:73
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:73
 # 			rgb = min(rgb, 1.0);
 	assign		$tmp273 $const5 	%line{73} %argrw{"wr"}
 	min		___693_rgb ___693_rgb $tmp273 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:76
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:76
 # 	if (color_space == "sRGB") {
 	eq		$tmp274 color_space $const11 	%line{76} %argrw{"wrr"}
 	if		$tmp274 495 495 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:77
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:77
 # 		rgb = color_srgb_to_scene_linear(rgb);
 	functioncall	$const12 495 	%line{77} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:38
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:38
 # 		color_srgb_to_scene_linear(c[0]),
-	compref		$tmp276 ___693_rgb $const2 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h"} %line{38} %argrw{"wrr"}
+	compref		$tmp276 ___693_rgb $const2 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h"} %line{38} %argrw{"wrr"}
 	functioncall	$const12 464 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp277 $tmp276 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp277 459 464 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp278 $tmp276 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp278 456 458 	%argrw{"r"}
@@ -1226,22 +1226,22 @@ code ___main___
 	div		$tmp279 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp275 $tmp276 $tmp279 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp280 $tmp276 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp281 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp282 $tmp280 $tmp281 	%argrw{"wrr"}
 	pow		$tmp275 $tmp282 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:39
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:39
 # 		color_srgb_to_scene_linear(c[1]),
 	compref		$tmp284 ___693_rgb $const3 	%line{39} %argrw{"wrr"}
 	functioncall	$const12 479 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp285 $tmp284 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp285 474 479 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp286 $tmp284 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp286 471 473 	%argrw{"r"}
@@ -1249,22 +1249,22 @@ code ___main___
 	div		$tmp287 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp283 $tmp284 $tmp287 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp288 $tmp284 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp289 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp290 $tmp288 $tmp289 	%argrw{"wrr"}
 	pow		$tmp283 $tmp290 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:40
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:40
 # 		color_srgb_to_scene_linear(c[2]));
 	compref		$tmp292 ___693_rgb $const18 	%line{40} %argrw{"wrr"}
 	functioncall	$const12 494 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp293 $tmp292 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp293 489 494 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp294 $tmp292 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp294 486 488 	%argrw{"r"}
@@ -1272,50 +1272,50 @@ code ___main___
 	div		$tmp295 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp291 $tmp292 $tmp295 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp296 $tmp292 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp297 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp298 $tmp296 $tmp297 	%argrw{"wrr"}
 	pow		$tmp291 $tmp298 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:40
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:40
 # 		color_srgb_to_scene_linear(c[2]));
 	color		___693_rgb $tmp275 $tmp283 $tmp291 	%line{40} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:80
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:80
 # 	return rgb;
-	assign		$tmp264 ___693_rgb 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{80} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:209
+	assign		$tmp264 ___693_rgb 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{80} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:209
 # 			                                          extension);
 	mul		$tmp299 $tmp263 $tmp264 	%line{209} %argrw{"wrr"}
 	add		Color Color $tmp299 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:210
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:210
 # 			Alpha += weight[2] * tmp_alpha;
 	compref		$tmp300 ___697_weight $const18 	%line{210} %argrw{"wrr"}
 	mul		$tmp301 $tmp300 ___697_tmp_alpha 	%argrw{"wrr"}
 	add		Alpha Alpha $tmp301 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:213
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:213
 # 	else if (projection == "sphere") {
 	eq		$tmp302 projection $const27 	%line{213} %argrw{"wrr"}
 	if		$tmp302 605 706 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:214
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:214
 # 		point projected = map_to_sphere(texco_remap_square(p));
 	functioncall	$const28 506 	%line{214} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:22
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:22
 # 	return (co - point(0.5, 0.5, 0.5)) * 2.0;
 	sub		$tmp305 p $const29 	%line{22} %argrw{"wrr"}
 	mul		$tmp303 $tmp305 $const25 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:214
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:214
 # 		point projected = map_to_sphere(texco_remap_square(p));
 	functioncall	$const30 534 	%line{214} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:41
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:41
 # 	float len = length(dir);
 	length		___688_len $tmp303 	%line{41} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:43
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:43
 # 	if (len > 0.0) {
 	gt		$tmp306 ___688_len $const10 	%line{43} %argrw{"wrr"}
 	if		$tmp306 531 533 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:44
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:44
 # 		if (dir[0] == 0.0 && dir[1] == 0.0) {
 	compref		$tmp307 $tmp303 $const2 	%line{44} %argrw{"wrr"}
 	eq		$tmp308 $tmp307 $const10 	%argrw{"wrr"}
@@ -1326,10 +1326,10 @@ code ___main___
 	neq		$tmp312 $tmp311 $const2 	%argrw{"wrr"}
 	assign		$tmp309 $tmp312 	%argrw{"wr"}
 	if		$tmp309 520 526 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:45
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:45
 # 			u = 0.0;  /* Othwise domain error. */
 	assign		___688_u $const10 	%line{45} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:48
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:48
 # 			u = (1.0 - atan2(dir[0], dir[1]) / M_PI) / 2.0;
 	compref		$tmp314 $tmp303 $const2 	%line{48} %argrw{"wrr"}
 	compref		$tmp315 $tmp303 $const3 	%argrw{"wrr"}
@@ -1337,77 +1337,77 @@ code ___main___
 	div		$tmp316 $tmp313 $const31 	%argrw{"wrr"}
 	sub		$tmp317 $const5 $tmp316 	%argrw{"wrr"}
 	div		___688_u $tmp317 $const25 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:50
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:50
 # 		v = 1.0 - acos(dir[2] / len) / M_PI;
 	compref		$tmp319 $tmp303 $const18 	%line{50} %argrw{"wrr"}
 	div		$tmp320 $tmp319 ___688_len 	%argrw{"wrr"}
 	acos		$tmp318 $tmp320 	%argrw{"wr"}
 	div		$tmp321 $tmp318 $const31 	%argrw{"wrr"}
 	sub		___688_v $const5 $tmp321 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:53
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:53
 # 		v = u = 0.0;  /* To avoid un-initialized variables. */
 	assign		___688_u $const10 	%line{53} %argrw{"wr"}
 	assign		___688_v ___688_u 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:55
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:55
 # 	return point(u, v, 0.0);
 	point		___710_projected ___688_u ___688_v $const10 	%line{55} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:217
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:217
 # 		                             projected[0], projected[1],
 	compref		$tmp322 ___710_projected $const2 	%line{217} %argrw{"wrr"}
 	compref		$tmp323 ___710_projected $const3 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:222
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:222
 # 		                             extension);
 	functioncall	$const4 605 	%line{222} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:67
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:67
 # 	color rgb = (color)texture(filename, u, 1.0 - v, "wrap", extension, "interp", interpolation, "alpha", Alpha);
 	sub		$tmp324 $const5 $tmp323 	%line{67} %argrw{"wrr"}
 	texture		___693_rgb filename $tmp322 $tmp324 $const6 extension $const7 interpolation $const8 Alpha 	%argrw{"wrrrrrrrrw"} %argderivs{2,3}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:69
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:69
 # 	if (use_alpha) {
 	if		use_alpha 555 555 	%line{69} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:70
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:70
 # 		rgb = color_unpremultiply(rgb, Alpha);
 	functioncall	$const9 551 	%line{70} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:53
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:53
 # 	if (alpha != 1.0 && alpha != 0.0)
-	neq		$tmp325 Alpha $const5 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h"} %line{53} %argrw{"wrr"}
+	neq		$tmp325 Alpha $const5 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h"} %line{53} %argrw{"wrr"}
 	neq		$tmp326 $tmp325 $const2 	%argrw{"wrr"}
 	if		$tmp326 547 547 	%argrw{"r"}
 	neq		$tmp327 Alpha $const10 	%argrw{"wrr"}
 	neq		$tmp328 $tmp327 $const2 	%argrw{"wrr"}
 	assign		$tmp326 $tmp328 	%argrw{"wr"}
 	if		$tmp326 550 550 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:54
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:54
 # 		return c / alpha;
 	div		___693_rgb ___693_rgb Alpha 	%line{54} %argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:56
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:56
 # 	return c;
 	assign		___693_rgb ___693_rgb 	%line{56} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:72
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:72
 # 		if (!is_float)
-	eq		$tmp329 is_float $const2 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{72} %argrw{"wrr"}
+	eq		$tmp329 is_float $const2 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{72} %argrw{"wrr"}
 	if		$tmp329 555 555 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:73
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:73
 # 			rgb = min(rgb, 1.0);
 	assign		$tmp330 $const5 	%line{73} %argrw{"wr"}
 	min		___693_rgb ___693_rgb $tmp330 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:76
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:76
 # 	if (color_space == "sRGB") {
 	eq		$tmp331 color_space $const11 	%line{76} %argrw{"wrr"}
 	if		$tmp331 604 604 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:77
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:77
 # 		rgb = color_srgb_to_scene_linear(rgb);
 	functioncall	$const12 604 	%line{77} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:38
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:38
 # 		color_srgb_to_scene_linear(c[0]),
-	compref		$tmp333 ___693_rgb $const2 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h"} %line{38} %argrw{"wrr"}
+	compref		$tmp333 ___693_rgb $const2 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h"} %line{38} %argrw{"wrr"}
 	functioncall	$const12 573 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp334 $tmp333 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp334 568 573 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp335 $tmp333 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp335 565 567 	%argrw{"r"}
@@ -1415,22 +1415,22 @@ code ___main___
 	div		$tmp336 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp332 $tmp333 $tmp336 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp337 $tmp333 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp338 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp339 $tmp337 $tmp338 	%argrw{"wrr"}
 	pow		$tmp332 $tmp339 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:39
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:39
 # 		color_srgb_to_scene_linear(c[1]),
 	compref		$tmp341 ___693_rgb $const3 	%line{39} %argrw{"wrr"}
 	functioncall	$const12 588 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp342 $tmp341 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp342 583 588 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp343 $tmp341 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp343 580 582 	%argrw{"r"}
@@ -1438,22 +1438,22 @@ code ___main___
 	div		$tmp344 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp340 $tmp341 $tmp344 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp345 $tmp341 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp346 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp347 $tmp345 $tmp346 	%argrw{"wrr"}
 	pow		$tmp340 $tmp347 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:40
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:40
 # 		color_srgb_to_scene_linear(c[2]));
 	compref		$tmp349 ___693_rgb $const18 	%line{40} %argrw{"wrr"}
 	functioncall	$const12 603 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp350 $tmp349 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp350 598 603 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp351 $tmp349 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp351 595 597 	%argrw{"r"}
@@ -1461,39 +1461,39 @@ code ___main___
 	div		$tmp352 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp348 $tmp349 $tmp352 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp353 $tmp349 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp354 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp355 $tmp353 $tmp354 	%argrw{"wrr"}
 	pow		$tmp348 $tmp355 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:40
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:40
 # 		color_srgb_to_scene_linear(c[2]));
 	color		___693_rgb $tmp332 $tmp340 $tmp348 	%line{40} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:80
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:80
 # 	return rgb;
-	assign		Color ___693_rgb 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{80} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:224
+	assign		Color ___693_rgb 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{80} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:224
 # 	else if (projection == "tube") {
 	eq		$tmp356 projection $const32 	%line{224} %argrw{"wrr"}
 	if		$tmp356 706 706 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:225
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:225
 # 		point projected = map_to_tube(texco_remap_square(p));
 	functioncall	$const28 610 	%line{225} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:22
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:22
 # 	return (co - point(0.5, 0.5, 0.5)) * 2.0;
 	sub		$tmp359 p $const29 	%line{22} %argrw{"wrr"}
 	mul		$tmp357 $tmp359 $const25 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:225
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:225
 # 		point projected = map_to_tube(texco_remap_square(p));
 	functioncall	$const33 635 	%line{225} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:28
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:28
 # 	v = (dir[2] + 1.0) * 0.5;
 	compref		$tmp360 $tmp357 $const18 	%line{28} %argrw{"wrr"}
 	add		$tmp361 $tmp360 $const5 	%argrw{"wrr"}
 	mul		___685_v $tmp361 $const23 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:29
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:29
 # 	float len = sqrt(dir[0] * dir[0] + dir[1] * dir[1]);
 	compref		$tmp362 $tmp357 $const2 	%line{29} %argrw{"wrr"}
 	compref		$tmp363 $tmp357 $const2 	%argrw{"wrr"}
@@ -1503,11 +1503,11 @@ code ___main___
 	mul		$tmp367 $tmp365 $tmp366 	%argrw{"wrr"}
 	add		$tmp368 $tmp364 $tmp367 	%argrw{"wrr"}
 	sqrt		___685_len $tmp368 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:30
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:30
 # 	if (len > 0.0) {
 	gt		$tmp369 ___685_len $const10 	%line{30} %argrw{"wrr"}
 	if		$tmp369 632 634 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:31
 # 		u = (1.0 - (atan2(dir[0] / len, dir[1] / len) / M_PI)) * 0.5;
 	compref		$tmp371 $tmp357 $const2 	%line{31} %argrw{"wrr"}
 	div		$tmp372 $tmp371 ___685_len 	%argrw{"wrr"}
@@ -1517,70 +1517,70 @@ code ___main___
 	div		$tmp375 $tmp370 $const31 	%argrw{"wrr"}
 	sub		$tmp376 $const5 $tmp375 	%argrw{"wrr"}
 	mul		___685_u $tmp376 $const23 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:34
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:34
 # 		v = u = 0.0; /* To avoid un-initialized variables. */
 	assign		___685_u $const10 	%line{34} %argrw{"wr"}
 	assign		___685_v ___685_u 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:36
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:36
 # 	return point(u, v, 0.0);
 	point		___711_projected ___685_u ___685_v $const10 	%line{36} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:228
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:228
 # 		                             projected[0], projected[1],
 	compref		$tmp377 ___711_projected $const2 	%line{228} %argrw{"wrr"}
 	compref		$tmp378 ___711_projected $const3 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:233
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:233
 # 		                             extension);
 	functioncall	$const4 706 	%line{233} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:67
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:67
 # 	color rgb = (color)texture(filename, u, 1.0 - v, "wrap", extension, "interp", interpolation, "alpha", Alpha);
 	sub		$tmp379 $const5 $tmp378 	%line{67} %argrw{"wrr"}
 	texture		___693_rgb filename $tmp377 $tmp379 $const6 extension $const7 interpolation $const8 Alpha 	%argrw{"wrrrrrrrrw"} %argderivs{2,3}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:69
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:69
 # 	if (use_alpha) {
 	if		use_alpha 656 656 	%line{69} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:70
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:70
 # 		rgb = color_unpremultiply(rgb, Alpha);
 	functioncall	$const9 652 	%line{70} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:53
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:53
 # 	if (alpha != 1.0 && alpha != 0.0)
-	neq		$tmp380 Alpha $const5 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h"} %line{53} %argrw{"wrr"}
+	neq		$tmp380 Alpha $const5 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h"} %line{53} %argrw{"wrr"}
 	neq		$tmp381 $tmp380 $const2 	%argrw{"wrr"}
 	if		$tmp381 648 648 	%argrw{"r"}
 	neq		$tmp382 Alpha $const10 	%argrw{"wrr"}
 	neq		$tmp383 $tmp382 $const2 	%argrw{"wrr"}
 	assign		$tmp381 $tmp383 	%argrw{"wr"}
 	if		$tmp381 651 651 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:54
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:54
 # 		return c / alpha;
 	div		___693_rgb ___693_rgb Alpha 	%line{54} %argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:56
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:56
 # 	return c;
 	assign		___693_rgb ___693_rgb 	%line{56} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:72
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:72
 # 		if (!is_float)
-	eq		$tmp384 is_float $const2 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{72} %argrw{"wrr"}
+	eq		$tmp384 is_float $const2 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{72} %argrw{"wrr"}
 	if		$tmp384 656 656 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:73
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:73
 # 			rgb = min(rgb, 1.0);
 	assign		$tmp385 $const5 	%line{73} %argrw{"wr"}
 	min		___693_rgb ___693_rgb $tmp385 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:76
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:76
 # 	if (color_space == "sRGB") {
 	eq		$tmp386 color_space $const11 	%line{76} %argrw{"wrr"}
 	if		$tmp386 705 705 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:77
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:77
 # 		rgb = color_srgb_to_scene_linear(rgb);
 	functioncall	$const12 705 	%line{77} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:38
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:38
 # 		color_srgb_to_scene_linear(c[0]),
-	compref		$tmp388 ___693_rgb $const2 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h"} %line{38} %argrw{"wrr"}
+	compref		$tmp388 ___693_rgb $const2 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h"} %line{38} %argrw{"wrr"}
 	functioncall	$const12 674 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp389 $tmp388 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp389 669 674 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp390 $tmp388 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp390 666 668 	%argrw{"r"}
@@ -1588,22 +1588,22 @@ code ___main___
 	div		$tmp391 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp387 $tmp388 $tmp391 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp392 $tmp388 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp393 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp394 $tmp392 $tmp393 	%argrw{"wrr"}
 	pow		$tmp387 $tmp394 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:39
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:39
 # 		color_srgb_to_scene_linear(c[1]),
 	compref		$tmp396 ___693_rgb $const3 	%line{39} %argrw{"wrr"}
 	functioncall	$const12 689 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp397 $tmp396 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp397 684 689 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp398 $tmp396 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp398 681 683 	%argrw{"r"}
@@ -1611,22 +1611,22 @@ code ___main___
 	div		$tmp399 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp395 $tmp396 $tmp399 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp400 $tmp396 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp401 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp402 $tmp400 $tmp401 	%argrw{"wrr"}
 	pow		$tmp395 $tmp402 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:40
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:40
 # 		color_srgb_to_scene_linear(c[2]));
 	compref		$tmp404 ___693_rgb $const18 	%line{40} %argrw{"wrr"}
 	functioncall	$const12 704 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:21
 # 	if (c < 0.04045)
 	lt		$tmp405 $tmp404 $const13 	%line{21} %argrw{"wrr"}
 	if		$tmp405 699 704 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:22
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:22
 # 		return (c < 0.0) ? 0.0 : c * (1.0 / 12.92);
 	lt		$tmp406 $tmp404 $const10 	%line{22} %argrw{"wrr"}
 	if		$tmp406 696 698 	%argrw{"r"}
@@ -1634,17 +1634,17 @@ code ___main___
 	div		$tmp407 $const5 $const14 	%argrw{"wrr"}
 	mul		$tmp403 $tmp404 $tmp407 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:24
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:24
 # 		return pow((c + 0.055) * (1.0 / 1.055), 2.4);
 	add		$tmp408 $tmp404 $const15 	%line{24} %argrw{"wrr"}
 	div		$tmp409 $const5 $const16 	%argrw{"wrr"}
 	mul		$tmp410 $tmp408 $tmp409 	%argrw{"wrr"}
 	pow		$tmp403 $tmp410 $const17 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_color.h:40
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_color.h:40
 # 		color_srgb_to_scene_linear(c[2]));
 	color		___693_rgb $tmp387 $tmp395 $tmp403 	%line{40} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl:80
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl:80
 # 	return rgb;
-	assign		Color ___693_rgb 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{80} %argrw{"wr"}
+	assign		Color ___693_rgb 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_image_texture.osl"} %line{80} %argrw{"wr"}
 	end

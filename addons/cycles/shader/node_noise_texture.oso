@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_noise_texture.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_noise_texture.oso
 shader node_noise_texture
 param	int	use_mapping	0		%read{2,2} %write{2147483647,-1}
 param	matrix	mapping	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0		%read{3,3} %write{2147483647,-1}
@@ -205,262 +205,262 @@ temp	int	$tmp161	%read{325,325} %write{324,324}
 temp	float	$tmp162	%read{326,326} %write{325,325}
 temp	float	$tmp163	%read{327,327} %write{326,326}
 code Vector
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:50
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:50
 # 	point Vector = P,
-	assign		Vector P 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{50} %argrw{"wr"}
+	assign		Vector P 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{50} %argrw{"wr"}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:54
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:54
 # 	point p = Vector;
-	assign		p Vector 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{54} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:56
+	assign		p Vector 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{54} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:56
 # 	if (use_mapping)
 	if		use_mapping 4 4 	%line{56} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:57
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:57
 # 		p = transform(mapping, p);
 	transform	p mapping p 	%line{57} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:59
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:59
 # 	Fac = noise(p * Scale, Distortion, Detail, Color);
 	mul		$tmp1 p Scale 	%line{59} %argrw{"wrr"}
 	functioncall	$const1 332 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:25
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:25
 # 	point p = ip;
 	assign		___688_p $tmp1 	%line{25} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:26
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:26
 # 	int hard = 0;
 	assign		___688_hard $const2 	%line{26} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:28
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:28
 # 	if (distortion != 0.0) {
 	neq		$tmp2 Distortion $const3 	%line{28} %argrw{"wrr"}
 	if		$tmp2 55 55 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:29
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:29
 # 		r[0] = safe_noise(p + point(13.5), "unsigned") * distortion;
 	add		$tmp5 ___688_p $const4 	%line{29} %argrw{"wrr"}
 	functioncall	$const6 23 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:92
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:92
 # 	float f = 0.0;
-	assign		___681_f $const3 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h"} %line{92} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:95
+	assign		___681_f $const3 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h"} %line{92} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:95
 # 	if (type == "signed")
 	eq		$tmp6 $const5 $const7 	%line{95} %argrw{"wrr"}
 	if		$tmp6 16 17 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:96
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:96
 # 		f = noise("perlin", p);
 	noise		___681_f $const8 $tmp5 	%line{96} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:100
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:100
 # 		f = noise(p);
 	noise		___681_f $tmp5 	%line{100} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:103
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:103
 # 	if (!isfinite(f))
 	isfinite	$tmp7 ___681_f 	%line{103} %argrw{"wr"}
 	eq		$tmp8 $tmp7 $const2 	%argrw{"wrr"}
 	if		$tmp8 22 22 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:104
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:104
 # 		return 0.5;
 	assign		$tmp3 $const9 	%line{104} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:106
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:106
 # 	return f;
 	assign		$tmp3 ___681_f 	%line{106} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:29
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:29
 # 		r[0] = safe_noise(p + point(13.5), "unsigned") * distortion;
-	mul		$tmp9 $tmp3 Distortion 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{29} %argrw{"wrr"}
+	mul		$tmp9 $tmp3 Distortion 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{29} %argrw{"wrr"}
 	compassign	___688_r $const2 $tmp9 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:30
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:30
 # 		r[1] = safe_noise(p, "unsigned") * distortion;
 	functioncall	$const6 37 	%line{30} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:92
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:92
 # 	float f = 0.0;
-	assign		___681_f $const3 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h"} %line{92} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:95
+	assign		___681_f $const3 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h"} %line{92} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:95
 # 	if (type == "signed")
 	eq		$tmp11 $const5 $const7 	%line{95} %argrw{"wrr"}
 	if		$tmp11 30 31 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:96
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:96
 # 		f = noise("perlin", p);
 	noise		___681_f $const8 ___688_p 	%line{96} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:100
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:100
 # 		f = noise(p);
 	noise		___681_f ___688_p 	%line{100} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:103
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:103
 # 	if (!isfinite(f))
 	isfinite	$tmp12 ___681_f 	%line{103} %argrw{"wr"}
 	eq		$tmp13 $tmp12 $const2 	%argrw{"wrr"}
 	if		$tmp13 36 36 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:104
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:104
 # 		return 0.5;
 	assign		$tmp10 $const9 	%line{104} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:106
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:106
 # 	return f;
 	assign		$tmp10 ___681_f 	%line{106} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:30
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:30
 # 		r[1] = safe_noise(p, "unsigned") * distortion;
-	mul		$tmp14 $tmp10 Distortion 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{30} %argrw{"wrr"}
+	mul		$tmp14 $tmp10 Distortion 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{30} %argrw{"wrr"}
 	compassign	___688_r $const10 $tmp14 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:31
 # 		r[2] = safe_noise(p - point(13.5), "unsigned") * distortion;
 	sub		$tmp17 ___688_p $const4 	%line{31} %argrw{"wrr"}
 	functioncall	$const6 52 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:92
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:92
 # 	float f = 0.0;
-	assign		___681_f $const3 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h"} %line{92} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:95
+	assign		___681_f $const3 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h"} %line{92} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:95
 # 	if (type == "signed")
 	eq		$tmp18 $const5 $const7 	%line{95} %argrw{"wrr"}
 	if		$tmp18 45 46 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:96
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:96
 # 		f = noise("perlin", p);
 	noise		___681_f $const8 $tmp17 	%line{96} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:100
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:100
 # 		f = noise(p);
 	noise		___681_f $tmp17 	%line{100} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:103
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:103
 # 	if (!isfinite(f))
 	isfinite	$tmp19 ___681_f 	%line{103} %argrw{"wr"}
 	eq		$tmp20 $tmp19 $const2 	%argrw{"wrr"}
 	if		$tmp20 51 51 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:104
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:104
 # 		return 0.5;
 	assign		$tmp15 $const9 	%line{104} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:106
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:106
 # 	return f;
 	assign		$tmp15 ___681_f 	%line{106} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:31
 # 		r[2] = safe_noise(p - point(13.5), "unsigned") * distortion;
-	mul		$tmp21 $tmp15 Distortion 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{31} %argrw{"wrr"}
+	mul		$tmp21 $tmp15 Distortion 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{31} %argrw{"wrr"}
 	compassign	___688_r $const11 $tmp21 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:33
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:33
 # 		p += r;
 	add		___688_p ___688_p ___688_r 	%line{33} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:36
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:36
 # 	float fac = noise_turbulence(p, detail, hard);
 	functioncall	$const12 144 	%line{36} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:113
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:113
 # 	float fscale = 1.0;
-	assign		___682_fscale $const13 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h"} %line{113} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:114
+	assign		___682_fscale $const13 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h"} %line{113} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:114
 # 	float amp = 1.0;
 	assign		___682_amp $const13 	%line{114} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:115
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:115
 # 	float sum = 0.0;
 	assign		___682_sum $const3 	%line{115} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:118
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:118
 # 	float octaves = clamp(details, 0.0, 16.0);
 	functioncall	$const15 62 	%line{118} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:144
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:144
 # float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
-	min		$tmp22 Detail $const14 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
+	min		$tmp22 Detail $const14 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
 	max		___682_octaves $tmp22 $const3 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:119
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:119
 # 	n = (int)octaves;
-	assign		___682_n ___682_octaves 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h"} %line{119} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:121
+	assign		___682_n ___682_octaves 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h"} %line{119} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:121
 # 	for (i = 0; i <= n; i++) {
 	for		$tmp23 65 66 87 89 	%line{121} %argrw{"r"}
 	assign		___682_i $const2 	%argrw{"wr"}
 	le		$tmp23 ___682_i ___682_n 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:122
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:122
 # 		float t = safe_noise(fscale * p, "unsigned");
 	mul		$tmp24 ___682_fscale ___688_p 	%line{122} %argrw{"wrr"}
 	functioncall	$const6 79 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:92
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:92
 # 	float f = 0.0;
 	assign		___681_f $const3 	%line{92} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:95
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:95
 # 	if (type == "signed")
 	eq		$tmp25 $const5 $const7 	%line{95} %argrw{"wrr"}
 	if		$tmp25 72 73 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:96
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:96
 # 		f = noise("perlin", p);
 	noise		___681_f $const8 $tmp24 	%line{96} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:100
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:100
 # 		f = noise(p);
 	noise		___681_f $tmp24 	%line{100} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:103
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:103
 # 	if (!isfinite(f))
 	isfinite	$tmp26 ___681_f 	%line{103} %argrw{"wr"}
 	eq		$tmp27 $tmp26 $const2 	%argrw{"wrr"}
 	if		$tmp27 78 78 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:104
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:104
 # 		return 0.5;
 	assign		___684_t $const9 	%line{104} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:106
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:106
 # 	return f;
 	assign		___684_t ___681_f 	%line{106} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:124
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:124
 # 		if (hard)
 	if		___688_hard 83 83 	%line{124} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:125
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:125
 # 			t = fabs(2.0 * t - 1.0);
 	mul		$tmp28 $const16 ___684_t 	%line{125} %argrw{"wrr"}
 	sub		$tmp29 $tmp28 $const13 	%argrw{"wrr"}
 	fabs		___684_t $tmp29 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:127
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:127
 # 		sum += t * amp;
 	mul		$tmp30 ___684_t ___682_amp 	%line{127} %argrw{"wrr"}
 	add		___682_sum ___682_sum $tmp30 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:128
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:128
 # 		amp *= 0.5;
 	mul		___682_amp ___682_amp $const9 	%line{128} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:129
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:129
 # 		fscale *= 2.0;
 	mul		___682_fscale ___682_fscale $const16 	%line{129} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:121
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:121
 # 	for (i = 0; i <= n; i++) {
 	assign		$tmp31 ___682_i 	%line{121} %argrw{"wr"}
 	add		___682_i ___682_i $const10 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:132
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:132
 # 	float rmd = octaves - floor(octaves);
 	floor		$tmp32 ___682_octaves 	%line{132} %argrw{"wr"}
 	sub		___682_rmd ___682_octaves $tmp32 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:134
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:134
 # 	if (rmd != 0.0) {
 	neq		$tmp33 ___682_rmd $const3 	%line{134} %argrw{"wrr"}
 	if		$tmp33 134 144 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:135
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:135
 # 		float t = safe_noise(fscale * p, "unsigned");
 	mul		$tmp34 ___682_fscale ___688_p 	%line{135} %argrw{"wrr"}
 	functioncall	$const6 106 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:92
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:92
 # 	float f = 0.0;
 	assign		___681_f $const3 	%line{92} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:95
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:95
 # 	if (type == "signed")
 	eq		$tmp35 $const5 $const7 	%line{95} %argrw{"wrr"}
 	if		$tmp35 99 100 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:96
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:96
 # 		f = noise("perlin", p);
 	noise		___681_f $const8 $tmp34 	%line{96} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:100
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:100
 # 		f = noise(p);
 	noise		___681_f $tmp34 	%line{100} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:103
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:103
 # 	if (!isfinite(f))
 	isfinite	$tmp36 ___681_f 	%line{103} %argrw{"wr"}
 	eq		$tmp37 $tmp36 $const2 	%argrw{"wrr"}
 	if		$tmp37 105 105 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:104
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:104
 # 		return 0.5;
 	assign		___685_t $const9 	%line{104} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:106
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:106
 # 	return f;
 	assign		___685_t ___681_f 	%line{106} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:137
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:137
 # 		if (hard)
 	if		___688_hard 110 110 	%line{137} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:138
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:138
 # 			t = fabs(2.0 * t - 1.0);
 	mul		$tmp38 $const16 ___685_t 	%line{138} %argrw{"wrr"}
 	sub		$tmp39 $tmp38 $const13 	%argrw{"wrr"}
 	fabs		___685_t $tmp39 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:140
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:140
 # 		float sum2 = sum + t * amp;
 	mul		$tmp40 ___685_t ___682_amp 	%line{140} %argrw{"wrr"}
 	add		___685_sum2 ___682_sum $tmp40 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:142
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:142
 # 		sum *= ((float)(1 << n) / (float)((1 << (n + 1)) - 1));
 	shl		$tmp41 $const10 ___682_n 	%line{142} %argrw{"wrr"}
 	assign		$tmp42 $tmp41 	%argrw{"wr"}
@@ -470,7 +470,7 @@ code ___main___
 	assign		$tmp46 $tmp45 	%argrw{"wr"}
 	div		$tmp47 $tmp42 $tmp46 	%argrw{"wrr"}
 	mul		___682_sum ___682_sum $tmp47 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:143
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:143
 # 		sum2 *= ((float)(1 << (n + 1)) / (float)((1 << (n + 2)) - 1));
 	add		$tmp48 ___682_n $const10 	%line{143} %argrw{"wrr"}
 	shl		$tmp49 $const10 $tmp48 	%argrw{"wrr"}
@@ -481,14 +481,14 @@ code ___main___
 	assign		$tmp54 $tmp53 	%argrw{"wr"}
 	div		$tmp55 $tmp50 $tmp54 	%argrw{"wrr"}
 	mul		___685_sum2 ___685_sum2 $tmp55 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:145
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:145
 # 		return (1.0 - rmd) * sum + rmd * sum2;
 	sub		$tmp56 $const13 ___682_rmd 	%line{145} %argrw{"wrr"}
 	mul		$tmp57 $tmp56 ___682_sum 	%argrw{"wrr"}
 	mul		$tmp58 ___682_rmd ___685_sum2 	%argrw{"wrr"}
 	add		___688_fac $tmp57 $tmp58 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:148
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:148
 # 		sum *= ((float)(1 << n) / (float)((1 << (n + 1)) - 1));
 	shl		$tmp59 $const10 ___682_n 	%line{148} %argrw{"wrr"}
 	assign		$tmp60 $tmp59 	%argrw{"wr"}
@@ -498,142 +498,142 @@ code ___main___
 	assign		$tmp64 $tmp63 	%argrw{"wr"}
 	div		$tmp65 $tmp60 $tmp64 	%argrw{"wrr"}
 	mul		___682_sum ___682_sum $tmp65 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:149
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:149
 # 		return sum;
 	assign		___688_fac ___682_sum 	%line{149} %argrw{"wr"}
 	return
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:38
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:38
 # 	Color = color(fac, noise_turbulence(point(p[1], p[0], p[2]), detail, hard),
-	compref		$tmp68 ___688_p $const10 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{38} %argrw{"wrr"}
+	compref		$tmp68 ___688_p $const10 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{38} %argrw{"wrr"}
 	compref		$tmp69 ___688_p $const2 	%argrw{"wrr"}
 	compref		$tmp70 ___688_p $const11 	%argrw{"wrr"}
 	point		$tmp67 $tmp68 $tmp69 $tmp70 	%argrw{"wrrr"}
 	functioncall	$const12 237 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:113
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:113
 # 	float fscale = 1.0;
-	assign		___682_fscale $const13 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h"} %line{113} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:114
+	assign		___682_fscale $const13 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h"} %line{113} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:114
 # 	float amp = 1.0;
 	assign		___682_amp $const13 	%line{114} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:115
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:115
 # 	float sum = 0.0;
 	assign		___682_sum $const3 	%line{115} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:118
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:118
 # 	float octaves = clamp(details, 0.0, 16.0);
 	functioncall	$const15 155 	%line{118} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:144
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:144
 # float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
-	min		$tmp71 Detail $const14 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
+	min		$tmp71 Detail $const14 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
 	max		___682_octaves $tmp71 $const3 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:119
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:119
 # 	n = (int)octaves;
-	assign		___682_n ___682_octaves 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h"} %line{119} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:121
+	assign		___682_n ___682_octaves 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h"} %line{119} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:121
 # 	for (i = 0; i <= n; i++) {
 	for		$tmp72 158 159 180 182 	%line{121} %argrw{"r"}
 	assign		___682_i $const2 	%argrw{"wr"}
 	le		$tmp72 ___682_i ___682_n 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:122
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:122
 # 		float t = safe_noise(fscale * p, "unsigned");
 	mul		$tmp73 ___682_fscale $tmp67 	%line{122} %argrw{"wrr"}
 	functioncall	$const6 172 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:92
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:92
 # 	float f = 0.0;
 	assign		___681_f $const3 	%line{92} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:95
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:95
 # 	if (type == "signed")
 	eq		$tmp74 $const5 $const7 	%line{95} %argrw{"wrr"}
 	if		$tmp74 165 166 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:96
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:96
 # 		f = noise("perlin", p);
 	noise		___681_f $const8 $tmp73 	%line{96} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:100
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:100
 # 		f = noise(p);
 	noise		___681_f $tmp73 	%line{100} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:103
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:103
 # 	if (!isfinite(f))
 	isfinite	$tmp75 ___681_f 	%line{103} %argrw{"wr"}
 	eq		$tmp76 $tmp75 $const2 	%argrw{"wrr"}
 	if		$tmp76 171 171 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:104
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:104
 # 		return 0.5;
 	assign		___684_t $const9 	%line{104} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:106
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:106
 # 	return f;
 	assign		___684_t ___681_f 	%line{106} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:124
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:124
 # 		if (hard)
 	if		___688_hard 176 176 	%line{124} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:125
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:125
 # 			t = fabs(2.0 * t - 1.0);
 	mul		$tmp77 $const16 ___684_t 	%line{125} %argrw{"wrr"}
 	sub		$tmp78 $tmp77 $const13 	%argrw{"wrr"}
 	fabs		___684_t $tmp78 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:127
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:127
 # 		sum += t * amp;
 	mul		$tmp79 ___684_t ___682_amp 	%line{127} %argrw{"wrr"}
 	add		___682_sum ___682_sum $tmp79 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:128
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:128
 # 		amp *= 0.5;
 	mul		___682_amp ___682_amp $const9 	%line{128} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:129
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:129
 # 		fscale *= 2.0;
 	mul		___682_fscale ___682_fscale $const16 	%line{129} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:121
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:121
 # 	for (i = 0; i <= n; i++) {
 	assign		$tmp80 ___682_i 	%line{121} %argrw{"wr"}
 	add		___682_i ___682_i $const10 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:132
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:132
 # 	float rmd = octaves - floor(octaves);
 	floor		$tmp81 ___682_octaves 	%line{132} %argrw{"wr"}
 	sub		___682_rmd ___682_octaves $tmp81 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:134
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:134
 # 	if (rmd != 0.0) {
 	neq		$tmp82 ___682_rmd $const3 	%line{134} %argrw{"wrr"}
 	if		$tmp82 227 237 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:135
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:135
 # 		float t = safe_noise(fscale * p, "unsigned");
 	mul		$tmp83 ___682_fscale $tmp67 	%line{135} %argrw{"wrr"}
 	functioncall	$const6 199 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:92
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:92
 # 	float f = 0.0;
 	assign		___681_f $const3 	%line{92} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:95
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:95
 # 	if (type == "signed")
 	eq		$tmp84 $const5 $const7 	%line{95} %argrw{"wrr"}
 	if		$tmp84 192 193 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:96
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:96
 # 		f = noise("perlin", p);
 	noise		___681_f $const8 $tmp83 	%line{96} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:100
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:100
 # 		f = noise(p);
 	noise		___681_f $tmp83 	%line{100} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:103
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:103
 # 	if (!isfinite(f))
 	isfinite	$tmp85 ___681_f 	%line{103} %argrw{"wr"}
 	eq		$tmp86 $tmp85 $const2 	%argrw{"wrr"}
 	if		$tmp86 198 198 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:104
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:104
 # 		return 0.5;
 	assign		___685_t $const9 	%line{104} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:106
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:106
 # 	return f;
 	assign		___685_t ___681_f 	%line{106} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:137
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:137
 # 		if (hard)
 	if		___688_hard 203 203 	%line{137} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:138
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:138
 # 			t = fabs(2.0 * t - 1.0);
 	mul		$tmp87 $const16 ___685_t 	%line{138} %argrw{"wrr"}
 	sub		$tmp88 $tmp87 $const13 	%argrw{"wrr"}
 	fabs		___685_t $tmp88 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:140
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:140
 # 		float sum2 = sum + t * amp;
 	mul		$tmp89 ___685_t ___682_amp 	%line{140} %argrw{"wrr"}
 	add		___685_sum2 ___682_sum $tmp89 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:142
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:142
 # 		sum *= ((float)(1 << n) / (float)((1 << (n + 1)) - 1));
 	shl		$tmp90 $const10 ___682_n 	%line{142} %argrw{"wrr"}
 	assign		$tmp91 $tmp90 	%argrw{"wr"}
@@ -643,7 +643,7 @@ code ___main___
 	assign		$tmp95 $tmp94 	%argrw{"wr"}
 	div		$tmp96 $tmp91 $tmp95 	%argrw{"wrr"}
 	mul		___682_sum ___682_sum $tmp96 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:143
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:143
 # 		sum2 *= ((float)(1 << (n + 1)) / (float)((1 << (n + 2)) - 1));
 	add		$tmp97 ___682_n $const10 	%line{143} %argrw{"wrr"}
 	shl		$tmp98 $const10 $tmp97 	%argrw{"wrr"}
@@ -654,14 +654,14 @@ code ___main___
 	assign		$tmp103 $tmp102 	%argrw{"wr"}
 	div		$tmp104 $tmp99 $tmp103 	%argrw{"wrr"}
 	mul		___685_sum2 ___685_sum2 $tmp104 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:145
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:145
 # 		return (1.0 - rmd) * sum + rmd * sum2;
 	sub		$tmp105 $const13 ___682_rmd 	%line{145} %argrw{"wrr"}
 	mul		$tmp106 $tmp105 ___682_sum 	%argrw{"wrr"}
 	mul		$tmp107 ___682_rmd ___685_sum2 	%argrw{"wrr"}
 	add		$tmp66 $tmp106 $tmp107 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:148
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:148
 # 		sum *= ((float)(1 << n) / (float)((1 << (n + 1)) - 1));
 	shl		$tmp108 $const10 ___682_n 	%line{148} %argrw{"wrr"}
 	assign		$tmp109 $tmp108 	%argrw{"wr"}
@@ -671,142 +671,142 @@ code ___main___
 	assign		$tmp113 $tmp112 	%argrw{"wr"}
 	div		$tmp114 $tmp109 $tmp113 	%argrw{"wrr"}
 	mul		___682_sum ___682_sum $tmp114 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:149
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:149
 # 		return sum;
 	assign		$tmp66 ___682_sum 	%line{149} %argrw{"wr"}
 	return
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:39
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:39
 # 		noise_turbulence(point(p[1], p[2], p[0]), detail, hard));
-	compref		$tmp117 ___688_p $const10 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{39} %argrw{"wrr"}
+	compref		$tmp117 ___688_p $const10 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{39} %argrw{"wrr"}
 	compref		$tmp118 ___688_p $const11 	%argrw{"wrr"}
 	compref		$tmp119 ___688_p $const2 	%argrw{"wrr"}
 	point		$tmp116 $tmp117 $tmp118 $tmp119 	%argrw{"wrrr"}
 	functioncall	$const12 330 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:113
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:113
 # 	float fscale = 1.0;
-	assign		___682_fscale $const13 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h"} %line{113} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:114
+	assign		___682_fscale $const13 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h"} %line{113} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:114
 # 	float amp = 1.0;
 	assign		___682_amp $const13 	%line{114} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:115
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:115
 # 	float sum = 0.0;
 	assign		___682_sum $const3 	%line{115} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:118
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:118
 # 	float octaves = clamp(details, 0.0, 16.0);
 	functioncall	$const15 248 	%line{118} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h:144
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h:144
 # float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
-	min		$tmp120 Detail $const14 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
+	min		$tmp120 Detail $const14 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\stdosl.h"} %line{144} %argrw{"wrr"}
 	max		___682_octaves $tmp120 $const3 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:119
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:119
 # 	n = (int)octaves;
-	assign		___682_n ___682_octaves 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h"} %line{119} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:121
+	assign		___682_n ___682_octaves 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h"} %line{119} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:121
 # 	for (i = 0; i <= n; i++) {
 	for		$tmp121 251 252 273 275 	%line{121} %argrw{"r"}
 	assign		___682_i $const2 	%argrw{"wr"}
 	le		$tmp121 ___682_i ___682_n 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:122
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:122
 # 		float t = safe_noise(fscale * p, "unsigned");
 	mul		$tmp122 ___682_fscale $tmp116 	%line{122} %argrw{"wrr"}
 	functioncall	$const6 265 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:92
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:92
 # 	float f = 0.0;
 	assign		___681_f $const3 	%line{92} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:95
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:95
 # 	if (type == "signed")
 	eq		$tmp123 $const5 $const7 	%line{95} %argrw{"wrr"}
 	if		$tmp123 258 259 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:96
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:96
 # 		f = noise("perlin", p);
 	noise		___681_f $const8 $tmp122 	%line{96} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:100
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:100
 # 		f = noise(p);
 	noise		___681_f $tmp122 	%line{100} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:103
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:103
 # 	if (!isfinite(f))
 	isfinite	$tmp124 ___681_f 	%line{103} %argrw{"wr"}
 	eq		$tmp125 $tmp124 $const2 	%argrw{"wrr"}
 	if		$tmp125 264 264 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:104
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:104
 # 		return 0.5;
 	assign		___684_t $const9 	%line{104} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:106
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:106
 # 	return f;
 	assign		___684_t ___681_f 	%line{106} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:124
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:124
 # 		if (hard)
 	if		___688_hard 269 269 	%line{124} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:125
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:125
 # 			t = fabs(2.0 * t - 1.0);
 	mul		$tmp126 $const16 ___684_t 	%line{125} %argrw{"wrr"}
 	sub		$tmp127 $tmp126 $const13 	%argrw{"wrr"}
 	fabs		___684_t $tmp127 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:127
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:127
 # 		sum += t * amp;
 	mul		$tmp128 ___684_t ___682_amp 	%line{127} %argrw{"wrr"}
 	add		___682_sum ___682_sum $tmp128 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:128
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:128
 # 		amp *= 0.5;
 	mul		___682_amp ___682_amp $const9 	%line{128} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:129
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:129
 # 		fscale *= 2.0;
 	mul		___682_fscale ___682_fscale $const16 	%line{129} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:121
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:121
 # 	for (i = 0; i <= n; i++) {
 	assign		$tmp129 ___682_i 	%line{121} %argrw{"wr"}
 	add		___682_i ___682_i $const10 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:132
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:132
 # 	float rmd = octaves - floor(octaves);
 	floor		$tmp130 ___682_octaves 	%line{132} %argrw{"wr"}
 	sub		___682_rmd ___682_octaves $tmp130 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:134
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:134
 # 	if (rmd != 0.0) {
 	neq		$tmp131 ___682_rmd $const3 	%line{134} %argrw{"wrr"}
 	if		$tmp131 320 330 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:135
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:135
 # 		float t = safe_noise(fscale * p, "unsigned");
 	mul		$tmp132 ___682_fscale $tmp116 	%line{135} %argrw{"wrr"}
 	functioncall	$const6 292 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:92
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:92
 # 	float f = 0.0;
 	assign		___681_f $const3 	%line{92} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:95
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:95
 # 	if (type == "signed")
 	eq		$tmp133 $const5 $const7 	%line{95} %argrw{"wrr"}
 	if		$tmp133 285 286 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:96
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:96
 # 		f = noise("perlin", p);
 	noise		___681_f $const8 $tmp132 	%line{96} %argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:100
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:100
 # 		f = noise(p);
 	noise		___681_f $tmp132 	%line{100} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:103
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:103
 # 	if (!isfinite(f))
 	isfinite	$tmp134 ___681_f 	%line{103} %argrw{"wr"}
 	eq		$tmp135 $tmp134 $const2 	%argrw{"wrr"}
 	if		$tmp135 291 291 	%argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:104
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:104
 # 		return 0.5;
 	assign		___685_t $const9 	%line{104} %argrw{"wr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:106
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:106
 # 	return f;
 	assign		___685_t ___681_f 	%line{106} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:137
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:137
 # 		if (hard)
 	if		___688_hard 296 296 	%line{137} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:138
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:138
 # 			t = fabs(2.0 * t - 1.0);
 	mul		$tmp136 $const16 ___685_t 	%line{138} %argrw{"wrr"}
 	sub		$tmp137 $tmp136 $const13 	%argrw{"wrr"}
 	fabs		___685_t $tmp137 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:140
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:140
 # 		float sum2 = sum + t * amp;
 	mul		$tmp138 ___685_t ___682_amp 	%line{140} %argrw{"wrr"}
 	add		___685_sum2 ___682_sum $tmp138 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:142
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:142
 # 		sum *= ((float)(1 << n) / (float)((1 << (n + 1)) - 1));
 	shl		$tmp139 $const10 ___682_n 	%line{142} %argrw{"wrr"}
 	assign		$tmp140 $tmp139 	%argrw{"wr"}
@@ -816,7 +816,7 @@ code ___main___
 	assign		$tmp144 $tmp143 	%argrw{"wr"}
 	div		$tmp145 $tmp140 $tmp144 	%argrw{"wrr"}
 	mul		___682_sum ___682_sum $tmp145 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:143
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:143
 # 		sum2 *= ((float)(1 << (n + 1)) / (float)((1 << (n + 2)) - 1));
 	add		$tmp146 ___682_n $const10 	%line{143} %argrw{"wrr"}
 	shl		$tmp147 $const10 $tmp146 	%argrw{"wrr"}
@@ -827,14 +827,14 @@ code ___main___
 	assign		$tmp152 $tmp151 	%argrw{"wr"}
 	div		$tmp153 $tmp148 $tmp152 	%argrw{"wrr"}
 	mul		___685_sum2 ___685_sum2 $tmp153 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:145
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:145
 # 		return (1.0 - rmd) * sum + rmd * sum2;
 	sub		$tmp154 $const13 ___682_rmd 	%line{145} %argrw{"wrr"}
 	mul		$tmp155 $tmp154 ___682_sum 	%argrw{"wrr"}
 	mul		$tmp156 ___682_rmd ___685_sum2 	%argrw{"wrr"}
 	add		$tmp115 $tmp155 $tmp156 	%argrw{"wrr"}
 	return
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:148
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:148
 # 		sum *= ((float)(1 << n) / (float)((1 << (n + 1)) - 1));
 	shl		$tmp157 $const10 ___682_n 	%line{148} %argrw{"wrr"}
 	assign		$tmp158 $tmp157 	%argrw{"wr"}
@@ -844,14 +844,14 @@ code ___main___
 	assign		$tmp162 $tmp161 	%argrw{"wr"}
 	div		$tmp163 $tmp158 $tmp162 	%argrw{"wrr"}
 	mul		___682_sum ___682_sum $tmp163 	%argrw{"wrr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:149
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:149
 # 		return sum;
 	assign		$tmp115 ___682_sum 	%line{149} %argrw{"wr"}
 	return
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:39
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:39
 # 		noise_turbulence(point(p[1], p[2], p[0]), detail, hard));
-	color		Color ___688_fac $tmp66 $tmp115 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{39} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_noise_texture.osl:41
+	color		Color ___688_fac $tmp66 $tmp115 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl"} %line{39} %argrw{"wrrr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_noise_texture.osl:41
 # 	return fac;
 	assign		Fac ___688_fac 	%line{41} %argrw{"wr"}
 	end

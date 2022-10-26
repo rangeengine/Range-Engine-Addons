@@ -263,8 +263,18 @@ def menu_func(self, context):
                             text="Apply All Modifiers")
 
 
+# Register
+classes = [
+    ApplyAllModifiers,
+    DeleteAllModifiers,
+    ToggleApplyModifiersView,
+    ToggleAllShowExpanded,
+]
+
 def register():
-    bpy.utils.register_module(__name__)
+    from bpy.utils import register_class
+    for cls in classes:
+        register_class(cls)
 
     # Add "Specials" menu to the "Modifiers" menu
     bpy.types.DATA_PT_modifiers.prepend(menu)
@@ -280,8 +290,9 @@ def unregister():
     # Remove apply operator to the Apply 3D View Menu
     bpy.types.VIEW3D_MT_object_apply.remove(menu_func)
 
-    bpy.utils.unregister_module(__name__)
-
+    from bpy.utils import unregister_class
+    for cls in reversed(classes):
+        unregister_class(cls)
 
 if __name__ == "__main__":
     register()

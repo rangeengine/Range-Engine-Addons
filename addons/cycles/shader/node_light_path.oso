@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_light_path.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_light_path.oso
 shader node_light_path
 oparam	float	IsCameraRay	0		%read{2147483647,-1} %write{1,1}
 oparam	float	IsShadowRay	0		%read{2147483647,-1} %write{3,3}
@@ -50,69 +50,69 @@ const	string	$const13	"path:transparent_depth"		%read{23,23} %write{2147483647,-
 temp	int	$tmp14	%read{2147483647,-1} %write{25,25}
 const	string	$const14	"path:transmission_depth"		%read{25,25} %write{2147483647,-1}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:35
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:35
 # 	IsCameraRay = raytype("camera");
-	raytype		$tmp1 $const1 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl"} %line{35} %argrw{"wr"}
+	raytype		$tmp1 $const1 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl"} %line{35} %argrw{"wr"}
 	assign		IsCameraRay $tmp1 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:36
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:36
 # 	IsShadowRay = raytype("shadow");
 	raytype		$tmp2 $const2 	%line{36} %argrw{"wr"}
 	assign		IsShadowRay $tmp2 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:37
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:37
 # 	IsDiffuseRay = raytype("diffuse");
 	raytype		$tmp3 $const3 	%line{37} %argrw{"wr"}
 	assign		IsDiffuseRay $tmp3 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:38
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:38
 # 	IsGlossyRay = raytype("glossy");
 	raytype		$tmp4 $const4 	%line{38} %argrw{"wr"}
 	assign		IsGlossyRay $tmp4 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:39
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:39
 # 	IsSingularRay = raytype("singular");
 	raytype		$tmp5 $const5 	%line{39} %argrw{"wr"}
 	assign		IsSingularRay $tmp5 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:40
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:40
 # 	IsReflectionRay = raytype("reflection");
 	raytype		$tmp6 $const6 	%line{40} %argrw{"wr"}
 	assign		IsReflectionRay $tmp6 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:41
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:41
 # 	IsTransmissionRay = raytype("refraction");
 	raytype		$tmp7 $const7 	%line{41} %argrw{"wr"}
 	assign		IsTransmissionRay $tmp7 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:42
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:42
 # 	IsVolumeScatterRay = raytype("volume_scatter");
 	raytype		$tmp8 $const8 	%line{42} %argrw{"wr"}
 	assign		IsVolumeScatterRay $tmp8 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:44
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:44
 # 	getattribute("path:ray_length", RayLength);
 	getattribute	$tmp9 $const9 RayLength 	%line{44} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:47
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:47
 # 	getattribute("path:ray_depth", ray_depth);
 	getattribute	$tmp10 $const10 ray_depth 	%line{47} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:48
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:48
 # 	RayDepth = (float)ray_depth;
 	assign		RayDepth ray_depth 	%line{48} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:51
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:51
 # 	getattribute("path:diffuse_depth", diffuse_depth);
 	getattribute	$tmp11 $const11 diffuse_depth 	%line{51} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:52
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:52
 # 	DiffuseDepth = (float)diffuse_depth;
 	assign		DiffuseDepth diffuse_depth 	%line{52} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:55
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:55
 # 	getattribute("path:glossy_depth", glossy_depth);
 	getattribute	$tmp12 $const12 glossy_depth 	%line{55} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:56
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:56
 # 	GlossyDepth = (float)glossy_depth;
 	assign		GlossyDepth glossy_depth 	%line{56} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:59
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:59
 # 	getattribute("path:transparent_depth", transparent_depth);
 	getattribute	$tmp13 $const13 transparent_depth 	%line{59} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:60
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:60
 # 	TransparentDepth = (float)transparent_depth;
 	assign		TransparentDepth transparent_depth 	%line{60} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:63
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:63
 # 	getattribute("path:transmission_depth", transmission_depth);
 	getattribute	$tmp14 $const14 transmission_depth 	%line{63} %argrw{"wrw"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_light_path.osl:64
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_light_path.osl:64
 # 	TransmissionDepth = (float)transmission_depth;
 	assign		TransmissionDepth transmission_depth 	%line{64} %argrw{"wr"}
 	end

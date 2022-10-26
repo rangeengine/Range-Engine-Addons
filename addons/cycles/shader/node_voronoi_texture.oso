@@ -1,6 +1,6 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.9.9
-# options: -q -O2 -ID:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.oso
+# options: -q -O2 -ID:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders -o D:/GitHub/Build RanGE 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.oso
 shader node_voronoi_texture
 param	int	use_mapping	0		%read{2,2} %write{2147483647,-1}
 param	matrix	mapping	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0		%read{3,3} %write{2147483647,-1}
@@ -167,116 +167,116 @@ temp	float	$tmp116	%read{206,206} %write{204,204}
 const	float	$const20	3		%read{205,205} %write{2147483647,-1}
 temp	float	$tmp117	%read{206,206} %write{205,205}
 code Vector
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:108
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:108
 # 	point Vector = P,
-	assign		Vector P 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl"} %line{108} %argrw{"wr"}
+	assign		Vector P 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl"} %line{108} %argrw{"wr"}
 code ___main___
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:112
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:112
 # 	point p = Vector;
-	assign		p Vector 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl"} %line{112} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:114
+	assign		p Vector 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl"} %line{112} %argrw{"wr"}
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:114
 # 	if (use_mapping)
 	if		use_mapping 4 4 	%line{114} %argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:115
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:115
 # 		p = transform(mapping, p);
 	transform	p mapping p 	%line{115} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:122
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:122
 # 	voronoi_m(p * Scale, metric, Exponent, da, pa);
 	mul		$tmp1 p Scale 	%line{122} %argrw{"wrr"}
 	functioncall	$const1 144 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:30
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:30
 # 	xi = (int)floor(p[0]);
 	compref		$tmp3 $tmp1 $const2 	%line{30} %argrw{"wrr"}
 	floor		$tmp2 $tmp3 	%argrw{"wr"}
 	assign		___688_xi $tmp2 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:31
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:31
 # 	yi = (int)floor(p[1]);
 	compref		$tmp5 $tmp1 $const3 	%line{31} %argrw{"wrr"}
 	floor		$tmp4 $tmp5 	%argrw{"wr"}
 	assign		___688_yi $tmp4 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:32
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:32
 # 	zi = (int)floor(p[2]);
 	compref		$tmp7 $tmp1 $const4 	%line{32} %argrw{"wrr"}
 	floor		$tmp6 $tmp7 	%argrw{"wr"}
 	assign		___688_zi $tmp6 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:34
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:34
 # 	da[0] = 1e10;
 	aassign		da $const2 $const5 	%line{34} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:35
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:35
 # 	da[1] = 1e10;
 	aassign		da $const3 $const5 	%line{35} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:36
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:36
 # 	da[2] = 1e10;
 	aassign		da $const4 $const5 	%line{36} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:37
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:37
 # 	da[3] = 1e10;
 	aassign		da $const6 $const5 	%line{37} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:39
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:39
 # 	for (xx = xi - 1; xx <= xi + 1; xx++) {
 	for		$tmp9 21 23 142 144 	%line{39} %argrw{"r"}
 	sub		___688_xx ___688_xi $const3 	%argrw{"wrr"}
 	add		$tmp8 ___688_xi $const3 	%argrw{"wrr"}
 	le		$tmp9 ___688_xx $tmp8 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:40
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:40
 # 		for (yy = yi - 1; yy <= yi + 1; yy++) {
 	for		$tmp11 25 27 140 142 	%line{40} %argrw{"r"}
 	sub		___688_yy ___688_yi $const3 	%argrw{"wrr"}
 	add		$tmp10 ___688_yi $const3 	%argrw{"wrr"}
 	le		$tmp11 ___688_yy $tmp10 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:41
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:41
 # 			for (zz = zi - 1; zz <= zi + 1; zz++) {
 	for		$tmp13 29 31 138 140 	%line{41} %argrw{"r"}
 	sub		___688_zz ___688_zi $const3 	%argrw{"wrr"}
 	add		$tmp12 ___688_zi $const3 	%argrw{"wrr"}
 	le		$tmp13 ___688_zz $tmp12 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:42
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:42
 # 				point ip = point(xx, yy, zz);
 	assign		$tmp14 ___688_xx 	%line{42} %argrw{"wr"}
 	assign		$tmp15 ___688_yy 	%argrw{"wr"}
 	assign		$tmp16 ___688_zz 	%argrw{"wr"}
 	point		___694_ip $tmp14 $tmp15 $tmp16 	%argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:43
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:43
 # 				point vp = (point)cellnoise_color(ip);
 	functioncall	$const7 48 	%line{43} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:21
 # 	float r = cellnoise(p);
-	cellnoise	___669_r ___694_ip 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h"} %line{21} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:22
+	cellnoise	___669_r ___694_ip 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h"} %line{21} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:22
 # 	float g = cellnoise(point(p[1], p[0], p[2]));
 	compref		$tmp18 ___694_ip $const3 	%line{22} %argrw{"wrr"}
 	compref		$tmp19 ___694_ip $const2 	%argrw{"wrr"}
 	compref		$tmp20 ___694_ip $const4 	%argrw{"wrr"}
 	point		$tmp17 $tmp18 $tmp19 $tmp20 	%argrw{"wrrr"}
 	cellnoise	___669_g $tmp17 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:23
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:23
 # 	float b = cellnoise(point(p[1], p[2], p[0]));
 	compref		$tmp22 ___694_ip $const3 	%line{23} %argrw{"wrr"}
 	compref		$tmp23 ___694_ip $const4 	%argrw{"wrr"}
 	compref		$tmp24 ___694_ip $const2 	%argrw{"wrr"}
 	point		$tmp21 $tmp22 $tmp23 $tmp24 	%argrw{"wrrr"}
 	cellnoise	___669_b $tmp21 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:25
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:25
 # 	return color(r, g, b);
 	color		___694_vp ___669_r ___669_g ___669_b 	%line{25} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:44
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:44
 # 				point pd = p - (vp + ip);
-	add		$tmp25 ___694_vp ___694_ip 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl"} %line{44} %argrw{"wrr"}
+	add		$tmp25 ___694_vp ___694_ip 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl"} %line{44} %argrw{"wrr"}
 	sub		___694_pd $tmp1 $tmp25 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:46
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:46
 # 				float d = 0.0;
 	assign		___694_d $const8 	%line{46} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:47
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:47
 # 				if (metric == "distance") {
 	eq		$tmp26 metric $const9 	%line{47} %argrw{"wrr"}
 	if		$tmp26 54 89 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:48
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:48
 # 					d = dot(pd, pd);
 	dot		___694_d ___694_pd ___694_pd 	%line{48} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:50
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:50
 # 				else if (metric == "manhattan") {
 	eq		$tmp27 metric $const10 	%line{50} %argrw{"wrr"}
 	if		$tmp27 64 89 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:51
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:51
 # 					d = fabs(pd[0]) + fabs(pd[1]) + fabs(pd[2]);
 	compref		$tmp29 ___694_pd $const2 	%line{51} %argrw{"wrr"}
 	fabs		$tmp28 $tmp29 	%argrw{"wr"}
@@ -286,11 +286,11 @@ code ___main___
 	compref		$tmp34 ___694_pd $const4 	%argrw{"wrr"}
 	fabs		$tmp33 $tmp34 	%argrw{"wr"}
 	add		___694_d $tmp32 $tmp33 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:53
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:53
 # 				else if (metric == "chebychev") {
 	eq		$tmp35 metric $const11 	%line{53} %argrw{"wrr"}
 	if		$tmp35 74 89 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:54
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:54
 # 					d = max(fabs(pd[0]), max(fabs(pd[1]), fabs(pd[2])));
 	compref		$tmp37 ___694_pd $const2 	%line{54} %argrw{"wrr"}
 	fabs		$tmp36 $tmp37 	%argrw{"wr"}
@@ -300,11 +300,11 @@ code ___main___
 	fabs		$tmp41 $tmp42 	%argrw{"wr"}
 	max		$tmp38 $tmp39 $tmp41 	%argrw{"wrr"}
 	max		___694_d $tmp36 $tmp38 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:56
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:56
 # 				else if (metric == "minkowski") {
 	eq		$tmp43 metric $const12 	%line{56} %argrw{"wrr"}
 	if		$tmp43 89 89 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:57
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:57
 # 					d = pow(pow(fabs(pd[0]), e) + pow(fabs(pd[1]), e) + pow(fabs(pd[2]), e), 1.0/e);
 	compref		$tmp46 ___694_pd $const2 	%line{57} %argrw{"wrr"}
 	fabs		$tmp45 $tmp46 	%argrw{"wr"}
@@ -319,230 +319,230 @@ code ___main___
 	add		$tmp54 $tmp50 $tmp51 	%argrw{"wrr"}
 	div		$tmp55 $const13 Exponent 	%argrw{"wrr"}
 	pow		___694_d $tmp54 $tmp55 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:60
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:60
 # 				vp += point(xx, yy, zz);
 	assign		$tmp57 ___688_xx 	%line{60} %argrw{"wr"}
 	assign		$tmp58 ___688_yy 	%argrw{"wr"}
 	assign		$tmp59 ___688_zz 	%argrw{"wr"}
 	point		$tmp56 $tmp57 $tmp58 $tmp59 	%argrw{"wrrr"}
 	add		___694_vp ___694_vp $tmp56 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:62
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:62
 # 				if (d < da[0]) {
 	aref		$tmp60 da $const2 	%line{62} %argrw{"wrr"}
 	lt		$tmp61 ___694_d $tmp60 	%argrw{"wrr"}
 	if		$tmp61 111 138 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:63
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:63
 # 					da[3] = da[2];
 	aref		$tmp62 da $const4 	%line{63} %argrw{"wrr"}
 	aassign		da $const6 $tmp62 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:64
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:64
 # 					da[2] = da[1];
 	aref		$tmp63 da $const3 	%line{64} %argrw{"wrr"}
 	aassign		da $const4 $tmp63 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:65
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:65
 # 					da[1] = da[0];
 	aref		$tmp64 da $const2 	%line{65} %argrw{"wrr"}
 	aassign		da $const3 $tmp64 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:66
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:66
 # 					da[0] = d;
 	aassign		da $const2 ___694_d 	%line{66} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:68
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:68
 # 					pa[3] = pa[2];
 	aref		$tmp65 pa $const4 	%line{68} %argrw{"wrr"}
 	aassign		pa $const6 $tmp65 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:69
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:69
 # 					pa[2] = pa[1];
 	aref		$tmp66 pa $const3 	%line{69} %argrw{"wrr"}
 	aassign		pa $const4 $tmp66 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:70
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:70
 # 					pa[1] = pa[0];
 	aref		$tmp67 pa $const2 	%line{70} %argrw{"wrr"}
 	aassign		pa $const3 $tmp67 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:71
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:71
 # 					pa[0] = vp;
 	aassign		pa $const2 ___694_vp 	%line{71} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:73
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:73
 # 				else if (d < da[1]) {
 	aref		$tmp68 da $const3 	%line{73} %argrw{"wrr"}
 	lt		$tmp69 ___694_d $tmp68 	%argrw{"wrr"}
 	if		$tmp69 124 138 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:74
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:74
 # 					da[3] = da[2];
 	aref		$tmp70 da $const4 	%line{74} %argrw{"wrr"}
 	aassign		da $const6 $tmp70 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:75
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:75
 # 					da[2] = da[1];
 	aref		$tmp71 da $const3 	%line{75} %argrw{"wrr"}
 	aassign		da $const4 $tmp71 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:76
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:76
 # 					da[1] = d;
 	aassign		da $const3 ___694_d 	%line{76} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:78
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:78
 # 					pa[3] = pa[2];
 	aref		$tmp72 pa $const4 	%line{78} %argrw{"wrr"}
 	aassign		pa $const6 $tmp72 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:79
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:79
 # 					pa[2] = pa[1];
 	aref		$tmp73 pa $const3 	%line{79} %argrw{"wrr"}
 	aassign		pa $const4 $tmp73 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:80
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:80
 # 					pa[1] = vp;
 	aassign		pa $const3 ___694_vp 	%line{80} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:82
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:82
 # 				else if (d < da[2]) {
 	aref		$tmp74 da $const4 	%line{82} %argrw{"wrr"}
 	lt		$tmp75 ___694_d $tmp74 	%argrw{"wrr"}
 	if		$tmp75 133 138 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:83
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:83
 # 					da[3] = da[2];
 	aref		$tmp76 da $const4 	%line{83} %argrw{"wrr"}
 	aassign		da $const6 $tmp76 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:84
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:84
 # 					da[2] = d;
 	aassign		da $const4 ___694_d 	%line{84} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:86
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:86
 # 					pa[3] = pa[2];
 	aref		$tmp77 pa $const4 	%line{86} %argrw{"wrr"}
 	aassign		pa $const6 $tmp77 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:87
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:87
 # 					pa[2] = vp;
 	aassign		pa $const4 ___694_vp 	%line{87} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:89
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:89
 # 				else if (d < da[3]) {
 	aref		$tmp78 da $const6 	%line{89} %argrw{"wrr"}
 	lt		$tmp79 ___694_d $tmp78 	%argrw{"wrr"}
 	if		$tmp79 138 138 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:90
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:90
 # 					da[3] = d;
 	aassign		da $const6 ___694_d 	%line{90} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:91
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:91
 # 					pa[3] = vp;
 	aassign		pa $const6 ___694_vp 	%line{91} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:41
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:41
 # 			for (zz = zi - 1; zz <= zi + 1; zz++) {
 	assign		$tmp80 ___688_zz 	%line{41} %argrw{"wr"}
 	add		___688_zz ___688_zz $const3 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:40
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:40
 # 		for (yy = yi - 1; yy <= yi + 1; yy++) {
 	assign		$tmp81 ___688_yy 	%line{40} %argrw{"wr"}
 	add		___688_yy ___688_yy $const3 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:39
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:39
 # 	for (xx = xi - 1; xx <= xi + 1; xx++) {
 	assign		$tmp82 ___688_xx 	%line{39} %argrw{"wr"}
 	add		___688_xx ___688_xx $const3 	%argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:124
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:124
 # 	if (coloring == "intensity") {
 	eq		$tmp83 coloring $const14 	%line{124} %argrw{"wrr"}
 	if		$tmp83 169 207 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:126
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:126
 # 		if (feature == "F1") {
 	eq		$tmp84 feature $const15 	%line{126} %argrw{"wrr"}
 	if		$tmp84 150 168 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:127
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:127
 # 			Fac = fabs(da[0]);
 	aref		$tmp85 da $const2 	%line{127} %argrw{"wrr"}
 	fabs		Fac $tmp85 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:129
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:129
 # 		else if (feature == "F2") {
 	eq		$tmp86 feature $const16 	%line{129} %argrw{"wrr"}
 	if		$tmp86 154 168 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:130
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:130
 # 			Fac = fabs(da[1]);
 	aref		$tmp87 da $const3 	%line{130} %argrw{"wrr"}
 	fabs		Fac $tmp87 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:132
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:132
 # 		else if (feature == "F3") {
 	eq		$tmp88 feature $const17 	%line{132} %argrw{"wrr"}
 	if		$tmp88 158 168 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:133
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:133
 # 			Fac = fabs(da[2]);
 	aref		$tmp89 da $const4 	%line{133} %argrw{"wrr"}
 	fabs		Fac $tmp89 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:135
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:135
 # 		else if (feature == "F4") {
 	eq		$tmp90 feature $const18 	%line{135} %argrw{"wrr"}
 	if		$tmp90 162 168 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:136
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:136
 # 			Fac = fabs(da[3]);
 	aref		$tmp91 da $const6 	%line{136} %argrw{"wrr"}
 	fabs		Fac $tmp91 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:138
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:138
 # 		else if (feature == "F2F1") {
 	eq		$tmp92 feature $const19 	%line{138} %argrw{"wrr"}
 	if		$tmp92 168 168 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:139
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:139
 # 			Fac = fabs(da[1] - da[0]);
 	aref		$tmp93 da $const3 	%line{139} %argrw{"wrr"}
 	aref		$tmp94 da $const2 	%argrw{"wrr"}
 	sub		$tmp95 $tmp93 $tmp94 	%argrw{"wrr"}
 	fabs		Fac $tmp95 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:141
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:141
 # 		Color = color(Fac);
 	assign		Color Fac 	%line{141} %argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:145
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:145
 # 		if (feature == "F1") {
 	eq		$tmp96 feature $const15 	%line{145} %argrw{"wrr"}
 	if		$tmp96 172 187 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:146
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:146
 # 			Color = pa[0];
 	aref		Color pa $const2 	%line{146} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:148
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:148
 # 		else if (feature == "F2") {
 	eq		$tmp97 feature $const16 	%line{148} %argrw{"wrr"}
 	if		$tmp97 175 187 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:149
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:149
 # 			Color = pa[1];
 	aref		Color pa $const3 	%line{149} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:151
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:151
 # 		else if (feature == "F3") {
 	eq		$tmp98 feature $const17 	%line{151} %argrw{"wrr"}
 	if		$tmp98 178 187 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:152
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:152
 # 			Color = pa[2];
 	aref		Color pa $const4 	%line{152} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:154
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:154
 # 		else if (feature == "F4") {
 	eq		$tmp99 feature $const18 	%line{154} %argrw{"wrr"}
 	if		$tmp99 181 187 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:155
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:155
 # 			Color = pa[3];
 	aref		Color pa $const6 	%line{155} %argrw{"wrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:157
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:157
 # 		else if (feature == "F2F1") {
 	eq		$tmp100 feature $const19 	%line{157} %argrw{"wrr"}
 	if		$tmp100 187 187 	%argrw{"r"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:158
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:158
 # 			Color = fabs(pa[1] - pa[0]);
 	aref		$tmp101 pa $const3 	%line{158} %argrw{"wrr"}
 	aref		$tmp102 pa $const2 	%argrw{"wrr"}
 	sub		$tmp103 $tmp101 $tmp102 	%argrw{"wrr"}
 	fabs		Color $tmp103 	%argrw{"wr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:161
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:161
 # 		Color = cellnoise_color(Color);
 	functioncall	$const7 200 	%line{161} %argrw{"r"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:21
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:21
 # 	float r = cellnoise(p);
-	cellnoise	___669_r Color 	%filename{"D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h"} %line{21} %argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:22
+	cellnoise	___669_r Color 	%filename{"D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h"} %line{21} %argrw{"wr"}
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:22
 # 	float g = cellnoise(point(p[1], p[0], p[2]));
 	compref		$tmp105 Color $const3 	%line{22} %argrw{"wrr"}
 	compref		$tmp106 Color $const2 	%argrw{"wrr"}
 	compref		$tmp107 Color $const4 	%argrw{"wrr"}
 	point		$tmp104 $tmp105 $tmp106 $tmp107 	%argrw{"wrrr"}
 	cellnoise	___669_g $tmp104 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:23
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:23
 # 	float b = cellnoise(point(p[1], p[2], p[0]));
 	compref		$tmp109 Color $const3 	%line{23} %argrw{"wrr"}
 	compref		$tmp110 Color $const4 	%argrw{"wrr"}
 	compref		$tmp111 Color $const2 	%argrw{"wrr"}
 	point		$tmp108 $tmp109 $tmp110 $tmp111 	%argrw{"wrrr"}
 	cellnoise	___669_b $tmp108 	%argrw{"wr"}
-# D:\GitHub\RanGE source 1.0\intern\cycles\kernel\shaders\node_texture.h:25
+# D:\GitHub\RanGE source 1.2\intern\cycles\kernel\shaders\node_texture.h:25
 # 	return color(r, g, b);
 	color		Color ___669_r ___669_g ___669_b 	%line{25} %argrw{"wrrr"}
-# D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl:162
+# D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl:162
 # 		Fac = (Color[0] + Color[1] + Color[2]) * (1.0 / 3.0);
-	compref		$tmp112 Color $const2 	%filename{"D:/GitHub/RanGE source 1.0/intern/cycles/kernel/shaders/node_voronoi_texture.osl"} %line{162} %argrw{"wrr"}
+	compref		$tmp112 Color $const2 	%filename{"D:/GitHub/RanGE source 1.2/intern/cycles/kernel/shaders/node_voronoi_texture.osl"} %line{162} %argrw{"wrr"}
 	compref		$tmp113 Color $const3 	%argrw{"wrr"}
 	add		$tmp114 $tmp112 $tmp113 	%argrw{"wrr"}
 	compref		$tmp115 Color $const4 	%argrw{"wrr"}
