@@ -1360,7 +1360,7 @@ def blen_read_material(fbx_tmpl, fbx_obj, settings):
             ma.use_transparency = True
             ma.transparency_method = 'RAYTRACE'
         ma.specular_intensity = ma_spec_intensity
-        ma.specular_hardness = ma_spec_hardness * 5.10 + 1.0
+        ma.specular_hardness = int(ma_spec_hardness * 5.10 + 1.0)
 
         if ma_refl_factor != 0.0:
             ma.raytrace_mirror.use = True
