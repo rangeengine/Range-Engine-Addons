@@ -22,10 +22,10 @@ bl_info = {
     "name": "UV Layout",
     "author": "Campbell Barton, Matt Ebb",
     "version": (1, 1, 1),
-    "blender": (2, 75, 0),
+    "blender": (2, 79, 0),
     "location": "Image-Window > UVs > Export UV Layout",
     "description": "Export the UV layout as a 2D graphic",
-    "warning": "",
+    "warning": "Only for Range Engine 1.2+",
     "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Import-Export/UV_Layout",
     "support": 'OFFICIAL',
     "category": "Import-Export",
@@ -61,26 +61,26 @@ class ExportUVLayout(bpy.types.Operator):
     bl_label = "Export UV Layout"
     bl_options = {'REGISTER', 'UNDO'}
 
-    filepath = StringProperty(
+    filepath : StringProperty(
             subtype='FILE_PATH',
             )
-    check_existing = BoolProperty(
+    check_existing : BoolProperty(
             name="Check Existing",
             description="Check and warn on overwriting existing files",
             default=True,
             options={'HIDDEN'},
             )
-    export_all = BoolProperty(
+    export_all : BoolProperty(
             name="All UVs",
             description="Export all UVs in this mesh (not just visible ones)",
             default=False,
             )
-    modified = BoolProperty(
+    modified : BoolProperty(
             name="Modified",
             description="Exports UVs from the modified mesh",
             default=False,
             )
-    mode = EnumProperty(
+    mode : EnumProperty(
             items=(('SVG', "Scalable Vector Graphic (.svg)",
                     "Export the UV layout to a vector SVG file"),
                    ('EPS', "Encapsulate PostScript (.eps)",
@@ -92,19 +92,19 @@ class ExportUVLayout(bpy.types.Operator):
             description="File format to export the UV layout to",
             default='PNG',
             )
-    size = IntVectorProperty(
+    size : IntVectorProperty(
             size=2,
             default=(1024, 1024),
             min=8, max=32768,
             description="Dimensions of the exported file",
             )
-    opacity = FloatProperty(
+    opacity : FloatProperty(
             name="Fill Opacity",
             min=0.0, max=1.0,
             default=0.25,
             description="Set amount of opacity for exported UV layout"
             )
-    tessellated = BoolProperty(
+    tessellated : BoolProperty(
             name="Tessellated UVs",
             description="Export tessellated UVs instead of polygons ones",
             default=False,
