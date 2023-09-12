@@ -164,7 +164,7 @@ class ImportOBJ(bpy.types.Operator, ImportHelper):
         else:
             row.prop(self, "use_groups_as_vgroups")
 
-        row = layout.split(percentage=0.67)
+        row = layout.split(factor=0.67)
         row.prop(self, "global_clamp_size")
         layout.prop(self, "axis_forward")
         layout.prop(self, "axis_up")
