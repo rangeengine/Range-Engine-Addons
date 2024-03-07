@@ -50,21 +50,21 @@ class AntAddLandscape(bpy.types.Operator):
     bl_description = "Add landscape mesh"
     bl_options = {'REGISTER', 'UNDO', 'PRESET'}
 
-    ant_terrain_name : FloatProperty(
+    ant_terrain_name : StringProperty(
             name="Name",
             default="Landscape"
             )
-    land_material : FloatProperty(
+    land_material : StringProperty(
             name='Material',
             default="",
             description="Terrain material"
             )
-    water_material : FloatProperty(
+    water_material : StringProperty(
             name='Material',
             default="",
             description="Water plane material"
             )
-    texture_block : FloatProperty(
+    texture_block : StringProperty(
             name="Texture",
             default=""
             )
@@ -520,7 +520,7 @@ class AntAddLandscape(bpy.types.Operator):
             max=10000.0,
             description="Minimum, flattens terrain at seabed level"
             )
-    vert_group : FloatProperty(
+    vert_group : StringProperty(
             name="Vertex Group",
             default=""
             )

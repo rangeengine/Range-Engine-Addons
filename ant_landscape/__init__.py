@@ -75,7 +75,7 @@ def menu_func_landscape(self, context):
 
 
 # Landscape Add Panel
-class panel_func_add_landscape(bpy.types.Panel):
+class AntLandscapeAddPanel(bpy.types.Panel):
     bl_idname = "ANTLANDSCAPE_PT_add"
     bl_space_type = "VIEW_3D"
     bl_context = "objectmode"
@@ -937,7 +937,7 @@ class AntLandscapePropertiesGroup(bpy.types.PropertyGroup):
 # Register:
 
 classes = (
-    panel_func_add_landscape,
+    AntLandscapeAddPanel,
     AntLandscapeToolsPanel,
     AntMainSettingsPanel,
     AntNoiseSettingsPanel,
