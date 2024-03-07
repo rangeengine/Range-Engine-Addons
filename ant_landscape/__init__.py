@@ -26,7 +26,7 @@ bl_info = {
     "blender": (2, 78, 0),
     "location": "View3D > Tool Shelf",
     "description": "Another Noise Tool: Landscape and Displace",
-    "warning": "",
+    "warning": "Only for Range Engine 1.5",
     "wiki_url": "https://wiki.blender.org/index.php/Extensions:2.6/Py/"
                 "Scripts/Add_Mesh/ANT_Landscape",
     "category": "Add Mesh",
